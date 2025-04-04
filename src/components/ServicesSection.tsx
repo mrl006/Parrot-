@@ -42,7 +42,7 @@ export default function ServicesSection() {
     }
   ];
 
-  // AMA Event hosting services with correct logos
+  // AMA Event hosting services with correct logos and black backgrounds
   const eventServices = [
     {
       id: 'binance-live',
@@ -51,7 +51,7 @@ export default function ServicesSection() {
       description: 'Professional AMA events on Binance platform',
       color: 'from-[#F0B90B] to-[#F8D12F]',
       delay: 0.4,
-      iconClass: 'bg-black'
+      iconClass: 'bg-black' // Ensuring all logos have black background
     },
     {
       id: 'twitter-audio',
@@ -60,7 +60,7 @@ export default function ServicesSection() {
       description: 'Engaging Twitter Space discussions and AMAs',
       color: 'from-gray-600 to-gray-800',
       delay: 0.5,
-      iconClass: 'bg-black'
+      iconClass: 'bg-black' // Black background for X logo
     },
     {
       id: 'telegram-audio',
@@ -69,7 +69,7 @@ export default function ServicesSection() {
       description: 'Community voice chats and announcements',
       color: 'from-[#0088cc] to-[#29B6F6]',
       delay: 0.6,
-      iconClass: 'bg-black'
+      iconClass: 'bg-black' // Black background for Telegram logo
     }
   ];
 
