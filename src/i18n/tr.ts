@@ -1,3 +1,4 @@
+
 export const tr = {
   // Navigation items
   home: 'Ana Sayfa',
@@ -87,6 +88,7 @@ export const tr = {
   corporatePartnerships: 'Kurumsal Ortaklıklar',
   brandPromotion: 'Marka Tanıtımı',
   contentCreation: 'İçerik Oluşturma',
+  creativeServices: 'Kreatif Hizmetler',
   
   // AMA & Event Hosting
   binanceLiveEvents: 'Binance Live Etkinlikleri',
@@ -123,5 +125,12 @@ export const tr = {
   eventPlanning: "Etkinlik Planlaması",
   eventPlanningDescription: "Konseptten etkinlik sonrası içerik dağıtımına kadar eksiksiz etkinlik planlaması.",
   boostVisibility: "Projenizin görünürlüğünü artırmaya hazır mısınız?",
-  scheduleEvent: "Etkinliğinizi Planlayın"
+  scheduleEvent: "Etkinliğinizi Planlayın",
+  
+  // Creative Services
+  graphicsDesign: "Grafik Tasarım",
+  videoEditing: "Video Düzenleme",
+  animation3d: "3D Tasarım ve Animasyon",
+  blockchainAnimations: "Web3 ve Blokzincir Animasyonları",
+  videoProduction: "Video Prodüksiyon"
 };

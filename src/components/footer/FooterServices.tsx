@@ -22,7 +22,8 @@ export default function FooterServices() {
     { name: t('amaEventHosting'), href: '#services' },
     { name: t('corporatePartnerships'), href: '#services' },
     { name: t('brandPromotion'), href: '#services' },
-    { name: t('contentCreation'), href: '#services' }
+    { name: t('contentCreation'), href: '#services' },
+    { name: t('creativeServices'), href: '#services' }
   ];
   
   return (

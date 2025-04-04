@@ -1,3 +1,4 @@
+
 export const en = {
   // Navigation items
   home: 'Home',
@@ -87,6 +88,7 @@ export const en = {
   corporatePartnerships: 'Corporate Partnerships',
   brandPromotion: 'Brand Promotion',
   contentCreation: 'Content Creation',
+  creativeServices: 'Creative Services',
   
   // AMA & Event Hosting
   binanceLiveEvents: 'Binance Live Events',
@@ -123,5 +125,12 @@ export const en = {
   eventPlanning: "Event Planning",
   eventPlanningDescription: "Complete event planning from conception to post-event content distribution.",
   boostVisibility: "Ready to boost your project's visibility?",
-  scheduleEvent: "Schedule Your Event"
+  scheduleEvent: "Schedule Your Event",
+  
+  // Creative Services
+  graphicsDesign: "Graphics Design",
+  videoEditing: "Video Editing",
+  animation3d: "3D Design & Animation",
+  blockchainAnimations: "Web3 & Blockchain Animations",
+  videoProduction: "Video Production"
 };

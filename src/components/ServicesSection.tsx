@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { MessageSquare, BarChart3, Link, Users, FileText, ChevronRight, Globe, Youtube, Twitter } from 'lucide-react';
+import { MessageSquare, BarChart3, Link, Users, FileText, ChevronRight, Globe, Youtube, Twitter, Image, Video, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface Service {
@@ -74,6 +74,18 @@ export default function ServicesSection() {
         "Marketing materials development",
         "Technical article writing for Web3 concepts",
         "Social media content calendars and creation"
+      ]
+    },
+    {
+      icon: <Image size={24} />,
+      title: "Creative Services",
+      description: "Bring your ideas to life with visuals that captivate and engage.",
+      features: [
+        "Graphics Design: Logos, brand identity, web & app designs",
+        "Video Editing: Promotional videos, tutorials, event recaps",
+        "3D Design & Animation: 3D modeling, animations, product visuals",
+        "Web3 & Blockchain Animations: Explainers, tokenomics, NFT assets",
+        "UI/UX design for Web3 applications and platforms"
       ]
     }
   ];
@@ -270,6 +282,145 @@ export default function ServicesSection() {
                     <div className="bar h-1"></div>
                     <div className="bar h-4"></div>
                     <div className="bar h-2"></div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+            
+            {/* Special elements for Creative Services */}
+            {activeService === 5 && (
+              <motion.div 
+                className="mt-8 pt-6 border-t border-white/10 grid grid-cols-1 sm:grid-cols-2 gap-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+              >
+                <div className="flex flex-col items-center space-y-3 p-4 rounded-lg bg-dark-lighter/70 border border-neon-purple/20">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-400 to-pink-600 flex items-center justify-center">
+                    <motion.div
+                      animate={{ 
+                        scale: [1, 1.2, 1],
+                        rotate: [0, 5, -5, 0]
+                      }}
+                      transition={{ 
+                        duration: 4,
+                        repeat: Infinity
+                      }}
+                    >
+                      <Image size={24} className="text-white" />
+                    </motion.div>
+                  </div>
+                  <span className="text-white font-medium text-sm">Graphics Design</span>
+                  <motion.div
+                    className="h-3 w-24 bg-gray-700 rounded-full overflow-hidden"
+                    initial={{ width: 0 }}
+                    animate={{ width: "100%" }}
+                    transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+                  >
+                    <div className="h-full bg-gradient-to-r from-purple-400 to-pink-600 rounded-full"></div>
+                  </motion.div>
+                </div>
+
+                <div className="flex flex-col items-center space-y-3 p-4 rounded-lg bg-dark-lighter/70 border border-neon-blue/20">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-teal-400 flex items-center justify-center">
+                    <motion.div
+                      animate={{ 
+                        scale: [1, 1.2, 1],
+                        rotate: [0, -5, 5, 0]
+                      }}
+                      transition={{ 
+                        duration: 4,
+                        repeat: Infinity,
+                        delay: 0.5
+                      }}
+                    >
+                      <Video size={24} className="text-white" />
+                    </motion.div>
+                  </div>
+                  <span className="text-white font-medium text-sm">Video Production</span>
+                  <div className="flex space-x-1">
+                    {[...Array(5)].map((_, i) => (
+                      <motion.div 
+                        key={i} 
+                        className="w-1.5 h-4 bg-blue-400 rounded"
+                        animate={{ 
+                          height: [4, 16, 8, 12, 4],
+                        }}
+                        transition={{ 
+                          duration: 1.5, 
+                          repeat: Infinity, 
+                          delay: i * 0.1,
+                          ease: "easeInOut"
+                        }}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex flex-col items-center space-y-3 p-4 rounded-lg bg-dark-lighter/70 border border-green-400/20">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-teal-500 flex items-center justify-center">
+                    <motion.div
+                      animate={{ 
+                        rotateY: [0, 360],
+                      }}
+                      transition={{ 
+                        duration: 6,
+                        repeat: Infinity,
+                        ease: "linear"
+                      }}
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
+                        <path d="M18 8s2 1 2 5v1c0 4-2 5-2 5M18 8s-2 1-2 5v1c0 4 2 5 2 5M18 8V5a2 2 0 0 0-4 0v3M18 8H6M6 8s-2 1-2 5v1c0 4 2 5 2 5M6 8s2 1 2 5v1c0 4-2 5-2 5M6 8V5a2 2 0 0 1 4 0v3" />
+                      </svg>
+                    </motion.div>
+                  </div>
+                  <span className="text-white font-medium text-sm">3D Animation</span>
+                  <motion.div 
+                    className="w-6 h-6 bg-green-500/30 rounded-full"
+                    animate={{
+                      scale: [1, 1.5, 1],
+                      opacity: [0.3, 0.7, 0.3],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
+                </div>
+
+                <div className="flex flex-col items-center space-y-3 p-4 rounded-lg bg-dark-lighter/70 border border-yellow-400/20">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-400 to-orange-600 flex items-center justify-center">
+                    <motion.div
+                      animate={{ 
+                        scale: [1, 1.2, 1],
+                        rotate: [0, 15, -15, 0]
+                      }}
+                      transition={{ 
+                        duration: 3,
+                        repeat: Infinity
+                      }}
+                    >
+                      <Zap size={24} className="text-white" />
+                    </motion.div>
+                  </div>
+                  <span className="text-white font-medium text-sm">Web3 Animations</span>
+                  <div className="flex space-x-1">
+                    {[...Array(3)].map((_, i) => (
+                      <motion.div 
+                        key={i}
+                        className="w-2 h-2 bg-yellow-400 rounded-full"
+                        animate={{
+                          y: [0, -6, 0],
+                          opacity: [0.5, 1, 0.5]
+                        }}
+                        transition={{
+                          duration: 1,
+                          repeat: Infinity,
+                          delay: i * 0.3
+                        }}
+                      />
+                    ))}
                   </div>
                 </div>
               </motion.div>
