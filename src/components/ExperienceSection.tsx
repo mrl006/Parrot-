@@ -3,8 +3,6 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Award, CheckCircle, Calendar, Medal } from 'lucide-react';
 import { useLanguage } from '@/hooks/useLanguage';
-import JourneyHeader from './experience/JourneyHeader';
-import JourneyTimeline from './experience/JourneyTimeline';
 
 interface Achievement {
   title: string;
@@ -188,10 +186,6 @@ export default function ExperienceSection() {
             </motion.div>
           ))}
         </motion.div>
-
-        {/* Journey Section with updated components */}
-        <JourneyHeader />
-        <JourneyTimeline />
       </div>
     </section>
   );
