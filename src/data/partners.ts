@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Bitcoin, Ethereum, Database, Globe, Server, Shield, Cpu, BarChart, Crown, Gem } from 'lucide-react';
+import { Bitcoin, Database, Globe, Server, Shield, Cpu, BarChart, Crown, Gem } from 'lucide-react';
 import { Partner } from '../types/Partner';
 
 export const partnersData: Partner[] = [
@@ -15,7 +15,7 @@ export const partnersData: Partner[] = [
     name: 'EtherWorks',
     category: 'Smart Contract Development',
     categoryTR: 'Akıllı Kontrat Geliştirme',
-    icon: React.createElement(Ethereum, { className: "w-6 h-6" }),
+    icon: React.createElement(Bitcoin, { className: "w-6 h-6" }), // Changed from Ethereum to Bitcoin icon
     url: 'https://example.com/etherworks'
   },
   {

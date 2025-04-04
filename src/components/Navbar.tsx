@@ -101,7 +101,7 @@ export default function Navbar() {
                     activeItem === item.href ? 'text-white' : ''
                   }`}
                 >
-                  {t(item.label)}
+                  {t(item.label as any)}
                   {activeItem === item.href && (
                     <motion.span 
                       className="absolute left-0 -bottom-1 w-full h-0.5 bg-neon-yellow"
@@ -224,7 +224,7 @@ export default function Navbar() {
                     activeItem === item.href ? 'text-white' : ''
                   }`}
                 >
-                  {t(item.label)}
+                  {t(item.label as any)}
                 </a>
               </motion.li>
             ))}
