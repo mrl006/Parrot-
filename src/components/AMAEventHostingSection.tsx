@@ -75,7 +75,7 @@ export default function AMAEventHostingSection() {
             <Card className="overflow-hidden border border-white/10 bg-dark/70 backdrop-blur-lg h-full">
               <CardHeader className="pb-2">
                 <div className="flex items-center gap-4 mb-2">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#F0B90B] to-[#F8D12F] flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-full bg-black flex items-center justify-center">
                     {/* Binance Logo */}
                     <img 
                       src="/lovable-uploads/a00fcad1-0ec2-4e5f-990a-21d712dee436.png" 
@@ -100,35 +100,27 @@ export default function AMAEventHostingSection() {
                     </ul>
                     
                     <div className="mt-6 flex justify-center">
-                      <motion.div 
-                        className="voice-wave inline-flex items-end h-10 space-x-1 bg-[#F0B90B]/10 px-4 rounded-full"
-                        animate={{ 
-                          opacity: [0.8, 1, 0.8]
-                        }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                        }}
-                      >
-                        {[...Array(6)].map((_, i) => (
+                      <div className="inline-flex items-center h-8 px-4 py-2 space-x-1 bg-[#F0B90B]/10 rounded-full">
+                        {[...Array(5)].map((_, i) => (
                           <motion.div
                             key={`binance-wave-${i}`}
-                            className="w-1.5 bg-[#F0B90B] rounded-t-sm"
+                            className="w-1.5 bg-[#F0B90B] rounded-full"
                             animate={{ 
                               height: [
-                                `${4 + Math.floor(Math.random() * 12)}px`,
-                                `${8 + Math.floor(Math.random() * 12)}px`, 
-                                `${4 + Math.floor(Math.random() * 12)}px`
+                                `${4 + Math.floor(Math.random() * 10)}px`,
+                                `${12 + Math.floor(Math.random() * 8)}px`, 
+                                `${4 + Math.floor(Math.random() * 10)}px`
                               ]
                             }}
                             transition={{
-                              duration: 1 + Math.random(),
+                              duration: 1 + Math.random() * 0.5,
                               repeat: Infinity,
-                              repeatType: "reverse" as const
+                              repeatType: "reverse",
+                              ease: "easeInOut"
                             }}
                           />
                         ))}
-                      </motion.div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -146,7 +138,7 @@ export default function AMAEventHostingSection() {
             <Card className="overflow-hidden border border-white/10 bg-dark/70 backdrop-blur-lg h-full">
               <CardHeader className="pb-2">
                 <div className="flex items-center gap-4 mb-2">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#000000] to-[#333333] flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-full bg-black flex items-center justify-center">
                     {/* X (Twitter) Logo */}
                     <img 
                       src="/lovable-uploads/9dfc0dbd-c375-443d-9fe6-a78d72d3b770.png" 
@@ -171,35 +163,27 @@ export default function AMAEventHostingSection() {
                     </ul>
                     
                     <div className="mt-6 flex justify-center">
-                      <motion.div 
-                        className="voice-wave inline-flex items-end h-10 space-x-1 bg-gray-700/20 px-4 rounded-full"
-                        animate={{ 
-                          opacity: [0.8, 1, 0.8]
-                        }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                        }}
-                      >
-                        {[...Array(6)].map((_, i) => (
+                      <div className="inline-flex items-center h-8 px-4 py-2 space-x-1 bg-gray-700/20 rounded-full">
+                        {[...Array(5)].map((_, i) => (
                           <motion.div
                             key={`twitter-wave-${i}`}
-                            className="w-1.5 bg-white rounded-t-sm"
+                            className="w-1.5 bg-white rounded-full"
                             animate={{ 
                               height: [
-                                `${4 + Math.floor(Math.random() * 12)}px`,
-                                `${8 + Math.floor(Math.random() * 12)}px`, 
-                                `${4 + Math.floor(Math.random() * 12)}px`
+                                `${4 + Math.floor(Math.random() * 10)}px`,
+                                `${12 + Math.floor(Math.random() * 8)}px`, 
+                                `${4 + Math.floor(Math.random() * 10)}px`
                               ]
                             }}
                             transition={{
-                              duration: 1 + Math.random(),
+                              duration: 1 + Math.random() * 0.5,
                               repeat: Infinity,
-                              repeatType: "reverse" as const
+                              repeatType: "reverse",
+                              ease: "easeInOut"
                             }}
                           />
                         ))}
-                      </motion.div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -217,7 +201,7 @@ export default function AMAEventHostingSection() {
             <Card className="overflow-hidden border border-white/10 bg-dark/70 backdrop-blur-lg h-full">
               <CardHeader className="pb-2">
                 <div className="flex items-center gap-4 mb-2">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#0088cc] to-[#29B6F6] flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-full bg-black flex items-center justify-center">
                     {/* Telegram Logo */}
                     <img 
                       src="/lovable-uploads/f766f5d3-c5e9-421c-8717-cbd7f83eeaea.png" 
@@ -242,35 +226,27 @@ export default function AMAEventHostingSection() {
                     </ul>
                     
                     <div className="mt-6 flex justify-center">
-                      <motion.div 
-                        className="voice-wave inline-flex items-end h-10 space-x-1 bg-[#0088cc]/10 px-4 rounded-full"
-                        animate={{ 
-                          opacity: [0.8, 1, 0.8]
-                        }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                        }}
-                      >
-                        {[...Array(6)].map((_, i) => (
+                      <div className="inline-flex items-center h-8 px-4 py-2 space-x-1 bg-[#0088cc]/10 rounded-full">
+                        {[...Array(5)].map((_, i) => (
                           <motion.div
                             key={`telegram-wave-${i}`}
-                            className="w-1.5 bg-[#0088cc] rounded-t-sm"
+                            className="w-1.5 bg-[#0088cc] rounded-full"
                             animate={{ 
                               height: [
-                                `${4 + Math.floor(Math.random() * 12)}px`,
-                                `${8 + Math.floor(Math.random() * 12)}px`, 
-                                `${4 + Math.floor(Math.random() * 12)}px`
+                                `${4 + Math.floor(Math.random() * 10)}px`,
+                                `${12 + Math.floor(Math.random() * 8)}px`, 
+                                `${4 + Math.floor(Math.random() * 10)}px`
                               ]
                             }}
                             transition={{
-                              duration: 1 + Math.random(),
+                              duration: 1 + Math.random() * 0.5,
                               repeat: Infinity,
-                              repeatType: "reverse" as const
+                              repeatType: "reverse",
+                              ease: "easeInOut"
                             }}
                           />
                         ))}
-                      </motion.div>
+                      </div>
                     </div>
                   </div>
                 </div>

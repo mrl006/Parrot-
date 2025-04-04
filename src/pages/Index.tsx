@@ -34,6 +34,7 @@ const Index = () => {
     preloadImage('/lovable-uploads/61fcc672-d9d9-46f4-937d-ba02dc86c041.png');
     preloadImage('/lovable-uploads/7b9b3fe7-38d5-4f98-bd13-25d4fa762acf.png');
     preloadImage('/lovable-uploads/43fda211-d474-412d-9613-218c14f9e954.png');
+    preloadImage('/lovable-uploads/a2f262a6-70d5-4673-9aa6-0aa47a11a1e5.png'); // New reference image
   }, []);
 
   return (

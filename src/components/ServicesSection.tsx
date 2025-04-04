@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { MessageSquare, BarChart3, Link, Users, FileText, ChevronRight, Globe, Youtube, Twitter, Image, Video, Zap, MessageCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -233,7 +232,7 @@ export default function ServicesSection() {
                 transition={{ delay: 0.5 }}
               >
                 <div className="flex flex-col items-center space-y-3 p-4 rounded-lg bg-dark-lighter/70 border border-neon-purple/20">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-full bg-black flex items-center justify-center">
                     <motion.div
                       animate={{ 
                         scale: [1, 1.2, 1],
@@ -244,23 +243,35 @@ export default function ServicesSection() {
                         repeat: Infinity
                       }}
                     >
-                      <Globe size={24} className="text-white" />
+                      <img 
+                        src="/lovable-uploads/a00fcad1-0ec2-4e5f-990a-21d712dee436.png" 
+                        alt="Binance" 
+                        className="w-8 h-8" 
+                      />
                     </motion.div>
                   </div>
                   <span className="text-white font-medium text-sm">Binance Live</span>
-                  <motion.div
-                    className="flex space-x-1"
-                    animate={{ opacity: [0.7, 1, 0.7] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  >
+                  <div className="flex space-x-1">
                     {[...Array(5)].map((_, i) => (
-                      <div key={i} className="w-1.5 h-1.5 rounded-full bg-blue-400"></div>
+                      <motion.div
+                        key={`binance-dot-${i}`}
+                        className="w-1.5 h-1.5 rounded-full bg-[#F0B90B]"
+                        animate={{ 
+                          opacity: [0.6, 1, 0.6],
+                          scale: [1, 1.2, 1]
+                        }}
+                        transition={{ 
+                          duration: 1.5,
+                          delay: i * 0.2,
+                          repeat: Infinity
+                        }}
+                      />
                     ))}
-                  </motion.div>
+                  </div>
                 </div>
 
                 <div className="flex flex-col items-center space-y-3 p-4 rounded-lg bg-dark-lighter/70 border border-neon-blue/20">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-full bg-black flex items-center justify-center">
                     <motion.div
                       animate={{ 
                         scale: [1, 1.2, 1],
@@ -272,22 +283,39 @@ export default function ServicesSection() {
                         delay: 0.5
                       }}
                     >
-                      <Twitter size={24} className="text-white" />
+                      <img 
+                        src="/lovable-uploads/9dfc0dbd-c375-443d-9fe6-a78d72d3b770.png" 
+                        alt="X" 
+                        className="w-7 h-7" 
+                      />
                     </motion.div>
                   </div>
                   <span className="text-white font-medium text-sm">Twitter Audio Live</span>
-                  <div className="voice-wave inline-flex">
-                    <div className="bar h-2"></div>
-                    <div className="bar h-3"></div>
-                    <div className="bar h-1"></div>
-                    <div className="bar h-4"></div>
-                    <div className="bar h-2"></div>
+                  <div className="flex space-x-1">
+                    {[...Array(4)].map((_, i) => (
+                      <motion.div 
+                        key={`twitter-wave-${i}`} 
+                        className="w-1.5 bg-yellow-400 rounded-t-sm"
+                        animate={{ 
+                          height: [
+                            `${4 + Math.floor(Math.random() * 6)}px`,
+                            `${8 + Math.floor(Math.random() * 6)}px`, 
+                            `${4 + Math.floor(Math.random() * 6)}px`
+                          ]
+                        }}
+                        transition={{ 
+                          duration: 1.2,
+                          repeat: Infinity,
+                          delay: i * 0.2
+                        }}
+                      />
+                    ))}
                   </div>
                 </div>
 
-                {/* Telegram Audio Live - NEW */}
+                {/* Telegram Audio Live - UPDATED */}
                 <div className="flex flex-col items-center space-y-3 p-4 rounded-lg bg-dark-lighter/70 border border-[#0088cc]/20">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#0088cc] to-[#29B6F6] flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-full bg-black flex items-center justify-center">
                     <motion.div
                       animate={{ 
                         scale: [1, 1.2, 1],
@@ -299,16 +327,33 @@ export default function ServicesSection() {
                         delay: 1
                       }}
                     >
-                      <MessageCircle size={24} className="text-white" />
+                      <img 
+                        src="/lovable-uploads/f766f5d3-c5e9-421c-8717-cbd7f83eeaea.png" 
+                        alt="Telegram" 
+                        className="w-8 h-8" 
+                      />
                     </motion.div>
                   </div>
                   <span className="text-white font-medium text-sm">Telegram Audio Live</span>
-                  <div className="voice-wave inline-flex">
-                    <div className="bar h-3"></div>
-                    <div className="bar h-1"></div>
-                    <div className="bar h-4"></div>
-                    <div className="bar h-2"></div>
-                    <div className="bar h-3"></div>
+                  <div className="flex space-x-1">
+                    {[...Array(4)].map((_, i) => (
+                      <motion.div 
+                        key={`telegram-wave-${i}`}
+                        className="w-1.5 bg-yellow-400 rounded-t-sm"
+                        animate={{ 
+                          height: [
+                            `${4 + Math.floor(Math.random() * 6)}px`,
+                            `${8 + Math.floor(Math.random() * 6)}px`, 
+                            `${4 + Math.floor(Math.random() * 6)}px`
+                          ]
+                        }}
+                        transition={{ 
+                          duration: 1.2,
+                          repeat: Infinity,
+                          delay: i * 0.2
+                        }}
+                      />
+                    ))}
                   </div>
                 </div>
               </motion.div>
