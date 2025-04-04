@@ -52,6 +52,7 @@ export const en = {
   ourExperience: 'Our Experience',
   provenTrackRecord: 'Proven Track Record',
   ourJourney: 'Our Journey',
+  journeyDescription: 'Our growth journey from foundation to industry leadership through innovation and excellence in Web3',
   majorProjects: 'Major Projects',
   projects: 'Projects',
   xSpaceEvents: 'X Space Events',
@@ -139,7 +140,7 @@ export const en = {
   ourMission: "Our Mission",
   drivingWeb3: "Driving Web3 Innovation Forward",
   
-  // Section heading colors (new)
+  // Section heading colors
   sectionColors: {
     about: "from-neon-yellow to-neon-purple",
     team: "from-neon-blue to-neon-cyan",

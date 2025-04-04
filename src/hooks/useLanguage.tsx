@@ -9,7 +9,7 @@ type TranslationsType = typeof en;
 interface LanguageContextType {
   language: LanguageType;
   setLanguage: (language: LanguageType) => void;
-  t: (key: keyof TranslationsType) => string;
+  t: (key: string) => any;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -34,8 +34,19 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     localStorage.setItem('language', language);
   }, [language]);
 
-  const t = (key: keyof TranslationsType): string => {
-    return translations[key] || key;
+  const t = (key: string): any => {
+    const keys = key.split('.');
+    let value: any = translations;
+    
+    for (const k of keys) {
+      if (value && typeof value === 'object' && k in value) {
+        value = value[k];
+      } else {
+        return key;
+      }
+    }
+    
+    return value;
   };
 
   return (

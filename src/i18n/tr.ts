@@ -52,6 +52,7 @@ export const tr = {
   ourExperience: 'Tecrübemiz',
   provenTrackRecord: 'Kanıtlanmış Başarı Geçmişi',
   ourJourney: 'Yolculuğumuz',
+  journeyDescription: 'Web3\'te inovasyon ve mükemmellikle kuruluştan sektör liderliğine büyüme yolculuğumuz',
   majorProjects: 'Büyük Projeler',
   projects: 'Projeler',
   xSpaceEvents: 'X Space Etkinlikleri',
@@ -139,7 +140,7 @@ export const tr = {
   ourMission: "Misyonumuz",
   drivingWeb3: "Web3 İnovasyonunu İleriye Taşıyoruz",
   
-  // Section heading colors (new)
+  // Section heading colors
   sectionColors: {
     about: "from-neon-yellow to-neon-purple",
     team: "from-neon-blue to-neon-cyan",
