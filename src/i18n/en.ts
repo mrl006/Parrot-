@@ -40,6 +40,7 @@ export const en = {
   
   // Footer
   footerRights: 'All rights reserved',
+  footerDescription: 'A premier Web3 agency driving innovation in blockchain, crypto, and decentralized technologies.',
   
   // About Section
   aboutUs: 'About Us',

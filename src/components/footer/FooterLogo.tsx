@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/hooks/useLanguage';
+import ParrotAvatar from '../common/ParrotAvatar';
 
 interface FooterLogoProps {
   socialLinks: {
@@ -36,19 +37,11 @@ export default function FooterLogo({ socialLinks }: FooterLogoProps) {
       transition={{ duration: 0.5 }}
     >
       <div className="flex items-center mb-6">
-        <motion.img 
-          src="/lovable-uploads/a46cbb0c-b340-45e7-aa9e-7ecdcb5dbb14.png" 
-          alt="ParrotBamboo Logo" 
-          className="h-12 mr-3" 
-          whileHover={{ 
-            scale: 1.08,
-            transition: { duration: 0.2 }
-          }}
-        />
+        <ParrotAvatar size="xl" className="mr-3" />
         <h3 className="text-2xl font-bold neon-text">ParrotBamboo</h3>
       </div>
       <p className="text-gray-300 mb-8">
-        A premier Web3 agency driving innovation in blockchain, crypto, and decentralized technologies.
+        {t('footerDescription') || 'A premier Web3 agency driving innovation in blockchain, crypto, and decentralized technologies.'}
       </p>
       <div className="flex flex-wrap gap-4">
         {/* X (Twitter) Icon */}

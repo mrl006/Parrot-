@@ -40,6 +40,7 @@ export const tr = {
   
   // Footer
   footerRights: 'Tüm hakları saklıdır',
+  footerDescription: 'Blokzincir, kripto ve merkezi olmayan teknolojilerde inovasyonu ileriye taşıyan önde gelen bir Web3 ajansı.',
 
   // About Section
   aboutUs: 'Hakkımızda',

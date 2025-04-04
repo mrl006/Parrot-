@@ -10,6 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import ParrotAvatar from './common/ParrotAvatar';
 
 // Simplified menu items - max 5 as requested
 const navItems = [
@@ -77,13 +78,13 @@ export default function Navbar() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <motion.img 
-            src="/lovable-uploads/a46cbb0c-b340-45e7-aa9e-7ecdcb5dbb14.png" 
-            alt="ParrotBamboo Logo" 
-            className="h-12 mr-2"
-            whileHover={{ rotate: [0, -10, 10, -10, 0], transition: { duration: 0.5 } }}
-          />
-          <span className="text-xl font-bold neon-text">ParrotBamboo</span>
+          <motion.div 
+            className="flex items-center"
+            whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+          >
+            <ParrotAvatar size="lg" className="mr-3" />
+            <span className="text-xl font-bold neon-text">ParrotBamboo</span>
+          </motion.div>
         </motion.a>
 
         {/* Desktop Navigation */}
