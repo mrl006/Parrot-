@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Send, Linkedin, Twitter, MessageSquare, Headphones } from 'lucide-react';
 import { useLanguage } from '@/hooks/useLanguage';
@@ -59,11 +58,10 @@ export default function ContactSection() {
     };
     
     try {
-      // You need to sign up for EmailJS and get your own service_id, template_id and user_id
-      // https://www.emailjs.com/
+      // Using the provided template ID
       await emailjs.send(
         'service_id', // Replace with your EmailJS service ID
-        'template_id', // Replace with your EmailJS template ID
+        'template_3fe3rlx', // Your provided template ID
         templateParams,
         'user_id' // Replace with your EmailJS user ID
       );
