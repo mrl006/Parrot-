@@ -2,14 +2,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/hooks/useLanguage';
-import { TrendingUp, Milestone } from 'lucide-react';
+import { Milestone } from 'lucide-react';
 
 export default function JourneyHeader() {
   const { t } = useLanguage();
 
   return (
     <motion.div 
-      className="text-center mb-16"
+      className="text-center mb-12"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7 }}
@@ -19,7 +19,6 @@ export default function JourneyHeader() {
         <motion.div
           animate={{ 
             scale: [1, 1.15, 1],
-            rotateZ: [0, 5, 0, -5, 0]
           }}
           transition={{ duration: 5, repeat: Infinity }}
           className="inline-block bg-dark-lighter p-4 rounded-full border border-neon-yellow/20"
@@ -35,11 +34,11 @@ export default function JourneyHeader() {
         viewport={{ once: true }}
         transition={{ duration: 0.7, delay: 0.2 }}
       >
-        <span className="bg-clip-text text-transparent bg-gradient-to-r from-neon-yellow via-neon-purple to-neon-blue gradient-animate">{t('ourJourney')}</span>
+        <span className="bg-clip-text text-transparent bg-gradient-to-r from-neon-yellow to-neon-blue gradient-animate">{t('ourJourney')}</span>
       </motion.h3>
       
       <motion.div 
-        className="w-32 h-1 bg-gradient-to-r from-neon-yellow via-neon-purple to-neon-blue mx-auto"
+        className="w-32 h-1 bg-gradient-to-r from-neon-yellow to-neon-blue mx-auto"
         initial={{ width: 0 }}
         whileInView={{ width: 128 }}
         viewport={{ once: true }}
@@ -53,7 +52,7 @@ export default function JourneyHeader() {
         viewport={{ once: true }}
         transition={{ duration: 0.7, delay: 0.3 }}
       >
-        Follow our path of growth and innovation in the Web3 space, from our founding to our latest achievements
+        Our growth journey from foundation to industry leadership
       </motion.p>
     </motion.div>
   );

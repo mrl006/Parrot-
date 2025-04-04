@@ -6,6 +6,7 @@ import { useLanguage } from '@/hooks/useLanguage';
 import { Card, CardContent } from '@/components/ui/card';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Separator } from '@/components/ui/separator';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 interface Milestone {
   year: string;
@@ -60,101 +61,81 @@ export default function JourneyTimeline() {
     }
   ];
   
+  // Simplified horizontal timeline for both mobile and desktop
   return (
-    <div className="w-full max-w-5xl mx-auto">
+    <div className="w-full max-w-6xl mx-auto px-4">
       {isMobile ? (
-        // Mobile version - vertical stacked timeline
-        <div className="relative px-4">
-          {/* Vertical timeline line */}
-          <div className="absolute left-6 top-8 bottom-8 w-1 bg-gradient-to-b from-neon-blue via-neon-purple to-neon-yellow"></div>
-          
-          {milestones.map((milestone, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="relative mb-12 pl-12"
-            >
-              {/* Timeline node - positioned absolutely */}
-              <motion.div
-                className={`absolute left-0 top-6 w-12 h-12 rounded-full ${milestone.bgColor} border ${milestone.borderColor} flex items-center justify-center z-10`}
-                animate={{
-                  boxShadow: ["0 0 0px rgba(255,255,255,0.2)", "0 0 15px rgba(255,255,255,0.5)", "0 0 0px rgba(255,255,255,0.2)"]
-                }}
-                transition={{ duration: 3, repeat: Infinity }}
-              >
-                <div className="text-white">{milestone.icon}</div>
-              </motion.div>
-              
-              {/* Year badge */}
-              <div className="mb-3">
-                <motion.span
-                  className={`inline-flex items-center px-4 py-1.5 rounded-full bg-gradient-to-r ${milestone.color} text-white text-sm font-medium`}
-                  whileHover={{ scale: 1.05 }}
-                >
-                  <Calendar size={14} className="mr-1.5" />
-                  {milestone.year}
-                </motion.span>
-              </div>
-              
-              {/* Content card */}
-              <Card className="bg-dark-lighter/80 backdrop-blur-md border border-white/10 overflow-hidden">
+        // Mobile version - scrollable horizontal timeline
+        <div className="relative py-10">
+          <ScrollArea className="w-full" orientation="horizontal">
+            <div className="flex space-x-4 pb-6 px-2 min-w-max">
+              {milestones.map((milestone, index) => (
                 <motion.div
-                  className={`h-1 w-full bg-gradient-to-r ${milestone.color}`}
-                  initial={{ width: 0 }}
-                  whileInView={{ width: "100%" }}
+                  key={index}
+                  className="w-72 flex-shrink-0"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                />
-                <CardContent className="p-5">
-                  <h4 className="text-xl font-bold mb-2 text-white">{milestone.title}</h4>
-                  <p className="text-gray-300">{milestone.description}</p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <div className="flex flex-col items-center mb-4">
+                    <motion.div
+                      className={`w-12 h-12 rounded-full ${milestone.bgColor} border ${milestone.borderColor} flex items-center justify-center z-10`}
+                      whileHover={{ scale: 1.1 }}
+                      animate={{
+                        boxShadow: ["0 0 0px rgba(255,255,255,0.2)", "0 0 15px rgba(255,255,255,0.5)", "0 0 0px rgba(255,255,255,0.2)"]
+                      }}
+                      transition={{ duration: 3, repeat: Infinity }}
+                    >
+                      <div className="text-white">{milestone.icon}</div>
+                    </motion.div>
+                    
+                    <motion.div 
+                      className={`mt-3 px-4 py-1.5 rounded-full bg-gradient-to-r ${milestone.color} text-white text-sm font-semibold inline-flex items-center`}
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <Calendar size={14} className="mr-1.5" />
+                      {milestone.year}
+                    </motion.div>
+                  </div>
+                  
+                  <Card className="bg-dark-lighter/80 backdrop-blur-md border border-white/10 overflow-hidden h-full">
+                    <motion.div
+                      className={`h-1 w-full bg-gradient-to-r ${milestone.color}`}
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "100%" }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: 0.2 }}
+                    />
+                    <CardContent className="p-5">
+                      <h4 className="text-xl font-bold mb-2 text-white">{milestone.title}</h4>
+                      <p className="text-gray-300">{milestone.description}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </ScrollArea>
         </div>
       ) : (
-        // Desktop version - zigzag timeline
-        <div className="relative py-20">
-          {/* Central timeline line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-neon-blue via-neon-purple to-neon-yellow transform -translate-x-1/2"></div>
+        // Desktop version - clean horizontal timeline
+        <div className="relative py-16">
+          {/* Horizontal timeline line */}
+          <div className="absolute left-0 right-0 h-1 top-[90px] bg-gradient-to-r from-neon-blue via-neon-purple to-neon-yellow"></div>
           
-          {/* Timeline nodes at each milestone point */}
-          {milestones.map((_, i) => (
-            <div
-              key={`node-${i}`}
-              className="absolute left-1/2 transform -translate-x-1/2"
-              style={{ top: `${(i / (milestones.length - 1)) * 100}%` }}
-            >
+          <div className="flex justify-between relative">
+            {milestones.map((milestone, index) => (
               <motion.div
-                className="w-5 h-5 rounded-full bg-neon-blue"
-                animate={{
-                  boxShadow: ["0 0 0px rgba(0,131,202,0.3)", "0 0 15px rgba(0,131,202,0.8)", "0 0 0px rgba(0,131,202,0.3)"]
-                }}
-                transition={{ duration: 2, repeat: Infinity }}
-              ></motion.div>
-            </div>
-          ))}
-          
-          {/* Milestone cards - alternating sides */}
-          {milestones.map((milestone, index) => (
-            <motion.div
-              key={index}
-              className={`flex mb-32 ${index % 2 === 0 ? '' : 'flex-row-reverse'}`}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: index * 0.1 }}
-            >
-              <div className="w-1/2"></div>
-              
-              <div className={`absolute left-1/2 transform -translate-x-1/2 ${index === 0 ? 'top-0' : ''} ${index === milestones.length - 1 ? 'bottom-0' : ''}`} 
-                   style={{ top: index > 0 && index < milestones.length - 1 ? `${(index / (milestones.length - 1)) * 100}%` : undefined }}>
+                key={index}
+                className="flex flex-col items-center w-1/4 px-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+              >
+                {/* Timeline node */}
                 <motion.div
-                  className={`w-14 h-14 rounded-full ${milestone.bgColor} border ${milestone.borderColor} flex items-center justify-center z-10`}
+                  className={`w-14 h-14 rounded-full ${milestone.bgColor} border ${milestone.borderColor} flex items-center justify-center z-10 mb-4`}
                   whileHover={{ scale: 1.1 }}
                   animate={{
                     boxShadow: ["0 0 0px rgba(255,255,255,0.2)", "0 0 20px rgba(255,255,255,0.5)", "0 0 0px rgba(255,255,255,0.2)"]
@@ -163,26 +144,26 @@ export default function JourneyTimeline() {
                 >
                   <div className="text-white">{milestone.icon}</div>
                 </motion.div>
-              </div>
-              
-              <div className="w-1/2 px-8">
+                
                 {/* Year badge */}
-                <motion.div className="mb-4 inline-block" whileHover={{ scale: 1.05 }}>
-                  <span className={`inline-flex items-center px-4 py-1.5 rounded-full bg-gradient-to-r ${milestone.color} text-white text-sm font-semibold`}>
-                    <Calendar size={14} className="mr-1.5" />
-                    {milestone.year}
-                  </span>
+                <motion.div 
+                  className={`mb-6 px-4 py-1.5 rounded-full bg-gradient-to-r ${milestone.color} text-white text-sm font-semibold inline-flex items-center`}
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <Calendar size={14} className="mr-1.5" />
+                  {milestone.year}
                 </motion.div>
                 
                 {/* Content card with hover effect */}
                 <motion.div
+                  className="w-full"
                   whileHover={{ 
                     y: -5,
                     boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1)'
                   }}
                   transition={{ duration: 0.2 }}
                 >
-                  <Card className="bg-dark-lighter/80 backdrop-blur-md border border-white/10 overflow-hidden">
+                  <Card className="bg-dark-lighter/80 backdrop-blur-md border border-white/10 overflow-hidden h-full">
                     <motion.div
                       className={`h-1 w-full bg-gradient-to-r ${milestone.color}`}
                       initial={{ width: 0 }}
@@ -196,9 +177,9 @@ export default function JourneyTimeline() {
                     </CardContent>
                   </Card>
                 </motion.div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
         </div>
       )}
     </div>
