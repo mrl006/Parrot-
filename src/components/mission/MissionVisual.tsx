@@ -58,7 +58,10 @@ const MissionVisual: React.FC = () => {
         />
 
         <div className="w-full aspect-square rounded-xl p-1 border border-neon-yellow/20 relative z-10">
-          <div className="w-full h-full rounded-lg bg-gradient-to-br from-dark-lighter via-dark to-dark flex items-center justify-center relative overflow-hidden">
+          <div className="w-full h-full rounded-lg bg-gradient-to-br from-dark-lighter via-dark to-dark flex items-center justify-center relative overflow-hidden backdrop-blur-lg">
+            {/* 3D glass effect with backdrop filter */}
+            <div className="absolute inset-0 bg-white/5 backdrop-blur-sm"></div>
+            
             {/* Crypto coins animation */}
             {Array.from({ length: 12 }).map((_, i) => (
               <motion.div
@@ -78,65 +81,19 @@ const MissionVisual: React.FC = () => {
               </motion.div>
             ))}
 
-            <div className="text-center p-8 relative z-10">
+            <div className="text-center relative z-10">
               <motion.div
                 variants={launchVariants}
                 initial="initial"
                 animate="animate"
-                className="inline-flex p-6 rounded-full bg-dark border border-neon-purple/30 mb-4 relative z-10"
+                className="inline-flex p-8 rounded-full bg-gradient-to-br from-dark-lighter/40 to-dark-lighter/10 backdrop-blur-md border border-white/10 mb-4 relative z-10 shadow-lg shadow-neon-purple/20"
+                style={{ backdropFilter: 'blur(10px)' }}
               >
-                <Rocket className="w-16 h-16 text-neon-purple" />
+                {/* Larger rocket icon with glass effect */}
+                <Rocket className="w-24 h-24 text-neon-purple filter drop-shadow-lg" />
               </motion.div>
               
-              <h3 className="text-2xl font-bold text-white mb-4">
-                Revolutionizing
-              </h3>
-              
-              <p className="text-white mb-8">
-                the Digital Landscape
-              </p>
-              
-              <div className="flex justify-center space-x-6 mt-4">
-                {/* Telegram Logo */}
-                <motion.div 
-                  whileHover={{ scale: 1.15 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-12 h-12 rounded-full bg-dark/70 flex items-center justify-center hover:bg-blue-500/20 transition-colors border border-blue-500/30"
-                >
-                  <svg 
-                    width="24" 
-                    height="24" 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="text-blue-500"
-                  >
-                    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M8 13L12 17L16 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M8 9L12 13L16 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </motion.div>
-                
-                {/* Binance Logo */}
-                <motion.div 
-                  whileHover={{ scale: 1.15 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-12 h-12 rounded-full bg-dark/70 flex items-center justify-center hover:bg-yellow-400/20 transition-colors border border-yellow-400/30"
-                >
-                  <svg 
-                    width="24" 
-                    height="24" 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="text-yellow-400"
-                  >
-                    <path d="M12 0L14.7 2.7L5.4 12L14.7 21.3L12 24L0 12L12 0Z" fill="currentColor"/>
-                    <path d="M12 0L9.30001 2.7L18.6 12L9.30001 21.3L12 24L24 12L12 0Z" fill="currentColor"/>
-                    <path d="M8 12.0002L12 8.00017L16 12.0002L12 16.0002L8 12.0002Z" fill="currentColor"/>
-                  </svg>
-                </motion.div>
-              </div>
+              {/* Removed text as requested */}
             </div>
           </div>
         </div>

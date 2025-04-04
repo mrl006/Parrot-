@@ -2,7 +2,7 @@
 import React from 'react';
 import { useLanguage } from '../hooks/useLanguage';
 import { motion } from 'framer-motion';
-import { Headphones, Mic, Calendar, Users, Twitter, Globe, MessageCircle } from 'lucide-react';
+import { Calendar, Users, Mic, Headphones, MessageCircle } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
@@ -76,7 +76,12 @@ export default function AMAEventHostingSection() {
               <CardHeader className="pb-2">
                 <div className="flex items-center gap-4 mb-2">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#F0B90B] to-[#F8D12F] flex items-center justify-center">
-                    <Globe size={24} className="text-dark" />
+                    {/* Binance Logo */}
+                    <img 
+                      src="/lovable-uploads/a00fcad1-0ec2-4e5f-990a-21d712dee436.png" 
+                      alt="Binance" 
+                      className="w-8 h-8" 
+                    />
                   </div>
                   <CardTitle className="text-2xl text-white">{t('binanceLiveEvents')}</CardTitle>
                 </div>
@@ -119,7 +124,7 @@ export default function AMAEventHostingSection() {
                             transition={{
                               duration: 1 + Math.random(),
                               repeat: Infinity,
-                              repeatType: "reverse"
+                              repeatType: "reverse" as const
                             }}
                           />
                         ))}
@@ -131,7 +136,7 @@ export default function AMAEventHostingSection() {
             </Card>
           </motion.div>
           
-          {/* Twitter Audio Live */}
+          {/* Twitter Audio Live with X Logo */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -141,8 +146,13 @@ export default function AMAEventHostingSection() {
             <Card className="overflow-hidden border border-white/10 bg-dark/70 backdrop-blur-lg h-full">
               <CardHeader className="pb-2">
                 <div className="flex items-center gap-4 mb-2">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#1DA1F2] to-[#0C7ABF] flex items-center justify-center">
-                    <Twitter size={24} className="text-white" />
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#000000] to-[#333333] flex items-center justify-center">
+                    {/* X (Twitter) Logo */}
+                    <img 
+                      src="/lovable-uploads/9dfc0dbd-c375-443d-9fe6-a78d72d3b770.png" 
+                      alt="X" 
+                      className="w-7 h-7" 
+                    />
                   </div>
                   <CardTitle className="text-2xl text-white">{t('twitterAudioLive')}</CardTitle>
                 </div>
@@ -152,7 +162,7 @@ export default function AMAEventHostingSection() {
               </CardHeader>
               <CardContent>
                 <div className="relative mt-2 mb-8">
-                  <div className="bg-gradient-to-r from-[#1DA1F2]/20 to-transparent p-6 rounded-lg border border-[#1DA1F2]/30">
+                  <div className="bg-gradient-to-r from-gray-800/50 to-transparent p-6 rounded-lg border border-gray-700/30">
                     <ul className="space-y-3">
                       <EventFeature icon={<Users size={18} />} text="Engage with crypto enthusiasts" />
                       <EventFeature icon={<Calendar size={18} />} text="Regular Twitter Space events" />
@@ -162,7 +172,7 @@ export default function AMAEventHostingSection() {
                     
                     <div className="mt-6 flex justify-center">
                       <motion.div 
-                        className="voice-wave inline-flex items-end h-10 space-x-1 bg-[#1DA1F2]/10 px-4 rounded-full"
+                        className="voice-wave inline-flex items-end h-10 space-x-1 bg-gray-700/20 px-4 rounded-full"
                         animate={{ 
                           opacity: [0.8, 1, 0.8]
                         }}
@@ -174,7 +184,7 @@ export default function AMAEventHostingSection() {
                         {[...Array(6)].map((_, i) => (
                           <motion.div
                             key={`twitter-wave-${i}`}
-                            className="w-1.5 bg-[#1DA1F2] rounded-t-sm"
+                            className="w-1.5 bg-white rounded-t-sm"
                             animate={{ 
                               height: [
                                 `${4 + Math.floor(Math.random() * 12)}px`,
@@ -185,7 +195,7 @@ export default function AMAEventHostingSection() {
                             transition={{
                               duration: 1 + Math.random(),
                               repeat: Infinity,
-                              repeatType: "reverse"
+                              repeatType: "reverse" as const
                             }}
                           />
                         ))}
@@ -197,7 +207,7 @@ export default function AMAEventHostingSection() {
             </Card>
           </motion.div>
           
-          {/* Telegram Audio Live - NEW */}
+          {/* Telegram Audio Live with Telegram Logo */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -208,7 +218,12 @@ export default function AMAEventHostingSection() {
               <CardHeader className="pb-2">
                 <div className="flex items-center gap-4 mb-2">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#0088cc] to-[#29B6F6] flex items-center justify-center">
-                    <MessageCircle size={24} className="text-white" />
+                    {/* Telegram Logo */}
+                    <img 
+                      src="/lovable-uploads/f766f5d3-c5e9-421c-8717-cbd7f83eeaea.png" 
+                      alt="Telegram" 
+                      className="w-8 h-8" 
+                    />
                   </div>
                   <CardTitle className="text-2xl text-white">{t('telegramAudioLive')}</CardTitle>
                 </div>
@@ -251,7 +266,7 @@ export default function AMAEventHostingSection() {
                             transition={{
                               duration: 1 + Math.random(),
                               repeat: Infinity,
-                              repeatType: "reverse"
+                              repeatType: "reverse" as const
                             }}
                           />
                         ))}

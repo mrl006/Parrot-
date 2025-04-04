@@ -21,6 +21,9 @@ const Index = () => {
     };
 
     preloadImage('/circuit-pattern.svg');
+    preloadImage('/lovable-uploads/a00fcad1-0ec2-4e5f-990a-21d712dee436.png'); // Binance logo
+    preloadImage('/lovable-uploads/9dfc0dbd-c375-443d-9fe6-a78d72d3b770.png'); // X logo
+    preloadImage('/lovable-uploads/f766f5d3-c5e9-421c-8717-cbd7f83eeaea.png'); // Telegram logo
     preloadImage('/lovable-uploads/a46cbb0c-b340-45e7-aa9e-7ecdcb5dbb14.png');
     preloadImage('/lovable-uploads/c69265d4-43a2-479c-8a0a-3478f05b59d0.png');
     preloadImage('/lovable-uploads/4d42739c-5c3a-45e9-8373-d429a64d6aa7.png');

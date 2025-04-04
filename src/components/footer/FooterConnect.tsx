@@ -47,12 +47,11 @@ export default function FooterConnect({ socialLinks }: FooterConnectProps) {
           whileHover="hover"
         >
           <div className="w-8 h-8 rounded-full bg-dark flex items-center justify-center border border-neon-yellow/30 group-hover:border-neon-yellow/60">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 0L7.873 4.127L5.127 1.381L0 6.508L5.127 11.635L12 4.762L18.873 11.635L24 6.508L18.873 1.381L16.127 4.127L12 0Z" fill="#F2B705"/>
-              <path d="M0 12L5.127 17.127L0 22.254L5.127 17.127L0 12Z" fill="#F2B705"/>
-              <path d="M18.873 17.127L24 12L18.873 17.127L24 22.254L18.873 17.127Z" fill="#F2B705"/>
-              <path d="M12 9.524L6.508 15.016L12 20.508L17.492 15.016L12 9.524Z" fill="#F2B705"/>
-            </svg>
+            <img 
+              src="/lovable-uploads/a00fcad1-0ec2-4e5f-990a-21d712dee436.png" 
+              alt="Binance" 
+              className="w-5 h-5" 
+            />
           </div>
           <span>{t('binanceSquare')}</span>
         </motion.a>
@@ -68,10 +67,11 @@ export default function FooterConnect({ socialLinks }: FooterConnectProps) {
           whileHover="hover"
         >
           <div className="w-8 h-8 rounded-full bg-dark flex items-center justify-center border border-neon-blue/30 group-hover:border-neon-blue/60">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z" fill="#0083CA"/>
-              <path d="M10 16L16 12L10 8V16Z" fill="#0083CA"/>
-            </svg>
+            <img 
+              src="/lovable-uploads/a00fcad1-0ec2-4e5f-990a-21d712dee436.png" 
+              alt="Binance" 
+              className="w-5 h-5" 
+            />
           </div>
           <span>{t('binanceLive')}</span>
         </motion.a>
