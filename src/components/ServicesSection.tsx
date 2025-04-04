@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { MessageSquare, BarChart3, Link, Users, FileText, ChevronRight, Globe, Youtube, Twitter, Image, Video, Zap } from 'lucide-react';
+import { MessageSquare, BarChart3, Link, Users, FileText, ChevronRight, Globe, Youtube, Twitter, Image, Video, Zap, MessageCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface Service {
@@ -33,8 +33,8 @@ export default function ServicesSection() {
       features: [
         "X Space events with industry leaders",
         "Twitter Audio Live broadcasts and discussions",
+        "Telegram Audio Live sessions with engaged communities",
         "Binance Live broadcasts and promotional events",
-        "Telegram AMA sessions with engaged communities",
         "Moderated panel discussions on blockchain topics",
         "Community Q&A sessions with project teams",
         "Post-event content distribution and amplification"
@@ -227,7 +227,7 @@ export default function ServicesSection() {
             {/* Special elements for AMA & Event Hosting */}
             {activeService === 1 && (
               <motion.div 
-                className="mt-8 pt-6 border-t border-white/10 grid grid-cols-1 sm:grid-cols-2 gap-4"
+                className="mt-8 pt-6 border-t border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
@@ -282,6 +282,33 @@ export default function ServicesSection() {
                     <div className="bar h-1"></div>
                     <div className="bar h-4"></div>
                     <div className="bar h-2"></div>
+                  </div>
+                </div>
+
+                {/* Telegram Audio Live - NEW */}
+                <div className="flex flex-col items-center space-y-3 p-4 rounded-lg bg-dark-lighter/70 border border-[#0088cc]/20">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#0088cc] to-[#29B6F6] flex items-center justify-center">
+                    <motion.div
+                      animate={{ 
+                        scale: [1, 1.2, 1],
+                        rotate: [0, 5, -5, 0]
+                      }}
+                      transition={{ 
+                        duration: 4,
+                        repeat: Infinity,
+                        delay: 1
+                      }}
+                    >
+                      <MessageCircle size={24} className="text-white" />
+                    </motion.div>
+                  </div>
+                  <span className="text-white font-medium text-sm">Telegram Audio Live</span>
+                  <div className="voice-wave inline-flex">
+                    <div className="bar h-3"></div>
+                    <div className="bar h-1"></div>
+                    <div className="bar h-4"></div>
+                    <div className="bar h-2"></div>
+                    <div className="bar h-3"></div>
                   </div>
                 </div>
               </motion.div>

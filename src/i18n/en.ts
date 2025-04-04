@@ -93,6 +93,7 @@ export const en = {
   // AMA & Event Hosting
   binanceLiveEvents: 'Binance Live Events',
   twitterAudioLive: 'Twitter Audio Live',
+  telegramAudioLive: 'Telegram Audio Live',
   
   // Connect With Us
   contactUs: 'Contact Us',

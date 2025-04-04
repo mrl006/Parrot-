@@ -2,7 +2,7 @@
 import React from 'react';
 import { useLanguage } from '../hooks/useLanguage';
 import { motion } from 'framer-motion';
-import { Headphones, Mic, Calendar, Users, Twitter, Globe } from 'lucide-react';
+import { Headphones, Mic, Calendar, Users, Twitter, Globe, MessageCircle } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
@@ -64,7 +64,7 @@ export default function AMAEventHostingSection() {
         </motion.div>
 
         {/* Featured Platforms */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {/* Binance Live */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -133,8 +133,8 @@ export default function AMAEventHostingSection() {
           
           {/* Twitter Audio Live */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
@@ -175,6 +175,72 @@ export default function AMAEventHostingSection() {
                           <motion.div
                             key={`twitter-wave-${i}`}
                             className="w-1.5 bg-[#1DA1F2] rounded-t-sm"
+                            animate={{ 
+                              height: [
+                                `${4 + Math.floor(Math.random() * 12)}px`,
+                                `${8 + Math.floor(Math.random() * 12)}px`, 
+                                `${4 + Math.floor(Math.random() * 12)}px`
+                              ]
+                            }}
+                            transition={{
+                              duration: 1 + Math.random(),
+                              repeat: Infinity,
+                              repeatType: "reverse"
+                            }}
+                          />
+                        ))}
+                      </motion.div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+          
+          {/* Telegram Audio Live - NEW */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <Card className="overflow-hidden border border-white/10 bg-dark/70 backdrop-blur-lg h-full">
+              <CardHeader className="pb-2">
+                <div className="flex items-center gap-4 mb-2">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#0088cc] to-[#29B6F6] flex items-center justify-center">
+                    <MessageCircle size={24} className="text-white" />
+                  </div>
+                  <CardTitle className="text-2xl text-white">{t('telegramAudioLive')}</CardTitle>
+                </div>
+                <CardDescription className="text-gray-300">
+                  Host engaging audio sessions in Telegram communities
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="relative mt-2 mb-8">
+                  <div className="bg-gradient-to-r from-[#0088cc]/20 to-transparent p-6 rounded-lg border border-[#0088cc]/30">
+                    <ul className="space-y-3">
+                      <EventFeature icon={<Users size={18} />} text="Direct access to Telegram communities" />
+                      <EventFeature icon={<Calendar size={18} />} text="Scheduled AMA sessions with enthusiasts" />
+                      <EventFeature icon={<Mic size={18} />} text="Interactive voice discussions" />
+                      <EventFeature icon={<Headphones size={18} />} text="Real-time community engagement" />
+                    </ul>
+                    
+                    <div className="mt-6 flex justify-center">
+                      <motion.div 
+                        className="voice-wave inline-flex items-end h-10 space-x-1 bg-[#0088cc]/10 px-4 rounded-full"
+                        animate={{ 
+                          opacity: [0.8, 1, 0.8]
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                        }}
+                      >
+                        {[...Array(6)].map((_, i) => (
+                          <motion.div
+                            key={`telegram-wave-${i}`}
+                            className="w-1.5 bg-[#0088cc] rounded-t-sm"
                             animate={{ 
                               height: [
                                 `${4 + Math.floor(Math.random() * 12)}px`,

@@ -1,3 +1,4 @@
+
 export const tr = {
   // Navigation items
   home: 'Ana Sayfa',
@@ -92,6 +93,7 @@ export const tr = {
   // AMA & Event Hosting
   binanceLiveEvents: 'Binance Live Etkinlikleri',
   twitterAudioLive: 'Twitter Sesli Yayınlar',
+  telegramAudioLive: 'Telegram Sesli Yayınlar',
   
   // Connect With Us
   contactUs: 'Bize Ulaşın',
