@@ -1,6 +1,7 @@
 
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Rocket } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function HeroSection() {
   return (
@@ -10,48 +11,115 @@ export default function HeroSection() {
     >
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-in">
-            <span className="neon-text">Revolutionizing</span>
-            <span className="block mt-2">the Digital Landscape</span>
-          </h1>
-          
-          <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl mx-auto">
-            A premier Web3 agency driving innovation in blockchain, crypto, and decentralized technologies.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-            <a 
-              href="#services" 
-              onClick={(e) => {
-                e.preventDefault();
-                document.querySelector('#services')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="px-8 py-3 bg-gradient-to-r from-neon-blue to-neon-yellow rounded-full text-white font-medium flex items-center justify-center gap-2 hover:scale-105 transition-transform"
-            >
-              <span>Our Services</span> 
-              <ArrowRight size={16} />
-            </a>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
+              <motion.div
+                className="flex items-center justify-center mb-2"
+                initial={{ scale: 0.9 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.5 }}
+              >
+                <span className="neon-text">Revolutionizing</span>
+                <motion.div
+                  className="ml-4 relative top-1"
+                  initial={{ y: 10, rotate: 10 }}
+                  animate={{ 
+                    y: [10, -10, 10],
+                    rotate: [10, -10, 10]
+                  }}
+                  transition={{ 
+                    repeat: Infinity,
+                    duration: 5,
+                    ease: "easeInOut"
+                  }}
+                >
+                  <Rocket size={40} className="text-neon-yellow" strokeWidth={1.5} />
+                </motion.div>
+              </motion.div>
+              <motion.span 
+                className="block mt-2"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3, duration: 0.5 }}
+              >
+                the Digital Landscape
+              </motion.span>
+            </h1>
             
-            <a 
-              href="#contact" 
-              onClick={(e) => {
-                e.preventDefault();
-                document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="px-8 py-3 border border-neon-yellow rounded-full text-white font-medium hover:bg-neon-yellow/10 transition-colors"
+            <motion.p 
+              className="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl mx-auto"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.5 }}
             >
-              Contact Us
-            </a>
-          </div>
+              A premier Web3 agency driving innovation in blockchain, crypto, and decentralized technologies.
+            </motion.p>
+            
+            <motion.div 
+              className="flex flex-col sm:flex-row justify-center items-center gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9, duration: 0.5 }}
+            >
+              <motion.a 
+                href="#services" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.querySelector('#services')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="px-8 py-3 bg-gradient-to-r from-neon-blue to-neon-yellow rounded-full text-white font-medium flex items-center justify-center gap-2 transition-transform"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <span>Our Services</span> 
+                <motion.div
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ repeat: Infinity, duration: 1.5 }}
+                >
+                  <ArrowRight size={16} />
+                </motion.div>
+              </motion.a>
+              
+              <motion.a 
+                href="#contact" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="px-8 py-3 border border-neon-yellow rounded-full text-white font-medium hover:bg-neon-yellow/10 transition-colors"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Contact Us
+              </motion.a>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
       
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
-        <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center p-1">
-          <div className="w-1 h-3 bg-neon-yellow rounded-full"></div>
-        </div>
+      <motion.div 
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.5 }}
+      >
+        <motion.div 
+          className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center p-1"
+          animate={{ y: [0, 5, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5 }}
+        >
+          <motion.div 
+            className="w-1 h-3 bg-neon-yellow rounded-full"
+            animate={{ y: [0, 5, 0] }}
+            transition={{ repeat: Infinity, duration: 1.5 }}
+          ></motion.div>
+        </motion.div>
         <span className="mt-2 text-sm text-gray-400">Scroll</span>
-      </div>
+      </motion.div>
     </section>
   );
 }

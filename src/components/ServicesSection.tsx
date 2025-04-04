@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { MessageSquare, BarChart3, Link, Users, FileText, ChevronRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 interface Service {
   icon: React.ReactNode;
@@ -77,28 +78,43 @@ export default function ServicesSection() {
 
   return (
     <section id="services" className="section-padding bg-dark relative">
-      <div className="absolute inset-0 circuit-bg opacity-20"></div>
-      
       <div className="container mx-auto px-4 relative z-10">
-        <div className="mb-16 text-center">
+        <motion.div 
+          className="mb-16 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <span className="inline-block px-4 py-1 rounded-full bg-neon-purple/10 text-neon-purple text-sm font-medium mb-4">Our Services</span>
           <h2 className="text-3xl md:text-4xl font-bold mb-6">What We Offer</h2>
           <div className="w-24 h-1 bg-gradient-to-r from-neon-blue to-neon-purple mx-auto"></div>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
           {/* Service Tabs */}
-          <div className="lg:col-span-2">
+          <motion.div 
+            className="lg:col-span-2"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <div className="space-y-2">
               {services.map((service, index) => (
-                <button
+                <motion.button
                   key={index}
                   className={`w-full text-left p-4 rounded-lg transition-all flex items-center gap-3 ${
                     activeService === index 
-                      ? 'glassmorphism border-l-4 border-neon-purple' 
-                      : 'hover:bg-dark-lighter'
+                      ? 'border-l-4 border-neon-purple bg-dark-lighter/50' 
+                      : 'hover:bg-dark-lighter/30'
                   }`}
                   onClick={() => setActiveService(index)}
+                  whileHover={{ x: 5 }}
+                  whileTap={{ scale: 0.98 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.4 }}
                 >
                   <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
                     activeService === index 
@@ -107,16 +123,36 @@ export default function ServicesSection() {
                   }`}>
                     {service.icon}
                   </div>
-                  <span className={`font-medium ${activeService === index ? 'text-white' : 'text-gray-300'}`}>
-                    {service.title}
-                  </span>
-                </button>
+                  <div className="flex flex-col">
+                    <span className={`font-medium ${activeService === index ? 'text-white' : 'text-gray-300'}`}>
+                      {service.title}
+                    </span>
+                    
+                    {/* Special voice animation for AMA */}
+                    {index === 1 && (
+                      <div className="voice-wave inline-flex mt-1">
+                        <div className="bar h-2"></div>
+                        <div className="bar h-1"></div>
+                        <div className="bar h-3"></div>
+                        <div className="bar h-2"></div>
+                      </div>
+                    )}
+                  </div>
+                </motion.button>
               ))}
             </div>
-          </div>
+          </motion.div>
           
           {/* Service Details */}
-          <div className="lg:col-span-3 glassmorphism rounded-xl p-8">
+          <motion.div 
+            className="lg:col-span-3 rounded-xl p-8 bg-dark-lighter border border-white/10"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            key={activeService} // Important for animation to trigger on tab change
+            animate={{ opacity: [0, 1], y: [20, 0] }}
+          >
             <div className="mb-6">
               <h3 className="text-2xl font-bold mb-4 neon-text">{services[activeService].title}</h3>
               <p className="text-gray-300">{services[activeService].description}</p>
@@ -124,28 +160,36 @@ export default function ServicesSection() {
             
             <div className="space-y-3">
               {services[activeService].features.map((feature, index) => (
-                <div key={index} className="flex items-start gap-3">
+                <motion.div 
+                  key={index} 
+                  className="flex items-start gap-3"
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.3 }}
+                >
                   <div className="text-neon-purple mt-1">
                     <ChevronRight size={16} />
                   </div>
                   <p className="text-gray-300">{feature}</p>
-                </div>
+                </motion.div>
               ))}
             </div>
             
             <div className="mt-8">
-              <a 
+              <motion.a 
                 href="#contact" 
                 onClick={(e) => {
                   e.preventDefault();
                   document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="inline-block px-6 py-3 bg-gradient-to-r from-neon-blue to-neon-purple rounded-full text-white font-medium hover-scale"
+                className="inline-block px-6 py-3 bg-gradient-to-r from-neon-blue to-neon-purple rounded-full text-white font-medium"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 Get Started
-              </a>
+              </motion.a>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -61,10 +61,6 @@
   .hover-scale {
     @apply transition-transform duration-300 hover:scale-105;
   }
-
-  .glassmorphism {
-    @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-lg;
-  }
   
   .btn-primary {
     @apply px-6 py-3 bg-gradient-to-r from-neon-yellow to-neon-blue text-white font-medium rounded-full transition-all duration-300;
@@ -79,11 +75,38 @@
   }
   
   .card-hover {
-    @apply transition-all duration-300;
+    @apply transition-all duration-300 hover:scale-105;
   }
   
-  .card-hover:hover {
-    @apply transform scale-105;
+  /* Voice animation for AMA mention */
+  .voice-wave {
+    @apply flex items-end h-3 space-x-0.5;
+  }
+  
+  .voice-wave .bar {
+    @apply w-1 bg-neon-yellow rounded-t-sm;
+    animation: voice-wave 1.2s linear infinite;
+  }
+  
+  .voice-wave .bar:nth-child(2) {
+    animation-delay: -1.1s;
+  }
+  
+  .voice-wave .bar:nth-child(3) {
+    animation-delay: -1.0s;
+  }
+  
+  .voice-wave .bar:nth-child(4) {
+    animation-delay: -0.9s;
+  }
+  
+  @keyframes voice-wave {
+    0%, 100% {
+      height: 4px;
+    }
+    50% {
+      height: 12px;
+    }
   }
 }
 
