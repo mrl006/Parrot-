@@ -9,10 +9,10 @@ import {
 } from './mission';
 
 export default function MissionSection() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   return (
-    <section id="mission" className="py-16 bg-dark relative overflow-hidden">
+    <section id="mission" className="py-16 bg-dark relative overflow-hidden" key={`mission-section-${language}`}>
       {/* Add animated background effects */}
       <BackgroundEffects />
       

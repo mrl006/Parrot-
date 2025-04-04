@@ -1,19 +1,12 @@
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useLanguage } from '@/hooks/useLanguage';
 
 const MissionHeader: React.FC = () => {
-  const { t, language, forceUpdate } = useLanguage();
-  
-  // Force re-render when language changes
-  useEffect(() => {
-    const handleLanguageChange = () => forceUpdate();
-    window.addEventListener('languagechange', handleLanguageChange);
-    return () => window.removeEventListener('languagechange', handleLanguageChange);
-  }, [forceUpdate]);
+  const { t, language } = useLanguage();
   
   return (
-    <div className="text-center mb-10">
+    <div className="text-center mb-10" key={`mission-header-${language}`}>
       <span className="inline-block px-4 py-1.5 rounded-full bg-dark-lighter text-neon-yellow text-sm font-medium border border-neon-yellow/30 mb-4">
         {t('ourMission')}
       </span>

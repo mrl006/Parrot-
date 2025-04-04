@@ -53,7 +53,6 @@ const Index = () => {
     preloadImage('/web3-icon.svg');
   }, []);
 
-  // Using language in the key prop to force re-render on language change
   return (
     <div className="min-h-screen bg-dark text-white overflow-x-hidden" key={`main-content-${language}`}>
       <Navbar />

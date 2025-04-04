@@ -24,7 +24,6 @@ export default function Footer() {
     twitter: "https://twitter.com/ParrotBamboo"
   };
 
-  // Using language in the key prop to force re-render on language change
   return (
     <footer className="bg-dark-lighter border-t border-neon-yellow/20 relative overflow-hidden" key={`footer-${language}`}>
       <FooterDecoration />
