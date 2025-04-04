@@ -115,15 +115,10 @@ export default function MissionSection() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            style={{ backgroundSize: '200% auto' }}
             animate={{ 
               backgroundPosition: ['0% center', '200% center', '0% center']
             }}
-            transition={{ 
-              duration: 8, 
-              repeat: Infinity,
-              ease: "easeInOut" 
-            }}
+            style={{ backgroundSize: '200% auto' }}
           >
             Driving Web3 Innovation Forward
           </motion.h2>
