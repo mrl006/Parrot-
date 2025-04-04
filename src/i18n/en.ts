@@ -37,4 +37,66 @@ export const en = {
   
   // Footer
   footerRights: 'All rights reserved',
+  
+  // About Section
+  whoWeAre: 'Who We Are',
+  aboutUs: 'About Us',
+  
+  // Team Section
+  teamTitle: 'Our Team',
+  teamSubtitle: 'Meet Our Expert Professionals',
+  
+  // Experience Section
+  ourExperience: 'Our Experience',
+  provenTrackRecord: 'Proven Track Record',
+  ourJourney: 'Our Journey',
+  majorProjects: 'Major Projects',
+  projects: 'Projects',
+  xSpaceEvents: 'X Space Events',
+  events: 'Events',
+  yearsExperience: 'Years Experience',
+  years: 'Years',
+  
+  // Contact Section
+  getInTouch: 'Get in Touch',
+  sendUsMessage: 'Send us a message',
+  yourName: 'Your Name',
+  yourEmail: 'Your Email',
+  yourMessage: 'Your Message',
+  sendMessage: 'Send Message',
+  connectWithUs: 'Connect with Us',
+  scheduleCall: 'Schedule a Call',
+  bookMeeting: 'Book a meeting',
+  joinCommunity: 'Join Our Community',
+  joinTelegram: 'Join Telegram',
+  followUs: 'Follow Us',
+  
+  // Quick Links
+  quickLinks: 'Quick Links',
+  homeLink: 'Home',
+  aboutUsLink: 'About Us',
+  servicesLink: 'Services',
+  teamLink: 'Team',
+  partnersLink: 'Partners',
+  
+  // Services
+  servicesHeader: 'Services',
+  socialMediaGrowth: 'Social Media Growth',
+  amaEventHosting: 'AMA & Event Hosting',
+  corporatePartnerships: 'Corporate Partnerships',
+  brandPromotion: 'Brand Promotion',
+  contentCreation: 'Content Creation',
+  
+  // Connect With Us
+  contactUs: 'Contact Us',
+  binanceSquare: 'Binance Square',
+  binanceLive: 'Binance Live',
+  announcements: 'Announcements',
+  
+  // Footer
+  allRightsReserved: 'All rights reserved',
+  linkTree: 'LinkTree',
+  telegram: 'Telegram',
+  youtube: 'YouTube',
+  instagram: 'Instagram'
 };
