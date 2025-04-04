@@ -29,14 +29,63 @@ export default function MissionSection() {
 
   return (
     <section id="mission" className="section-padding bg-dark relative overflow-hidden">
-      {/* Background elements */}
+      {/* Hero pattern background */}
       <motion.div 
-        className="absolute inset-0 opacity-10"
+        className="absolute top-0 left-0 right-0 h-full z-0"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 0.05 }}
-        transition={{ duration: 1 }}
+        animate={{ opacity: 0.08 }}
+        transition={{ duration: 1.5 }}
       >
-        <div className="h-full w-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-neon-yellow/20 via-transparent to-neon-blue/20"></div>
+        <div className="w-full h-full opacity-10">
+          <div className="absolute w-full h-full bg-[url('/lovable-uploads/4a95ba97-7895-4c81-9319-9909194f61f0.png')] bg-repeat bg-contain"></div>
+        </div>
+      </motion.div>
+
+      {/* Glowing radial gradients */}
+      <motion.div 
+        className="absolute inset-0 z-0"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 2 }}
+      >
+        <motion.div 
+          className="absolute top-1/3 left-1/4 w-80 h-80 rounded-full bg-neon-blue/5 filter blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div 
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-neon-yellow/5 filter blur-3xl"
+          animate={{
+            scale: [1.2, 1, 1.2],
+            opacity: [0.2, 0.4, 0.2],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1
+          }}
+        />
+        <motion.div 
+          className="absolute top-1/2 right-1/3 w-64 h-64 rounded-full bg-neon-purple/5 filter blur-3xl"
+          animate={{
+            scale: [0.8, 1, 0.8],
+            opacity: [0.2, 0.3, 0.2],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2
+          }}
+        />
       </motion.div>
 
       {/* Decorative elements */}
@@ -44,22 +93,37 @@ export default function MissionSection() {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
-          <motion.span 
-            className="inline-block px-6 py-2 rounded-full bg-neon-yellow/10 text-neon-yellow text-sm font-semibold mb-4 border border-neon-yellow/30"
+          <motion.div
+            className="inline-flex justify-center items-center mb-8"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            Our Mission
-          </motion.span>
+            <motion.span 
+              className="inline-block px-6 py-2 rounded-full bg-neon-yellow/10 text-neon-yellow text-sm font-semibold border border-neon-yellow/30"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Our Mission
+            </motion.span>
+          </motion.div>
           
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-200"
+            className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-neon-yellow via-neon-blue to-neon-purple"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
+            style={{ backgroundSize: '200% auto' }}
+            animate={{ 
+              backgroundPosition: ['0% center', '200% center', '0% center']
+            }}
+            transition={{ 
+              duration: 8, 
+              repeat: Infinity,
+              ease: "easeInOut" 
+            }}
           >
             Driving Web3 Innovation Forward
           </motion.h2>
@@ -225,7 +289,7 @@ export default function MissionSection() {
                     transition={{ duration: 0.5 }}
                   >
                     <motion.div 
-                      className="inline-flex p-8 rounded-full bg-dark-lighter border border-neon-purple/30 mb-6"
+                      className="inline-flex p-8 rounded-full bg-dark-lighter border border-neon-purple/30 mb-6 relative"
                       animate={{ 
                         y: [0, -20, 0], 
                         rotate: [0, 5, 0, -5, 0],
@@ -237,6 +301,15 @@ export default function MissionSection() {
                         boxShadow: { duration: 3, repeat: Infinity }
                       }}
                     >
+                      {/* Add the uploaded mission image */}
+                      <motion.div className="absolute inset-0 rounded-full overflow-hidden opacity-10">
+                        <img 
+                          src="/lovable-uploads/a4788392-6027-4da4-9a91-dd24db9b95cb.png" 
+                          alt="Mission Background" 
+                          className="w-full h-full object-cover"
+                        />
+                      </motion.div>
+                      
                       <motion.div
                         animate={{ 
                           rotate: [0, 360]

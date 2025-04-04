@@ -1,14 +1,69 @@
 
 import React from 'react';
-import { ArrowRight, Rocket } from 'lucide-react';
+import { ArrowRight, Rocket, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function HeroSection() {
   return (
     <section 
       id="home" 
-      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-dark via-dark-lighter to-dark pt-20 relative"
+      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-dark via-dark-lighter to-dark pt-20 relative overflow-hidden"
     >
+      {/* Animated background elements */}
+      <motion.div
+        className="absolute inset-0 z-0 opacity-30"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.3 }}
+        transition={{ duration: 2 }}
+      >
+        <div className="absolute w-full h-full">
+          <motion.div 
+            className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-neon-yellow/10 filter blur-3xl"
+            animate={{
+              scale: [1, 1.2, 1],
+              x: [0, 10, 0],
+              y: [0, -10, 0],
+            }}
+            transition={{
+              duration: 15,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          <motion.div 
+            className="absolute bottom-1/3 right-1/3 w-72 h-72 rounded-full bg-neon-blue/10 filter blur-3xl"
+            animate={{
+              scale: [1.2, 1, 1.2],
+              x: [0, -20, 0],
+              y: [0, 20, 0],
+            }}
+            transition={{
+              duration: 18,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2
+            }}
+          />
+          <motion.div 
+            className="absolute top-1/3 right-1/4 w-64 h-64 rounded-full bg-neon-purple/10 filter blur-3xl"
+            animate={{
+              scale: [0.8, 1.1, 0.8],
+              x: [0, 15, 0],
+              y: [0, -15, 0],
+            }}
+            transition={{
+              duration: 12,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1
+            }}
+          />
+        </div>
+
+        {/* Digital circuit patterns */}
+        <div className="absolute inset-0 bg-[url('/circuit-pattern.svg')] bg-repeat opacity-10"></div>
+      </motion.div>
+
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
@@ -23,7 +78,20 @@ export default function HeroSection() {
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.5 }}
               >
-                <span className="neon-text">Revolutionizing</span>
+                <motion.span 
+                  className="bg-clip-text text-transparent bg-gradient-to-r from-neon-yellow via-neon-blue to-neon-purple gradient-animate"
+                  animate={{
+                    backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
+                  }}
+                  transition={{
+                    duration: 8,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                  style={{ backgroundSize: '200% 200%' }}
+                >
+                  Revolutionizing
+                </motion.span>
                 <motion.div
                   className="ml-4 relative top-1"
                   initial={{ scale: 0.8 }}
@@ -41,7 +109,7 @@ export default function HeroSection() {
                 </motion.div>
               </motion.div>
               <motion.span 
-                className="block mt-2"
+                className="block mt-2 text-white"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3, duration: 0.5 }}
@@ -109,6 +177,31 @@ export default function HeroSection() {
             </motion.div>
           </motion.div>
         </div>
+      </div>
+      
+      {/* Floating particles */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[...Array(15)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full bg-white"
+            style={{
+              width: Math.random() * 6 + 2,
+              height: Math.random() * 6 + 2,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -100],
+              opacity: [0, 0.7, 0],
+            }}
+            transition={{
+              duration: Math.random() * 10 + 10,
+              repeat: Infinity,
+              delay: Math.random() * 5,
+            }}
+          />
+        ))}
       </div>
       
       <motion.div 

@@ -89,6 +89,10 @@ export const en = {
   brandPromotion: 'Brand Promotion',
   contentCreation: 'Content Creation',
   
+  // AMA & Event Hosting
+  binanceLiveEvents: 'Binance Live Events',
+  twitterAudioLive: 'Twitter Audio Live',
+  
   // Connect With Us
   contactUs: 'Contact Us',
   binanceSquare: 'Binance Square',

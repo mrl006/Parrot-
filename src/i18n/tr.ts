@@ -89,6 +89,10 @@ export const tr = {
   brandPromotion: 'Marka Tanıtımı',
   contentCreation: 'İçerik Oluşturma',
   
+  // AMA & Event Hosting
+  binanceLiveEvents: 'Binance Live Etkinlikleri',
+  twitterAudioLive: 'Twitter Sesli Yayınlar',
+  
   // Connect With Us
   contactUs: 'Bize Ulaşın',
   binanceSquare: 'Binance Square',
