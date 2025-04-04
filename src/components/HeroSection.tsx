@@ -26,18 +26,18 @@ export default function HeroSection() {
                 <span className="neon-text">Revolutionizing</span>
                 <motion.div
                   className="ml-4 relative top-1"
-                  initial={{ y: 10, rotate: 10 }}
+                  initial={{ scale: 0.8 }}
                   animate={{ 
-                    y: [10, -10, 10],
-                    rotate: [10, -10, 10]
+                    scale: [0.8, 1.2, 0.8],
+                    opacity: [0.8, 1, 0.8]
                   }}
                   transition={{ 
                     repeat: Infinity,
-                    duration: 5,
+                    duration: 3,
                     ease: "easeInOut"
                   }}
                 >
-                  <Rocket size={40} className="text-neon-yellow" strokeWidth={1.5} />
+                  <Rocket size={40} className="text-neon-yellow filter drop-shadow-[0_0_8px_rgba(242,183,5,0.7)]" strokeWidth={1.5} />
                 </motion.div>
               </motion.div>
               <motion.span 
@@ -71,14 +71,21 @@ export default function HeroSection() {
                   e.preventDefault();
                   document.querySelector('#services')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="px-8 py-3 bg-gradient-to-r from-neon-blue to-neon-yellow rounded-full text-white font-medium flex items-center justify-center gap-2 transition-transform"
-                whileHover={{ scale: 1.05 }}
+                className="px-8 py-3 bg-gradient-to-r from-neon-blue to-neon-yellow rounded-full text-white font-medium flex items-center justify-center gap-2 transition-transform shadow-[0_0_15px_rgba(0,131,202,0.3)]"
+                whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(242, 183, 5, 0.5)" }}
                 whileTap={{ scale: 0.95 }}
               >
                 <span>Our Services</span> 
                 <motion.div
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ repeat: Infinity, duration: 1.5 }}
+                  animate={{ 
+                    x: [0, 5, 0],
+                    scale: [1, 1.2, 1]
+                  }}
+                  transition={{ 
+                    repeat: Infinity, 
+                    duration: 1.5,
+                    ease: "easeInOut" 
+                  }}
                 >
                   <ArrowRight size={16} />
                 </motion.div>
@@ -91,7 +98,10 @@ export default function HeroSection() {
                   document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
                 }}
                 className="px-8 py-3 border border-neon-yellow rounded-full text-white font-medium hover:bg-neon-yellow/10 transition-colors"
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ 
+                  scale: 1.05,
+                  boxShadow: "0 0 15px rgba(242, 183, 5, 0.4)"
+                }}
                 whileTap={{ scale: 0.95 }}
               >
                 Contact Us
@@ -109,12 +119,18 @@ export default function HeroSection() {
       >
         <motion.div 
           className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center p-1"
-          animate={{ y: [0, 5, 0] }}
+          animate={{ 
+            scale: [1, 1.1, 1],
+            y: [0, 5, 0]
+          }}
           transition={{ repeat: Infinity, duration: 1.5 }}
         >
           <motion.div 
             className="w-1 h-3 bg-neon-yellow rounded-full"
-            animate={{ y: [0, 5, 0] }}
+            animate={{ 
+              scale: [1, 1.2, 1],
+              y: [0, 5, 0] 
+            }}
             transition={{ repeat: Infinity, duration: 1.5 }}
           ></motion.div>
         </motion.div>

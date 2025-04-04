@@ -21,7 +21,7 @@ interface Milestone {
 export default function ExperienceSection() {
   const achievements: Achievement[] = [
     {
-      icon: <Award className="text-neon-blue" size={28} />,
+      icon: <Award className="text-neon-blue filter drop-shadow-[0_0_8px_rgba(0,131,202,0.7)]" size={28} />,
       title: "Major Projects",
       description: "Successfully represented and promoted top-tier blockchain ventures",
       value: "25+",
@@ -29,7 +29,7 @@ export default function ExperienceSection() {
       color: "from-neon-blue to-blue-400"
     },
     {
-      icon: <CheckCircle className="text-neon-purple" size={28} />,
+      icon: <CheckCircle className="text-neon-purple filter drop-shadow-[0_0_8px_rgba(139,92,246,0.7)]" size={28} />,
       title: "X Space Events",
       description: "Hosted high-impact discussions with industry leaders",
       value: "100+",
@@ -37,7 +37,7 @@ export default function ExperienceSection() {
       color: "from-neon-purple to-purple-400"
     },
     {
-      icon: <Calendar className="text-neon-cyan" size={28} />,
+      icon: <Calendar className="text-neon-cyan filter drop-shadow-[0_0_8px_rgba(34,211,238,0.7)]" size={28} />,
       title: "Years Experience",
       description: "Deep expertise in the Web3 and blockchain industry",
       value: "5+",
@@ -127,12 +127,13 @@ export default function ExperienceSection() {
           >
             <motion.div
               animate={{
-                rotate: [0, 360],
+                scale: [1, 1.2, 1],
+                opacity: [0.8, 1, 0.8]
               }}
-              transition={{ duration: 6, repeat: Infinity }}
+              transition={{ duration: 3, repeat: Infinity }}
               className="mr-2"
             >
-              <Trophy size={24} className="text-neon-yellow" />
+              <Trophy size={24} className="text-neon-yellow filter drop-shadow-[0_0_8px_rgba(242,183,5,0.7)]" />
             </motion.div>
             <span className="inline-block px-6 py-2 rounded-full bg-neon-purple/10 text-neon-purple text-sm font-semibold border border-neon-purple/30">Our Experience</span>
           </motion.div>
@@ -167,7 +168,7 @@ export default function ExperienceSection() {
           {achievements.map((achievement, index) => (
             <motion.div 
               key={index}
-              className="rounded-xl p-8 text-center backdrop-blur-sm bg-dark/60 border border-white/10 shadow-lg"
+              className="rounded-xl p-8 text-center backdrop-blur-sm bg-dark-lighter/60 border border-white/10 shadow-lg"
               variants={itemVariants}
               whileHover={{ 
                 y: -10,
@@ -176,11 +177,11 @@ export default function ExperienceSection() {
             >
               <div className="flex justify-center mb-6">
                 <motion.div 
-                  className="w-20 h-20 rounded-2xl flex items-center justify-center bg-gradient-to-br from-dark to-dark-lighter border border-white/10"
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.7 }}
+                  className="w-20 h-20 rounded-2xl flex items-center justify-center bg-dark border border-white/10"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.3 }}
                   animate={{
-                    boxShadow: ["0 0 0 rgba(255, 255, 255, 0.1)", "0 0 20px rgba(255, 255, 255, 0.2)", "0 0 0 rgba(255, 255, 255, 0.1)"]
+                    boxShadow: ["0 0 0px rgba(255, 255, 255, 0.1)", "0 0 20px rgba(255, 255, 255, 0.2)", "0 0 0px rgba(255, 255, 255, 0.1)"]
                   }}
                 >
                   {achievement.icon}
@@ -214,13 +215,13 @@ export default function ExperienceSection() {
           <div className="flex justify-center mb-4">
             <motion.div
               animate={{ 
-                y: [0, -10, 0],
-                rotate: [0, 5, 0, -5, 0]
+                scale: [1, 1.15, 1],
+                opacity: [0.8, 1, 0.8]
               }}
-              transition={{ duration: 4, repeat: Infinity }}
+              transition={{ duration: 3, repeat: Infinity }}
               className="inline-block"
             >
-              <TrendingUp size={32} className="text-neon-yellow" />
+              <TrendingUp size={32} className="text-neon-yellow filter drop-shadow-[0_0_8px_rgba(242,183,5,0.7)]" />
             </motion.div>
           </div>
           <h3 className="text-3xl font-bold">Our Journey</h3>
@@ -261,7 +262,7 @@ export default function ExperienceSection() {
               >
                 <motion.div
                   className="w-4 h-4 rounded-full bg-gradient-to-r from-neon-blue to-neon-purple"
-                  animate={{ scale: [1, 1.3, 1] }}
+                  animate={{ scale: [1, 1.3, 1], opacity: [0.7, 1, 0.7] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 ></motion.div>
               </motion.div>
@@ -275,7 +276,10 @@ export default function ExperienceSection() {
               >
                 <motion.span 
                   className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-neon-purple/20 to-neon-blue/20 text-neon-purple text-sm font-bold mb-3 border border-neon-purple/30"
-                  animate={{ boxShadow: ["0 0 0px rgba(139, 92, 246, 0)", "0 0 8px rgba(139, 92, 246, 0.3)", "0 0 0px rgba(139, 92, 246, 0)"] }}
+                  animate={{ 
+                    boxShadow: ["0 0 0px rgba(139, 92, 246, 0)", "0 0 8px rgba(139, 92, 246, 0.3)", "0 0 0px rgba(139, 92, 246, 0)"],
+                    scale: [1, 1.05, 1]
+                  }}
                   transition={{ duration: 2, repeat: Infinity }}
                 >
                   {milestone.year}
