@@ -16,7 +16,7 @@ const MissionVisual: React.FC = () => {
       transition: {
         duration: 3 + Math.random() * 2,
         repeat: Infinity,
-        delay: i * 0.2
+        repeatType: "loop" as const
       }
     })
   };
@@ -28,7 +28,7 @@ const MissionVisual: React.FC = () => {
       transition: {
         duration: 3,
         repeat: Infinity,
-        repeatType: "reverse"
+        repeatType: "reverse" as const
       }
     }
   };
@@ -41,7 +41,7 @@ const MissionVisual: React.FC = () => {
       transition: {
         duration: 3,
         repeat: Infinity,
-        repeatType: "reverse"
+        repeatType: "reverse" as const
       }
     }
   };
