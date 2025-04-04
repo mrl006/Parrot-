@@ -1,12 +1,37 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React, { useEffect } from 'react';
+import Navbar from '../components/Navbar';
+import HeroSection from '../components/HeroSection';
+import AboutSection from '../components/AboutSection';
+import MissionSection from '../components/MissionSection';
+import TeamSection from '../components/TeamSection';
+import ServicesSection from '../components/ServicesSection';
+import ExperienceSection from '../components/ExperienceSection';
+import ContactSection from '../components/ContactSection';
+import Footer from '../components/Footer';
 
 const Index = () => {
+  useEffect(() => {
+    // Preload needed assets
+    const preloadImage = (src: string) => {
+      const img = new Image();
+      img.src = src;
+    };
+
+    preloadImage('/circuit-pattern.svg');
+  }, []);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-dark text-white overflow-x-hidden">
+      <Navbar />
+      <HeroSection />
+      <AboutSection />
+      <MissionSection />
+      <TeamSection />
+      <ServicesSection />
+      <ExperienceSection />
+      <ContactSection />
+      <Footer />
     </div>
   );
 };
