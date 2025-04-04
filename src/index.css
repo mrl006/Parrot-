@@ -71,9 +71,9 @@
   }
   
   .circuit-bg {
-    background-image: radial-gradient(rgba(242, 183, 5, 0.1) 2px, transparent 2px);
-    background-size: 30px 30px;
-    background-position: 0 0;
+    background-image: url('/circuit-pattern.svg');
+    background-size: 100px 100px;
+    animation: bg-shift 40s linear infinite;
   }
 
   .circuit-line {
@@ -93,8 +93,71 @@
   }
   
   .web3-particle {
-    @apply absolute w-4 h-4 rounded-full bg-neon-yellow/20 animate-float;
+    @apply absolute rounded-full bg-neon-yellow/20 animate-float;
+    box-shadow: 0 0 10px 2px rgba(242, 183, 5, 0.3);
   }
+  
+  .data-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(242, 183, 5, 0.5), transparent);
+    position: absolute;
+    animation: data-transfer 8s infinite linear;
+    opacity: 0;
+  }
+  
+  .node-connection {
+    @apply absolute h-[1px] w-32 bg-gradient-to-r from-neon-yellow/30 via-neon-blue/40 to-transparent;
+    animation: pulse-line 3s infinite alternate;
+  }
+  
+  .led-glow {
+    @apply absolute w-2 h-2 rounded-full;
+    box-shadow: 0 0 8px 2px rgba(242, 183, 5, 0.6);
+    animation: led-pulse 2s infinite alternate;
+  }
+}
+
+@keyframes bg-shift {
+  0% { background-position: 0 0; }
+  100% { background-position: 100px 100px; }
+}
+
+@keyframes data-transfer {
+  0% {
+    width: 0;
+    opacity: 1;
+    left: 0;
+  }
+  50% {
+    width: 100%;
+    opacity: 1;
+  }
+  100% {
+    width: 100%;
+    opacity: 0;
+    left: 100%;
+  }
+}
+
+@keyframes pulse-line {
+  0% { opacity: 0.2; }
+  50% { opacity: 0.6; }
+  100% { opacity: 0.2; }
+}
+
+@keyframes led-pulse {
+  0% { opacity: 0.4; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1.1); }
+}
+
+@keyframes float-vertical {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes network-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.1); opacity: 1; }
 }
 
 @layer utilities {
@@ -102,3 +165,4 @@
     text-wrap: balance;
   }
 }
+

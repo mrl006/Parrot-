@@ -123,6 +123,24 @@ export default {
 					'25%': { transform: 'translate(5px, -5px) rotate(2deg)' },
 					'50%': { transform: 'translate(0, -10px) rotate(0deg)' },
 					'75%': { transform: 'translate(-5px, -5px) rotate(-2deg)' }
+				},
+				'data-flow': {
+					'0%': { transform: 'translateX(-100%)', opacity: '0' },
+					'10%, 90%': { opacity: '1' },
+					'100%': { transform: 'translateX(100%)', opacity: '0' }
+				},
+				'shimmer': {
+					'0%': { backgroundPosition: '-200% 0' },
+					'100%': { backgroundPosition: '200% 0' }
+				},
+				'rotate-3d': {
+					'0%, 100%': { transform: 'rotate3d(1, 1, 1, 0deg)' },
+					'50%': { transform: 'rotate3d(1, 1, 1, 180deg)' }
+				},
+				'cube-rotate': {
+					'0%': { transform: 'rotateX(0deg) rotateY(0deg)' },
+					'50%': { transform: 'rotateX(180deg) rotateY(180deg)' },
+					'100%': { transform: 'rotateX(360deg) rotateY(360deg)' }
 				}
 			},
 			animation: {
@@ -135,11 +153,16 @@ export default {
 				'gradient-move': 'gradient-move 6s ease infinite',
 				'spin-slow': 'spin-slow 15s linear infinite',
 				'pulse-glow': 'pulse-glow 4s ease-in-out infinite',
-				'blockchain-float': 'blockchain-float 8s ease-in-out infinite'
+				'blockchain-float': 'blockchain-float 8s ease-in-out infinite',
+				'data-flow': 'data-flow 4s linear infinite',
+				'shimmer': 'shimmer 2s infinite linear',
+				'rotate-3d': 'rotate-3d 8s ease-in-out infinite',
+				'cube-rotate': 'cube-rotate 12s ease-in-out infinite'
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-				'circuit-pattern': "url('/circuit-pattern.svg')"
+				'circuit-pattern': "url('/circuit-pattern.svg')",
+				'shimmer-gradient': 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%)'
 			}
 		}
 	},
