@@ -11,11 +11,11 @@ const MissionHeader: React.FC = () => {
         {t('ourMission')}
       </span>
       
-      <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+      <h2 className={`text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r ${t('sectionColors.mission')}`}>
         {t('drivingWeb3')}
       </h2>
       
-      <div className="h-1 bg-gradient-to-r from-neon-yellow to-neon-purple mx-auto w-24 rounded-full"></div>
+      <div className={`h-1 bg-gradient-to-r ${t('sectionColors.mission')} mx-auto w-24 rounded-full`}></div>
     </div>
   );
 };

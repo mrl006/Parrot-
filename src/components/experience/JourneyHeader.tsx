@@ -2,7 +2,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/hooks/useLanguage';
-import { Milestone } from 'lucide-react';
 
 export default function JourneyHeader() {
   const { t } = useLanguage();
@@ -15,15 +14,24 @@ export default function JourneyHeader() {
       transition={{ duration: 0.7 }}
       viewport={{ once: true }}
     >
+      {/* Animated circle */}
       <div className="flex justify-center mb-4">
         <motion.div
           animate={{ 
             scale: [1, 1.15, 1],
+            boxShadow: ["0 0 0px rgba(242,183,5,0.2)", "0 0 30px rgba(242,183,5,0.6)", "0 0 0px rgba(242,183,5,0.2)"]
           }}
           transition={{ duration: 5, repeat: Infinity }}
-          className="inline-block bg-dark-lighter p-4 rounded-full border border-neon-yellow/20"
+          className="w-14 h-14 rounded-full bg-neon-yellow/20 border border-neon-yellow/40"
         >
-          <Milestone size={32} className="text-neon-yellow filter drop-shadow-[0_0_8px_rgba(242,183,5,0.7)]" />
+          <motion.div
+            className="w-10 h-10 rounded-full bg-neon-yellow/30 mx-auto mt-2"
+            animate={{ 
+              scale: [1, 1.2, 1],
+              opacity: [0.7, 0.4, 0.7]
+            }}
+            transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
+          />
         </motion.div>
       </div>
       

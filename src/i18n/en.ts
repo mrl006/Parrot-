@@ -137,5 +137,17 @@ export const en = {
   
   // Mission Section
   ourMission: "Our Mission",
-  drivingWeb3: "Driving Web3 Innovation Forward"
+  drivingWeb3: "Driving Web3 Innovation Forward",
+  
+  // Section heading colors (new)
+  sectionColors: {
+    about: "from-neon-yellow to-neon-purple",
+    team: "from-neon-blue to-neon-cyan",
+    services: "from-neon-purple to-neon-blue",
+    partners: "from-neon-cyan to-neon-yellow",
+    experience: "from-neon-yellow to-neon-blue",
+    ama: "from-neon-purple to-neon-yellow",
+    contact: "from-neon-blue to-neon-purple",
+    mission: "from-neon-cyan to-neon-purple"
+  }
 };

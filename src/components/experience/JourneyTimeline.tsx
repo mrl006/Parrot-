@@ -1,21 +1,20 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Flag, Sparkles, Trophy, TrendingUp, Link } from 'lucide-react';
+import { Calendar } from 'lucide-react';
 import { useLanguage } from '@/hooks/useLanguage';
 import { Card, CardContent } from '@/components/ui/card';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { Separator } from '@/components/ui/separator';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
 interface Milestone {
   year: string;
   title: string;
   description: string;
-  icon: React.ReactNode;
   color: string;
   bgColor: string;
   borderColor: string;
+  dotColor: string;
 }
 
 export default function JourneyTimeline() {
@@ -27,39 +26,60 @@ export default function JourneyTimeline() {
       year: "2023",
       title: "Binance Launchpad Partnership",
       description: "Represented multiple Binance Launchpad projects, delivering comprehensive marketing and community management.",
-      icon: <Trophy className="h-7 w-7" />,
       color: "from-neon-yellow to-neon-purple",
       bgColor: "bg-neon-yellow/10",
-      borderColor: "border-neon-yellow/30"
+      borderColor: "border-neon-yellow/30",
+      dotColor: "bg-neon-yellow"
     },
     {
       year: "2022",
       title: "Record-Breaking X Space Event",
       description: "Hosted an X Space event that attracted over 100,000 viewers, discussing the future of Web3 technology.",
-      icon: <Sparkles className="h-7 w-7" />,
       color: "from-neon-blue to-neon-yellow",
       bgColor: "bg-neon-blue/10",
-      borderColor: "border-neon-blue/30"
+      borderColor: "border-neon-blue/30",
+      dotColor: "bg-neon-blue"
     },
     {
       year: "2021",
       title: "Chainlink Collaboration",
       description: "Partnered with Chainlink to promote oracle technology and its applications in the DeFi ecosystem.",
-      icon: <Link className="h-7 w-7" />,
       color: "from-neon-purple to-neon-blue",
       bgColor: "bg-neon-purple/10",
-      borderColor: "border-neon-purple/30"
+      borderColor: "border-neon-purple/30",
+      dotColor: "bg-neon-purple"
     },
     {
       year: "2020",
       title: "Agency Foundation",
       description: "ParrotBamboo was established with a mission to revolutionize Web3 marketing and community building.",
-      icon: <Flag className="h-7 w-7" />,
       color: "from-neon-cyan to-neon-blue",
       bgColor: "bg-neon-cyan/10",
-      borderColor: "border-neon-cyan/30"
+      borderColor: "border-neon-cyan/30",
+      dotColor: "bg-neon-cyan"
     }
   ];
+  
+  // Animated circle component
+  const AnimatedCircle = ({ color }: { color: string }) => (
+    <div className="relative">
+      <motion.div 
+        className={`w-12 h-12 rounded-full ${color} z-10 relative`}
+        animate={{
+          boxShadow: ["0 0 0px rgba(255,255,255,0.2)", "0 0 20px rgba(255,255,255,0.5)", "0 0 0px rgba(255,255,255,0.2)"]
+        }}
+        transition={{ duration: 3, repeat: Infinity }}
+      />
+      <motion.div
+        className={`absolute top-1 left-1 w-10 h-10 rounded-full ${color} opacity-50`}
+        animate={{ 
+          scale: [1, 1.5, 1],
+          opacity: [0.5, 0.2, 0.5]
+        }}
+        transition={{ duration: 4, repeat: Infinity }}
+      />
+    </div>
+  );
   
   // Simplified horizontal timeline for both mobile and desktop
   return (
@@ -79,16 +99,7 @@ export default function JourneyTimeline() {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
                   <div className="flex flex-col items-center mb-4">
-                    <motion.div
-                      className={`w-12 h-12 rounded-full ${milestone.bgColor} border ${milestone.borderColor} flex items-center justify-center z-10`}
-                      whileHover={{ scale: 1.1 }}
-                      animate={{
-                        boxShadow: ["0 0 0px rgba(255,255,255,0.2)", "0 0 15px rgba(255,255,255,0.5)", "0 0 0px rgba(255,255,255,0.2)"]
-                      }}
-                      transition={{ duration: 3, repeat: Infinity }}
-                    >
-                      <div className="text-white">{milestone.icon}</div>
-                    </motion.div>
+                    <AnimatedCircle color={milestone.dotColor} />
                     
                     <motion.div 
                       className={`mt-3 px-4 py-1.5 rounded-full bg-gradient-to-r ${milestone.color} text-white text-sm font-semibold inline-flex items-center`}
@@ -133,17 +144,10 @@ export default function JourneyTimeline() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                {/* Timeline node */}
-                <motion.div
-                  className={`w-14 h-14 rounded-full ${milestone.bgColor} border ${milestone.borderColor} flex items-center justify-center z-10 mb-4`}
-                  whileHover={{ scale: 1.1 }}
-                  animate={{
-                    boxShadow: ["0 0 0px rgba(255,255,255,0.2)", "0 0 20px rgba(255,255,255,0.5)", "0 0 0px rgba(255,255,255,0.2)"]
-                  }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                >
-                  <div className="text-white">{milestone.icon}</div>
-                </motion.div>
+                {/* Timeline animated circle */}
+                <div className="relative mb-4 z-10">
+                  <AnimatedCircle color={milestone.dotColor} />
+                </div>
                 
                 {/* Year badge */}
                 <motion.div 

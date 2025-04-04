@@ -127,11 +127,11 @@ export default function ExperienceSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-neon-purple to-neon-blue">{t('provenTrackRecord')}</span>
+            <span className={`bg-clip-text text-transparent bg-gradient-to-r ${t('sectionColors.experience')}`}>{t('provenTrackRecord')}</span>
           </motion.h2>
           
           <motion.div 
-            className="w-32 h-1 bg-gradient-to-r from-neon-blue to-neon-purple mx-auto"
+            className={`w-32 h-1 bg-gradient-to-r ${t('sectionColors.experience')} mx-auto`}
             initial={{ width: 0 }}
             whileInView={{ width: 128 }}
             viewport={{ once: true }}
