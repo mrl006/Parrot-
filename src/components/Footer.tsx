@@ -11,7 +11,7 @@ import {
 } from './footer';
 
 export default function Footer() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const socialLinks = {
     linkTree: "https://linktr.ee/parrotbamboo",
@@ -24,8 +24,9 @@ export default function Footer() {
     twitter: "https://twitter.com/ParrotBamboo"
   };
 
+  // Using language in the key prop to force re-render on language change
   return (
-    <footer className="bg-dark-lighter border-t border-neon-yellow/20 relative overflow-hidden">
+    <footer className="bg-dark-lighter border-t border-neon-yellow/20 relative overflow-hidden" key={`footer-${language}`}>
       <FooterDecoration />
       
       <div className="container mx-auto px-4 py-16 relative z-10">

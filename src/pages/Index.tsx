@@ -11,8 +11,11 @@ import ExperienceSection from '../components/ExperienceSection';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
 import AMAEventHostingSection from '../components/AMAEventHostingSection';
+import { useLanguage } from '../hooks/useLanguage';
 
 const Index = () => {
+  const { language } = useLanguage();
+
   useEffect(() => {
     // Preload needed assets
     const preloadImage = (src: string) => {
@@ -50,8 +53,9 @@ const Index = () => {
     preloadImage('/web3-icon.svg');
   }, []);
 
+  // Using language in the key prop to force re-render on language change
   return (
-    <div className="min-h-screen bg-dark text-white overflow-x-hidden">
+    <div className="min-h-screen bg-dark text-white overflow-x-hidden" key={`main-content-${language}`}>
       <Navbar />
       <HeroSection />
       <AboutSection />

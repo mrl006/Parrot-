@@ -1,5 +1,5 @@
 
-import React, { createContext, useContext, useState, useEffect, ReactNode, useCallback } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode, useCallback, useMemo } from 'react';
 import { en } from '../i18n/en';
 import { tr } from '../i18n/tr';
 
@@ -11,6 +11,7 @@ interface LanguageContextType {
   setLanguage: (language: LanguageType) => void;
   t: (key: string) => any;
   isLoaded: boolean;
+  forceUpdate: () => void;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -19,7 +20,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<LanguageType>('en');
   const [translations, setTranslations] = useState<TranslationsType>(en);
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
-  const [, setRenderKey] = useState<number>(0); // Force re-render when needed
+  const [renderKey, setRenderKey] = useState<number>(0); // Force re-render when needed
 
   // Load language preference when component mounts
   useEffect(() => {
@@ -34,24 +35,36 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   // Update translations when language changes
   useEffect(() => {
     const updateTranslations = async () => {
-      if (language === 'en') {
-        setTranslations(en);
-      } else if (language === 'tr') {
-        setTranslations(tr);
+      try {
+        if (language === 'en') {
+          setTranslations(en);
+        } else if (language === 'tr') {
+          setTranslations(tr);
+        }
+        
+        // Save language preference to localStorage
+        localStorage.setItem('language', language);
+        
+        // Force re-render by updating the document language attribute
+        document.documentElement.setAttribute('lang', language);
+        
+        // Force re-render of all components using translations
+        setRenderKey(prev => prev + 1);
+        
+        // Trigger a global event for components that might not be directly using the hook
+        window.dispatchEvent(new Event('languagechange'));
+      } catch (error) {
+        console.error("Failed to update translations:", error);
       }
-      
-      // Save language preference to localStorage
-      localStorage.setItem('language', language);
-      
-      // Force re-render by updating the document language attribute
-      document.documentElement.setAttribute('lang', language);
-      
-      // Force re-render of all components using translations
-      setRenderKey(prev => prev + 1);
     };
     
     updateTranslations();
   }, [language]);
+
+  // Function to force update from any component
+  const forceUpdate = useCallback(() => {
+    setRenderKey(prev => prev + 1);
+  }, []);
 
   // Memoized translation function to improve performance
   const t = useCallback((key: string): any => {
@@ -77,9 +90,21 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     }
   }, [translations, language]);
 
+  // Create a memoized context value to prevent unnecessary re-renders
+  const contextValue = useMemo(() => ({
+    language,
+    setLanguage,
+    t,
+    isLoaded,
+    forceUpdate
+  }), [language, t, isLoaded, forceUpdate]);
+
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t, isLoaded }}>
-      {children}
+    <LanguageContext.Provider value={contextValue}>
+      {/* Use key to force re-render all children when language changes */}
+      <React.Fragment key={`language-wrapper-${renderKey}`}>
+        {children}
+      </React.Fragment>
     </LanguageContext.Provider>
   );
 }

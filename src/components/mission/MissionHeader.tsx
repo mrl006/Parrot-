@@ -1,9 +1,16 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLanguage } from '@/hooks/useLanguage';
 
 const MissionHeader: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language, forceUpdate } = useLanguage();
+  
+  // Force re-render when language changes
+  useEffect(() => {
+    const handleLanguageChange = () => forceUpdate();
+    window.addEventListener('languagechange', handleLanguageChange);
+    return () => window.removeEventListener('languagechange', handleLanguageChange);
+  }, [forceUpdate]);
   
   return (
     <div className="text-center mb-10">
