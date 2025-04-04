@@ -9,7 +9,7 @@ export default function PartnersSection() {
   return (
     <section 
       id="partners" 
-      className="py-24 bg-dark-lighter relative"
+      className="py-12 bg-dark-lighter relative" // Reduced padding from py-24 to py-12
     >
       <motion.div 
         className="absolute inset-0 opacity-10"

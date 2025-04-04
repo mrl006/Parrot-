@@ -30,8 +30,8 @@ const PartnerCard: React.FC<PartnerCardProps> = ({
 
   return (
     <motion.div 
-      className={`backdrop-blur-sm rounded-xl p-5 flex flex-col items-center justify-center h-32 transition-all duration-300 cursor-pointer ${
-        isHovered ? 'border-neon-yellow shadow-lg shadow-neon-yellow/20' : 'border-neon-yellow/20'
+      className={`backdrop-blur-sm rounded-xl p-3 flex flex-col items-center justify-center h-20 transition-all duration-300 cursor-pointer ${
+        isHovered ? 'border-neon-yellow shadow-md shadow-neon-yellow/20' : 'border-neon-yellow/20'
       } border bg-gradient-to-br from-dark/80 to-dark-lighter/80`}
       variants={{
         hidden: { opacity: 0, y: 20 },
@@ -41,14 +41,14 @@ const PartnerCard: React.FC<PartnerCardProps> = ({
       onMouseLeave={onMouseLeave}
       onClick={handleClick}
       whileHover={{ 
-        scale: 1.05,
-        boxShadow: '0 0 30px 0 rgba(242, 183, 5, 0.2)'
+        scale: 1.03,
+        boxShadow: '0 0 20px 0 rgba(242, 183, 5, 0.2)'
       }}
     >
       <motion.div 
-        className="flex flex-col justify-center items-center w-full h-full gap-2"
+        className="flex flex-col justify-center items-center w-full h-full gap-1"
       >
-        <h3 className={`text-xl font-bold text-center ${
+        <h3 className={`text-base font-bold text-center ${
           isHovered ? 'text-neon-yellow' : 'text-white'
         }`}>
           {partner.name}
@@ -56,13 +56,13 @@ const PartnerCard: React.FC<PartnerCardProps> = ({
         
         {isHovered && (
           <motion.div 
-            className="flex items-center gap-1 text-sm text-neon-blue"
+            className="flex items-center gap-1 text-xs text-neon-blue"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
           >
-            <span>Visit Website</span>
-            <ExternalLink size={16} />
+            <span>Visit</span>
+            <ExternalLink size={12} />
           </motion.div>
         )}
       </motion.div>
