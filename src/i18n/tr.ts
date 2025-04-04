@@ -1,4 +1,3 @@
-
 export const tr = {
   // Navigation items
   home: 'Ana Sayfa',
@@ -151,5 +150,14 @@ export const tr = {
     ama: "from-neon-purple to-neon-yellow",
     contact: "from-neon-blue to-neon-purple",
     mission: "from-neon-cyan to-neon-purple"
-  }
+  },
+  
+  // Contact form translations
+  pleaseCompleteAllFields: "Lütfen tüm alanları doldurun",
+  pleaseEnterValidEmail: "Lütfen geçerli bir e-posta adresi girin",
+  messageSent: "Mesaj Gönderildi",
+  thankYouForMessage: "Mesajınız için teşekkür ederiz. En kısa sürede size geri döneceğiz!",
+  errorSendingMessage: "Mesaj Gönderme Hatası",
+  pleaseTryAgainLater: "Lütfen daha sonra tekrar deneyin",
+  sending: "Gönderiliyor..."
 };

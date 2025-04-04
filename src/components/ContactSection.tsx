@@ -1,10 +1,95 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Send, Linkedin, Twitter, MessageSquare, Headphones } from 'lucide-react';
 import { useLanguage } from '@/hooks/useLanguage';
+import { useToast } from "@/components/ui/use-toast";
+import emailjs from 'emailjs-com';
 
 export default function ContactSection() {
   const { t } = useLanguage();
+  const { toast } = useToast();
+  
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
+  };
+  
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Basic validation
+    if (!formData.name || !formData.email || !formData.message) {
+      toast({
+        title: "Error",
+        description: t('pleaseCompleteAllFields'),
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast({
+        title: "Error",
+        description: t('pleaseEnterValidEmail'),
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    // Send email using EmailJS
+    setIsLoading(true);
+    
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      message: formData.message,
+      to_email: 'rendercreativezone@gmail.com'
+    };
+    
+    try {
+      // You need to sign up for EmailJS and get your own service_id, template_id and user_id
+      // https://www.emailjs.com/
+      await emailjs.send(
+        'service_id', // Replace with your EmailJS service ID
+        'template_id', // Replace with your EmailJS template ID
+        templateParams,
+        'user_id' // Replace with your EmailJS user ID
+      );
+      
+      toast({
+        title: t('messageSent'),
+        description: t('thankYouForMessage'),
+      });
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('Email sending failed:', error);
+      toast({
+        title: t('errorSendingMessage'),
+        description: t('pleaseTryAgainLater'),
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
   
   return (
     <section id="contact" className="section-padding bg-dark relative">
@@ -25,7 +110,7 @@ export default function ContactSection() {
           <div className="glassmorphism rounded-xl p-8">
             <h3 className="text-2xl font-bold mb-6">{t('sendUsMessage')}</h3>
             
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="mb-6">
                 <label htmlFor="name" className="block mb-2 text-sm font-medium">{t('yourName')}</label>
                 <input 
@@ -33,6 +118,8 @@ export default function ContactSection() {
                   id="name" 
                   className="bg-dark-lighter border border-gray-700 text-white text-sm rounded-lg focus:ring-neon-purple focus:border-neon-purple block w-full p-3"
                   placeholder={t('yourName')}
+                  value={formData.name}
+                  onChange={handleInputChange}
                   required 
                 />
               </div>
@@ -44,6 +131,8 @@ export default function ContactSection() {
                   id="email" 
                   className="bg-dark-lighter border border-gray-700 text-white text-sm rounded-lg focus:ring-neon-purple focus:border-neon-purple block w-full p-3"
                   placeholder={t('yourEmail')}
+                  value={formData.email}
+                  onChange={handleInputChange}
                   required 
                 />
               </div>
@@ -55,15 +144,18 @@ export default function ContactSection() {
                   rows={4} 
                   className="bg-dark-lighter border border-gray-700 text-white text-sm rounded-lg focus:ring-neon-purple focus:border-neon-purple block w-full p-3"
                   placeholder={t('yourMessage')}
+                  value={formData.message}
+                  onChange={handleInputChange}
                   required
                 ></textarea>
               </div>
               
               <button 
                 type="submit" 
-                className="px-6 py-3 bg-gradient-to-r from-neon-blue to-neon-purple rounded-full text-white font-medium flex items-center justify-center gap-2 hover-scale w-full"
+                className="px-6 py-3 bg-gradient-to-r from-neon-blue to-neon-purple rounded-full text-white font-medium flex items-center justify-center gap-2 hover-scale w-full disabled:opacity-70"
+                disabled={isLoading}
               >
-                {t('sendMessage')} <Send size={16} />
+                {isLoading ? t('sending') : t('sendMessage')} {!isLoading && <Send size={16} />}
               </button>
             </form>
           </div>

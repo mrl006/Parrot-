@@ -1,4 +1,3 @@
-
 export const en = {
   // Navigation items
   home: 'Home',
@@ -151,5 +150,14 @@ export const en = {
     ama: "from-neon-purple to-neon-yellow",
     contact: "from-neon-blue to-neon-purple",
     mission: "from-neon-cyan to-neon-purple"
-  }
+  },
+  
+  // Contact form translations
+  pleaseCompleteAllFields: "Please complete all fields",
+  pleaseEnterValidEmail: "Please enter a valid email address",
+  messageSent: "Message Sent",
+  thankYouForMessage: "Thank you for your message. We'll get back to you soon!",
+  errorSendingMessage: "Error Sending Message",
+  pleaseTryAgainLater: "Please try again later",
+  sending: "Sending..."
 };
