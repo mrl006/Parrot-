@@ -16,6 +16,9 @@ export const tr = {
   // About section
   aboutTitle: 'Hakkımızda',
   aboutDescription: 'Blokzincir projelerinin ana akım tanınırlık ve benimseme kazanmasına yardımcı oluyoruz.',
+  whoWeAre: 'Biz Kimiz?',
+  companyName: 'ParrotBamboo Web3 Ajansı',
+  companyFocus: 'Web3, Blokzincir ve AI, Pazarlama',
   
   // Services section
   servicesTitle: 'Hizmetlerimiz',
@@ -39,7 +42,6 @@ export const tr = {
   footerRights: 'Tüm hakları saklıdır',
 
   // About Section
-  whoWeAre: 'Biz Kimiz',
   aboutUs: 'Hakkımızda',
 
   // Team Section

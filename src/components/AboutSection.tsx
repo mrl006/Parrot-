@@ -61,7 +61,7 @@ export default function AboutSection() {
           </motion.span>
           
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-gray-300"
+            className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-neon-yellow via-neon-blue to-neon-purple"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -106,6 +106,11 @@ export default function AboutSection() {
                 >
                   <Sparkles className="w-12 h-12 text-neon-yellow" />
                 </motion.div>
+              </div>
+              
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-bold text-white mb-2">{t('companyName')}</h3>
+                <p className="text-xl text-neon-blue font-medium">{t('companyFocus')}</p>
               </div>
               
               <p className="text-xl text-gray-300 leading-relaxed relative z-10">

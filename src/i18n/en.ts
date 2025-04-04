@@ -16,6 +16,9 @@ export const en = {
   // About section
   aboutTitle: 'About Us',
   aboutDescription: 'We help blockchain projects achieve mainstream recognition and adoption.',
+  whoWeAre: 'Who are we?',
+  companyName: 'ParrotBamboo Web3 Agency',
+  companyFocus: 'Web3, Blockchain & AI, Marketing',
   
   // Services section
   servicesTitle: 'Our Services',
@@ -39,7 +42,6 @@ export const en = {
   footerRights: 'All rights reserved',
   
   // About Section
-  whoWeAre: 'Who We Are',
   aboutUs: 'About Us',
   
   // Team Section
