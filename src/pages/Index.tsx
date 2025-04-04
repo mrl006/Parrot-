@@ -26,6 +26,7 @@ const Index = () => {
     preloadImage('/lovable-uploads/4d42739c-5c3a-45e9-8373-d429a64d6aa7.png');
     preloadImage('/lovable-uploads/30008db4-6520-4312-998e-256d65120c3e.png');
     preloadImage('/lovable-uploads/63732a0e-47b0-4ce2-9aef-9ae3722b07ad.png');
+    preloadImage('/lovable-uploads/6bde171d-9ecc-4e99-be1b-b1256f86f19c.png');
   }, []);
 
   return (

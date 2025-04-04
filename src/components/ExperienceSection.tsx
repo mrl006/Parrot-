@@ -72,7 +72,8 @@ export default function ExperienceSection() {
   };
 
   return (
-    <section id="experience" className="section-padding bg-dark relative overflow-hidden" ref={containerRef}>
+    <section id="experience" className="py-24 md:py-32 bg-dark relative overflow-hidden" ref={containerRef}>
+      {/* Enhanced background elements */}
       <motion.div 
         className="absolute inset-0 opacity-10"
         initial={{ opacity: 0 }}
@@ -81,9 +82,24 @@ export default function ExperienceSection() {
       >
         <div className="h-full w-full bg-[radial-gradient(circle_at_top_left,_var(--tw-gradient-stops))] from-neon-purple/20 via-transparent to-neon-blue/20"></div>
       </motion.div>
+      
+      {/* Decorative elements */}
+      <motion.div 
+        className="absolute top-40 right-10 w-72 h-72 rounded-full bg-neon-blue/5 filter blur-3xl"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
+      ></motion.div>
+      
+      <motion.div 
+        className="absolute bottom-40 left-10 w-80 h-80 rounded-full bg-neon-purple/5 filter blur-3xl"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5, delay: 0.3 }}
+      ></motion.div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="mb-16 text-center">
+        <div className="mb-20 text-center">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -125,7 +141,7 @@ export default function ExperienceSection() {
 
         {/* Achievements */}
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -173,7 +189,7 @@ export default function ExperienceSection() {
           ))}
         </motion.div>
 
-        {/* Journey Section with new components */}
+        {/* Journey Section with updated components */}
         <JourneyHeader />
         <JourneyTimeline />
       </div>
