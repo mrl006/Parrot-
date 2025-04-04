@@ -1,4 +1,3 @@
-
 export const tr = {
   // Navigation items
   home: 'Ana Sayfa',
@@ -132,5 +131,9 @@ export const tr = {
   videoEditing: "Video Düzenleme",
   animation3d: "3D Tasarım ve Animasyon",
   blockchainAnimations: "Web3 ve Blokzincir Animasyonları",
-  videoProduction: "Video Prodüksiyon"
+  videoProduction: "Video Prodüksiyon",
+  
+  // Mission Section
+  ourMission: "Misyonumuz",
+  drivingWeb3: "Web3 İnovasyonunu İleriye Taşıyoruz"
 };

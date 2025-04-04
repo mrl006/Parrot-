@@ -132,5 +132,9 @@ export const en = {
   videoEditing: "Video Editing",
   animation3d: "3D Design & Animation",
   blockchainAnimations: "Web3 & Blockchain Animations",
-  videoProduction: "Video Production"
+  videoProduction: "Video Production",
+  
+  // Mission Section
+  ourMission: "Our Mission",
+  drivingWeb3: "Driving Web3 Innovation Forward"
 };
