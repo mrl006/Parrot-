@@ -19,34 +19,49 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [translations, setTranslations] = useState<TranslationsType>(en);
 
   useEffect(() => {
+    // Load saved language preference from localStorage on initial mount
     const savedLanguage = localStorage.getItem('language') as LanguageType;
-    if (savedLanguage) {
+    if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'tr')) {
       setLanguage(savedLanguage);
     }
   }, []);
 
   useEffect(() => {
+    // Update translations when language changes
     if (language === 'en') {
       setTranslations(en);
-    } else {
+    } else if (language === 'tr') {
       setTranslations(tr);
     }
+    
+    // Save language preference to localStorage
     localStorage.setItem('language', language);
+    
+    // Force re-render by updating the document language attribute
+    document.documentElement.setAttribute('lang', language);
   }, [language]);
 
   const t = (key: string): any => {
+    if (!key) return '';
+    
     const keys = key.split('.');
     let value: any = translations;
     
-    for (const k of keys) {
-      if (value && typeof value === 'object' && k in value) {
-        value = value[k];
-      } else {
-        return key;
+    try {
+      for (const k of keys) {
+        if (value && typeof value === 'object' && k in value) {
+          value = value[k];
+        } else {
+          console.warn(`Translation key not found: ${key}`);
+          return key;
+        }
       }
+      
+      return value;
+    } catch (error) {
+      console.error(`Error accessing translation for key: ${key}`, error);
+      return key;
     }
-    
-    return value;
   };
 
   return (
