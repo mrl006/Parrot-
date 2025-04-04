@@ -67,7 +67,7 @@ export default function JourneyTimeline() {
       {isMobile ? (
         // Mobile version - scrollable horizontal timeline
         <div className="relative py-10">
-          <ScrollArea className="w-full" orientation="horizontal">
+          <ScrollArea className="w-full">
             <div className="flex space-x-4 pb-6 px-2 min-w-max">
               {milestones.map((milestone, index) => (
                 <motion.div
