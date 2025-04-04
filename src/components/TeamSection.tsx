@@ -29,9 +29,9 @@ export default function TeamSection() {
       bio: "Expert in community management and strategic partnerships with extensive leadership experience in the Web3 space. Driving ParrotBamboo's vision to revolutionize blockchain marketing.",
       image: "/lovable-uploads/e0c2ca26-8559-420d-aaff-43742a206063.png",
       social: {
-        linkedin: "https://linkedin.com/in/kemalbora",
-        twitter: "https://twitter.com/kemalbora",
-        binance: "https://binance.com/en/live/u/kemalbora"
+        linkedin: "https://www.linkedin.com/in/kemal-bora-223934159/",
+        twitter: "https://x.com/ParrotBamboo07",
+        binance: "https://www.binance.com/en/square/profile/scdenostradame"
       }
     },
     {
@@ -40,9 +40,9 @@ export default function TeamSection() {
       bio: "Specializes in marketing strategy and technical support, with a proven track record of facilitating growth through successful fundraising campaigns and strategic partnerships.",
       image: "/lovable-uploads/61fcc672-d9d9-46f4-937d-ba02dc86c041.png",
       social: {
-        linkedin: "https://linkedin.com/in/serhatcoskun",
-        twitter: "https://twitter.com/serhatcoskun",
-        binance: "https://binance.com/en/live/u/serhatcoskun"
+        linkedin: "https://www.linkedin.com/in/serhat-co%C5%9Fkun-crypto-de-nostradame-448320218/",
+        twitter: "https://x.com/DeNostradameX",
+        binance: "https://www.binance.com/en/square/profile/scdenostradame"
       }
     },
     {
@@ -51,8 +51,8 @@ export default function TeamSection() {
       bio: "Proficient in technology education and global partnerships. Skilled at event engagement and building connections that drive business growth in the blockchain ecosystem.",
       image: "/lovable-uploads/7b9b3fe7-38d5-4f98-bd13-25d4fa762acf.png",
       social: {
-        linkedin: "https://linkedin.com/in/gizemmeltem",
-        twitter: "https://twitter.com/gizemmeltem"
+        linkedin: "https://www.linkedin.com/in/gizem-meltem-099bb7191/",
+        twitter: "https://x.com/gizemeltem?t=9pVstoLuoQPt441XKnnyGQ&s=09"
       }
     },
     {
@@ -61,8 +61,8 @@ export default function TeamSection() {
       bio: "Creative powerhouse with expertise in AI-driven design. Creates compelling visual content that helps blockchain projects communicate their vision effectively.",
       image: "/lovable-uploads/43fda211-d474-412d-9613-218c14f9e954.png",
       social: {
-        linkedin: "https://linkedin.com/in/muralim",
-        twitter: "https://twitter.com/muralim"
+        linkedin: "https://www.linkedin.com/in/murali-m-a6b255187/",
+        twitter: "https://x.com/mrlmurali006"
       }
     }
   ];

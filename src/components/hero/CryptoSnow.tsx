@@ -9,24 +9,23 @@ interface CryptoSnowflakeProps {
 
 const CryptoSnowflake: React.FC<CryptoSnowflakeProps> = ({ imageUrl, index }) => {
   // Calculate random positions and durations
-  const startX = `${Math.random() * 100}%`;
-  const endX = `${Math.random() * 100}%`;
+  const startY = `${Math.random() * 80 + 10}%`; // Random vertical position between 10-90%
   const size = Math.random() * 15 + 10; // Random size between 10px and 25px
   const duration = Math.random() * 20 + 15; // Random duration between 15-35s
   const delay = Math.random() * 5; // Random delay up to 5s
   
   return (
     <motion.div
-      className="absolute top-0 z-0"
+      className="absolute z-0"
       style={{ 
-        left: startX,
+        top: startY,
         width: size,
         height: size,
       }}
-      initial={{ y: -50, opacity: 0 }}
+      initial={{ x: -50, opacity: 0 }}
       animate={{ 
-        y: "100vh",
-        x: [0, Math.random() * 40 - 20, Math.random() * 40 - 20, Math.random() * 40 - 20, 0],
+        x: "100vw",
+        y: [0, Math.random() * 30 - 15, Math.random() * 30 - 15, 0],
         opacity: [0, 0.6, 0.7, 0.6, 0]
       }}
       transition={{ 
@@ -58,8 +57,8 @@ const cryptoLogos = [
 ];
 
 const CryptoSnow: React.FC = () => {
-  // Create 30 snowflakes with random crypto logos
-  const snowflakes = Array.from({ length: 30 }).map((_, index) => {
+  // Create 20 snowflakes with random crypto logos
+  const snowflakes = Array.from({ length: 20 }).map((_, index) => {
     const randomLogo = cryptoLogos[Math.floor(Math.random() * cryptoLogos.length)];
     return (
       <CryptoSnowflake 
