@@ -37,11 +37,17 @@ const Index = () => {
     preloadImage('/lovable-uploads/43fda211-d474-412d-9613-218c14f9e954.png');
     preloadImage('/lovable-uploads/a2f262a6-70d5-4673-9aa6-0aa47a11a1e5.png'); // Reference image
 
-    // Preload new cryptocurrency logos
+    // Preload cryptocurrency and tech logos
     preloadImage('/lovable-uploads/7e7d7050-cffa-4228-a49c-54d8d9fc206e.png'); // Binance coin
     preloadImage('/lovable-uploads/2b0f9a3c-1884-4850-a27d-980f8334625b.png'); // Solana
     preloadImage('/lovable-uploads/7120bbe4-a36d-43f7-b7ce-13972d047ef5.png'); // Ethereum 
     preloadImage('/lovable-uploads/566698e8-c8ae-4125-8001-8f84d8771da0.png'); // Bitcoin
+    preloadImage('/lovable-uploads/d46d80bf-7f84-4d8a-b312-5eb0ff837db8.png'); // Updated Binance logo
+    
+    // Preload web3/blockchain/AI icons
+    preloadImage('/blockchain-icon.svg');
+    preloadImage('/ai-icon.svg');
+    preloadImage('/web3-icon.svg');
   }, []);
 
   return (

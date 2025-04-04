@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Linkedin, Twitter, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -88,7 +87,6 @@ export default function TeamSection() {
 
   return (
     <section id="team" className="section-padding bg-dark-lighter relative overflow-hidden">
-      {/* Background decorations */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10 z-0">
         <motion.div 
           initial={{ opacity: 0.3, scale: 0.9 }}
@@ -232,18 +230,11 @@ export default function TeamSection() {
                                 whileHover={{ scale: 1.15 }}
                                 whileTap={{ scale: 0.95 }}
                               >
-                                <svg 
-                                  width="16" 
-                                  height="16" 
-                                  viewBox="0 0 16 16" 
-                                  fill="none" 
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  className="text-yellow-400"
-                                >
-                                  <path d="M8 0L9.8 1.8L3.6 8L9.8 14.2L8 16L0 8L8 0Z" fill="currentColor"/>
-                                  <path d="M8 0L6.2 1.8L12.4 8L6.2 14.2L8 16L16 8L8 0Z" fill="currentColor"/>
-                                  <path d="M5.33334 8.00022L8.00001 5.33356L10.6667 8.00022L8.00001 10.6669L5.33334 8.00022Z" fill="currentColor"/>
-                                </svg>
+                                <img 
+                                  src="/lovable-uploads/d46d80bf-7f84-4d8a-b312-5eb0ff837db8.png" 
+                                  alt="Binance" 
+                                  className="w-4 h-4"
+                                />
                               </motion.a>
                             )}
                           </div>
@@ -305,18 +296,11 @@ export default function TeamSection() {
                           rel="noopener noreferrer"
                           className="flex items-center gap-2 px-4 py-2 rounded-full bg-dark/50 hover:bg-yellow-400/20 transition-colors border border-yellow-400/30 text-sm"
                         >
-                          <svg 
-                            width="16" 
-                            height="16" 
-                            viewBox="0 0 16 16" 
-                            fill="none" 
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="text-yellow-400"
-                          >
-                            <path d="M8 0L9.8 1.8L3.6 8L9.8 14.2L8 16L0 8L8 0Z" fill="currentColor"/>
-                            <path d="M8 0L6.2 1.8L12.4 8L6.2 14.2L8 16L16 8L8 0Z" fill="currentColor"/>
-                            <path d="M5.33334 8.00022L8.00001 5.33356L10.6667 8.00022L8.00001 10.6669L5.33334 8.00022Z" fill="currentColor"/>
-                          </svg>
+                          <img 
+                            src="/lovable-uploads/d46d80bf-7f84-4d8a-b312-5eb0ff837db8.png" 
+                            alt="Binance" 
+                            className="w-4 h-4"
+                          />
                           <span>Binance</span>
                         </a>
                       )}

@@ -47,18 +47,11 @@ export default function FooterConnect({ socialLinks }: FooterConnectProps) {
           whileHover="hover"
         >
           <div className="w-8 h-8 rounded-full bg-dark flex items-center justify-center border border-neon-yellow/30 group-hover:border-neon-yellow/60">
-            <svg 
-              width="16" 
-              height="16" 
-              viewBox="0 0 16 16" 
-              fill="none" 
-              xmlns="http://www.w3.org/2000/svg"
-              className="text-yellow-400"
-            >
-              <path d="M8 0L9.8 1.8L3.6 8L9.8 14.2L8 16L0 8L8 0Z" fill="#F2B705"/>
-              <path d="M8 0L6.2 1.8L12.4 8L6.2 14.2L8 16L16 8L8 0Z" fill="#F2B705"/>
-              <path d="M5.33334 8.00022L8.00001 5.33356L10.6667 8.00022L8.00001 10.6669L5.33334 8.00022Z" fill="#F2B705"/>
-            </svg>
+            <img 
+              src="/lovable-uploads/d46d80bf-7f84-4d8a-b312-5eb0ff837db8.png" 
+              alt="Binance" 
+              className="w-5 h-5"
+            />
           </div>
           <span>{t('binanceSquare')}</span>
         </motion.a>
@@ -74,18 +67,11 @@ export default function FooterConnect({ socialLinks }: FooterConnectProps) {
           whileHover="hover"
         >
           <div className="w-8 h-8 rounded-full bg-dark flex items-center justify-center border border-neon-blue/30 group-hover:border-neon-blue/60">
-            <svg 
-              width="16" 
-              height="16" 
-              viewBox="0 0 16 16" 
-              fill="none" 
-              xmlns="http://www.w3.org/2000/svg"
-              className="text-yellow-400"
-            >
-              <path d="M8 0L9.8 1.8L3.6 8L9.8 14.2L8 16L0 8L8 0Z" fill="#0083CA"/>
-              <path d="M8 0L6.2 1.8L12.4 8L6.2 14.2L8 16L16 8L8 0Z" fill="#0083CA"/>
-              <path d="M5.33334 8.00022L8.00001 5.33356L10.6667 8.00022L8.00001 10.6669L5.33334 8.00022Z" fill="#0083CA"/>
-            </svg>
+            <img 
+              src="/lovable-uploads/d46d80bf-7f84-4d8a-b312-5eb0ff837db8.png" 
+              alt="Binance" 
+              className="w-5 h-5"
+            />
           </div>
           <span>{t('binanceLive')}</span>
         </motion.a>

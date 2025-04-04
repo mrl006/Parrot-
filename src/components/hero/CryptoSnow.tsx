@@ -38,7 +38,7 @@ const CryptoSnowflake: React.FC<CryptoSnowflakeProps> = ({ imageUrl, index }) =>
     >
       <img 
         src={imageUrl} 
-        alt="Crypto logo" 
+        alt="Web3 icon" 
         className="w-full h-full object-contain"
         style={{ 
           filter: "drop-shadow(0 0 3px rgba(255,255,255,0.3))" 
@@ -48,18 +48,23 @@ const CryptoSnowflake: React.FC<CryptoSnowflakeProps> = ({ imageUrl, index }) =>
   );
 };
 
-// Define the crypto logos
-const cryptoLogos = [
+// Define the crypto and tech logos
+const techLogos = [
   "/lovable-uploads/7e7d7050-cffa-4228-a49c-54d8d9fc206e.png", // Binance coin
   "/lovable-uploads/2b0f9a3c-1884-4850-a27d-980f8334625b.png", // Solana
   "/lovable-uploads/7120bbe4-a36d-43f7-b7ce-13972d047ef5.png", // Ethereum
-  "/lovable-uploads/566698e8-c8ae-4125-8001-8f84d8771da0.png"  // Bitcoin
+  "/lovable-uploads/566698e8-c8ae-4125-8001-8f84d8771da0.png", // Bitcoin
+  "/lovable-uploads/d46d80bf-7f84-4d8a-b312-5eb0ff837db8.png", // Binance (updated)
+  // Web3 and blockchain related icons (using emoji SVGs for illustration)
+  "/blockchain-icon.svg", // Blockchain icon
+  "/ai-icon.svg",        // AI icon
+  "/web3-icon.svg"       // Web3 icon
 ];
 
 const CryptoSnow: React.FC = () => {
-  // Create 20 snowflakes with random crypto logos
-  const snowflakes = Array.from({ length: 20 }).map((_, index) => {
-    const randomLogo = cryptoLogos[Math.floor(Math.random() * cryptoLogos.length)];
+  // Create 10 snowflakes (reduced from 20) with random tech logos
+  const snowflakes = Array.from({ length: 10 }).map((_, index) => {
+    const randomLogo = techLogos[Math.floor(Math.random() * techLogos.length)];
     return (
       <CryptoSnowflake 
         key={index} 
