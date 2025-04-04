@@ -1,17 +1,163 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Handshake } from 'lucide-react';
+import { Handshake, ExternalLink } from 'lucide-react';
+import { toast } from "../hooks/use-toast";
+
+interface Partner {
+  name: string;
+  website: string;
+  logoUrl: string;
+}
 
 export default function PartnersSection() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   
-  const partners = [
-    "Binance", "Solv", "ApeBond", "Bybit", "ChainGPT", "Decubate", "BNB Chain", 
-    "StarryNift", "KuCoin", "Hooked", "Kommunitas", "Bitget", "Biconomy", 
-    "Toobit", "GT Protocol", "KIP", "MEXC Global", "Mogul", "Gate.io", 
-    "Huobi", "BitMart", "Poolz", "GPTVerse", "LBank", "Probit Global", "Golden Paws"
+  const partners: Partner[] = [
+    {
+      name: "Binance",
+      website: "https://www.binance.com",
+      logoUrl: "https://cryptologos.cc/logos/binance-coin-bnb-logo.png"
+    },
+    {
+      name: "Solv",
+      website: "https://solv.xyz",
+      logoUrl: "https://cryptologos.cc/logos/solv-protocol-solv-logo.png"
+    },
+    {
+      name: "ApeBond",
+      website: "https://www.apebond.com",
+      logoUrl: "https://www.apebond.com/img/logo.svg"
+    },
+    {
+      name: "Bybit",
+      website: "https://www.bybit.com",
+      logoUrl: "https://cryptologos.cc/logos/bybit-bbt-logo.png"
+    },
+    {
+      name: "ChainGPT",
+      website: "https://www.chaingpt.org",
+      logoUrl: "https://assets.coingecko.com/coins/images/29462/small/cgpt.png"
+    },
+    {
+      name: "Decubate",
+      website: "https://www.decubate.com",
+      logoUrl: "https://www.decubate.com/images/logo.svg"
+    },
+    {
+      name: "BNB Chain",
+      website: "https://bnbchain.org",
+      logoUrl: "https://cryptologos.cc/logos/bnb-bnb-logo.png"
+    },
+    {
+      name: "StarryNift",
+      website: "https://www.starrynift.com",
+      logoUrl: "https://www.starrynift.com/logo.png"
+    },
+    {
+      name: "KuCoin",
+      website: "https://www.kucoin.com",
+      logoUrl: "https://cryptologos.cc/logos/kucoin-token-kcs-logo.png"
+    },
+    {
+      name: "Hooked",
+      website: "https://www.hooked.finance",
+      logoUrl: "https://www.hooked.finance/assets/images/logo.svg"
+    },
+    {
+      name: "Kommunitas",
+      website: "https://www.kommunitas.net",
+      logoUrl: "https://s2.coinmarketcap.com/static/img/coins/200x200/10403.png"
+    },
+    {
+      name: "Bitget",
+      website: "https://www.bitget.com",
+      logoUrl: "https://cryptologos.cc/logos/bitget-token-bgb-logo.png"
+    },
+    {
+      name: "Biconomy",
+      website: "https://www.biconomy.com",
+      logoUrl: "https://cryptologos.cc/logos/biconomy-bico-logo.png"
+    },
+    {
+      name: "Toobit",
+      website: "https://www.toobit.com",
+      logoUrl: "https://www.toobit.com/static/images/logo.png"
+    },
+    {
+      name: "GT Protocol",
+      website: "https://www.gtprotocol.io",
+      logoUrl: "https://www.gtprotocol.io/images/logo.png"
+    },
+    {
+      name: "KIP",
+      website: "https://www.kip.io",
+      logoUrl: "https://www.kip.io/static/media/kip-logo.png"
+    },
+    {
+      name: "MEXC Global",
+      website: "https://www.mexc.com",
+      logoUrl: "https://cryptologos.cc/logos/mexc-token-mexc-logo.png"
+    },
+    {
+      name: "Mogul",
+      website: "https://www.mogulproductions.com",
+      logoUrl: "https://www.mogulproductions.com/images/logo.png"
+    },
+    {
+      name: "Gate.io",
+      website: "https://www.gate.io",
+      logoUrl: "https://cryptologos.cc/logos/gate-gt-logo.png"
+    },
+    {
+      name: "Huobi",
+      website: "https://www.huobi.com",
+      logoUrl: "https://cryptologos.cc/logos/huobi-token-ht-logo.png"
+    },
+    {
+      name: "BitMart",
+      website: "https://www.bitmart.com",
+      logoUrl: "https://cryptologos.cc/logos/bitmart-token-bmx-logo.png"
+    },
+    {
+      name: "Poolz",
+      website: "https://www.poolz.finance",
+      logoUrl: "https://cryptologos.cc/logos/poolz-finance-poolz-logo.png"
+    },
+    {
+      name: "GPTVerse",
+      website: "https://www.gptverse.com",
+      logoUrl: "https://www.gptverse.com/images/logo.png"
+    },
+    {
+      name: "LBank",
+      website: "https://www.lbank.info",
+      logoUrl: "https://cryptologos.cc/logos/lbank-token-lbk-logo.png"
+    },
+    {
+      name: "Probit Global",
+      website: "https://www.probit.com",
+      logoUrl: "https://cryptologos.cc/logos/probit-token-prob-logo.png"
+    },
+    {
+      name: "Golden Paws",
+      website: "https://www.goldenpaws.io",
+      logoUrl: "https://www.goldenpaws.io/images/logo.png"
+    },
+    {
+      name: "Web3D",
+      website: "https://web3decision.com/",
+      logoUrl: "https://web3decision.com/images/logo.png"
+    }
   ];
+
+  const handlePartnerClick = (website: string) => {
+    window.open(website, '_blank');
+    toast({
+      title: "Opening partner website",
+      description: "Redirecting to partner's official website",
+    });
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -75,8 +221,8 @@ export default function PartnersSection() {
           <motion.div className="flex justify-center mt-8">
             <motion.div
               animate={{ 
-                rotate: [0, 10, 0, -10, 0],
-                y: [0, -5, 0, -5, 0]
+                scale: [1, 1.1, 1],
+                opacity: [0.8, 1, 0.8],
               }}
               transition={{ 
                 duration: 5, 
@@ -109,12 +255,13 @@ export default function PartnersSection() {
           {partners.map((partner, index) => (
             <motion.div 
               key={index}
-              className={`backdrop-blur-sm rounded-xl p-5 flex items-center justify-center h-28 transition-all duration-300 ${
+              className={`backdrop-blur-sm rounded-xl p-5 flex flex-col items-center justify-center h-32 transition-all duration-300 cursor-pointer ${
                 hoveredIndex === index ? 'border-neon-yellow shadow-lg shadow-neon-yellow/20' : 'border-neon-yellow/20'
               } border bg-gradient-to-br from-dark/80 to-dark-lighter/80`}
               variants={itemVariants}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
+              onClick={() => handlePartnerClick(partner.website)}
               whileHover={{ 
                 scale: 1.05,
                 boxShadow: '0 0 30px 0 rgba(242, 183, 5, 0.2)'
@@ -125,15 +272,47 @@ export default function PartnersSection() {
               } : {}}
             >
               <motion.div 
-                className="flex justify-center items-center w-full h-full"
-                animate={hoveredIndex === index ? { scale: [1, 1.1, 1] } : {}}
+                className="flex flex-col justify-center items-center w-full h-full gap-2"
+                animate={hoveredIndex === index ? { scale: [1, 1.05, 1] } : {}}
                 transition={{ duration: 0.5, repeat: hoveredIndex === index ? Infinity : 0 }}
               >
-                <p className={`font-semibold text-center text-lg ${
+                <div className="h-12 flex items-center justify-center">
+                  <img 
+                    src={partner.logoUrl} 
+                    alt={`${partner.name} logo`}
+                    className="max-h-12 max-w-full object-contain"
+                    onError={(e) => {
+                      // Fallback to text if image fails to load
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      const parentDiv = target.parentElement;
+                      if (parentDiv) {
+                        const textElement = document.createElement('p');
+                        textElement.className = `font-semibold text-center text-lg ${
+                          hoveredIndex === index ? 'text-neon-yellow' : 'text-white'
+                        }`;
+                        textElement.textContent = partner.name;
+                        parentDiv.appendChild(textElement);
+                      }
+                    }}
+                  />
+                </div>
+                <p className={`font-semibold text-center text-sm mt-2 ${
                   hoveredIndex === index ? 'text-neon-yellow' : 'text-white'
                 }`}>
-                  {partner}
+                  {partner.name}
                 </p>
+                {hoveredIndex === index && (
+                  <motion.div 
+                    className="flex items-center gap-1 text-xs text-neon-blue"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <span>Visit</span>
+                    <ExternalLink size={12} />
+                  </motion.div>
+                )}
               </motion.div>
             </motion.div>
           ))}
