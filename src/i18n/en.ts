@@ -1,4 +1,3 @@
-
 export const en = {
   // Navigation items
   home: 'Home',
@@ -104,5 +103,25 @@ export const en = {
   linkTree: 'LinkTree',
   telegram: 'Telegram',
   youtube: 'YouTube',
-  instagram: 'Instagram'
+  instagram: 'Instagram',
+  
+  // AMA & Event Hosting Section
+  professionalEventHosting: "Professional Event Hosting",
+  eventVisibilityDescription: "We specialize in hosting and managing virtual events that increase your project's visibility and engage with your community in meaningful ways.",
+  binanceGlobalAudience: "Access to Binance's global audience",
+  scheduledPromotionalEvents: "Scheduled promotional events",
+  professionalHosting: "Professional hosting and moderation",
+  liveQASessions: "Live Q&A sessions with your team",
+  engageCryptoEnthusiasts: "Engage with crypto enthusiasts",
+  regularTwitterSpaces: "Regular Twitter Space events",
+  industryExpertDiscussions: "Industry expert discussions",
+  communityQASessions: "Community-driven Q&A sessions",
+  panelDiscussions: "Panel Discussions",
+  panelDescription: "Moderated panel discussions with industry experts on blockchain topics.",
+  communityAMA: "Community AMA",
+  communityAMADescription: "Direct engagement with your community through Ask Me Anything sessions.",
+  eventPlanning: "Event Planning",
+  eventPlanningDescription: "Complete event planning from conception to post-event content distribution.",
+  boostVisibility: "Ready to boost your project's visibility?",
+  scheduleEvent: "Schedule Your Event"
 };

@@ -10,6 +10,7 @@ import PartnersSection from '../components/PartnersSection';
 import ExperienceSection from '../components/ExperienceSection';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
+import AMAEventHostingSection from '../components/AMAEventHostingSection';
 
 const Index = () => {
   useEffect(() => {
@@ -34,6 +35,7 @@ const Index = () => {
       <MissionSection />
       <TeamSection />
       <ServicesSection />
+      <AMAEventHostingSection />
       <PartnersSection />
       <ExperienceSection />
       <ContactSection />
