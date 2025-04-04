@@ -4,7 +4,8 @@ import { useLanguage } from '../hooks/useLanguage';
 import { 
   FeaturesList, 
   MissionHeader, 
-  MissionVisual 
+  MissionVisual,
+  BackgroundEffects
 } from './mission';
 
 export default function MissionSection() {
@@ -12,6 +13,9 @@ export default function MissionSection() {
 
   return (
     <section id="mission" className="py-16 bg-dark relative overflow-hidden">
+      {/* Add animated background effects */}
+      <BackgroundEffects />
+      
       <div className="container mx-auto px-4 relative z-10">
         <MissionHeader />
         
@@ -21,7 +25,7 @@ export default function MissionSection() {
             <FeaturesList />
           </div>
           
-          {/* Visual Element */}
+          {/* Visual Element with Animations */}
           <MissionVisual />
         </div>
       </div>

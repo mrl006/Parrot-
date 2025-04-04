@@ -52,8 +52,7 @@ export default function TeamSection() {
       image: "/lovable-uploads/7b9b3fe7-38d5-4f98-bd13-25d4fa762acf.png",
       social: {
         linkedin: "https://linkedin.com/in/gizemmeltem",
-        twitter: "https://twitter.com/gizemmeltem",
-        binance: "https://binance.com/en/live/u/gizemmeltem"
+        twitter: "https://twitter.com/gizemmeltem"
       }
     },
     {
@@ -63,8 +62,7 @@ export default function TeamSection() {
       image: "/lovable-uploads/43fda211-d474-412d-9613-218c14f9e954.png",
       social: {
         linkedin: "https://linkedin.com/in/muralim",
-        twitter: "https://twitter.com/muralim",
-        binance: "https://binance.com/en/live/u/muralim"
+        twitter: "https://twitter.com/muralim"
       }
     }
   ];
@@ -229,7 +227,7 @@ export default function TeamSection() {
                                 href={member.social.binance}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-9 h-9 rounded-full bg-dark/50 flex items-center justify-center hover:bg-neon-yellow/20 transition-colors border border-neon-yellow/30"
+                                className="w-9 h-9 rounded-full bg-dark/50 flex items-center justify-center hover:bg-yellow-400/20 transition-colors border border-yellow-400/30"
                                 onClick={(e) => e.stopPropagation()}
                                 whileHover={{ scale: 1.15 }}
                                 whileTap={{ scale: 0.95 }}
@@ -240,10 +238,11 @@ export default function TeamSection() {
                                   viewBox="0 0 16 16" 
                                   fill="none" 
                                   xmlns="http://www.w3.org/2000/svg"
-                                  className="text-neon-yellow"
+                                  className="text-yellow-400"
                                 >
-                                  <path d="M7.9999 0L5.8999 2.1L3.7999 4.2L1.6999 6.3L1.7999 8.4L3.7999 6.4L5.8999 8.5L3.7999 10.6L1.7999 8.6L1.6999 10.7L3.7999 12.8L5.8999 14.9L7.9999 17L10.0999 14.9L12.1999 12.8L14.2999 10.7L14.1999 8.6L12.1999 10.6L10.0999 8.5L12.1999 6.4L14.1999 8.4L14.2999 6.3L12.1999 4.2L10.0999 2.1L7.9999 0Z" fill="currentColor"/>
-                                  <path d="M10.0999 8.5L7.9999 10.6L5.8999 8.5L7.9999 6.4L10.0999 8.5Z" fill="currentColor"/>
+                                  <path d="M8 0L9.8 1.8L3.6 8L9.8 14.2L8 16L0 8L8 0Z" fill="currentColor"/>
+                                  <path d="M8 0L6.2 1.8L12.4 8L6.2 14.2L8 16L16 8L8 0Z" fill="currentColor"/>
+                                  <path d="M5.33334 8.00022L8.00001 5.33356L10.6667 8.00022L8.00001 10.6669L5.33334 8.00022Z" fill="currentColor"/>
                                 </svg>
                               </motion.a>
                             )}
@@ -304,9 +303,20 @@ export default function TeamSection() {
                           href={member.social.binance}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 px-4 py-2 rounded-full bg-dark/50 hover:bg-neon-yellow/20 transition-colors border border-neon-yellow/30 text-sm"
+                          className="flex items-center gap-2 px-4 py-2 rounded-full bg-dark/50 hover:bg-yellow-400/20 transition-colors border border-yellow-400/30 text-sm"
                         >
-                          <ExternalLink size={16} className="text-neon-yellow" />
+                          <svg 
+                            width="16" 
+                            height="16" 
+                            viewBox="0 0 16 16" 
+                            fill="none" 
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="text-yellow-400"
+                          >
+                            <path d="M8 0L9.8 1.8L3.6 8L9.8 14.2L8 16L0 8L8 0Z" fill="currentColor"/>
+                            <path d="M8 0L6.2 1.8L12.4 8L6.2 14.2L8 16L16 8L8 0Z" fill="currentColor"/>
+                            <path d="M5.33334 8.00022L8.00001 5.33356L10.6667 8.00022L8.00001 10.6669L5.33334 8.00022Z" fill="currentColor"/>
+                          </svg>
                           <span>Binance</span>
                         </a>
                       )}
