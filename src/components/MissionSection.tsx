@@ -1,11 +1,20 @@
 
 import React from 'react';
-import { Target, Rocket, Users } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Target, Rocket, Users, Sparkles, ArrowRight } from 'lucide-react';
 
 export default function MissionSection() {
   return (
-    <section id="mission" className="section-padding bg-dark relative">
+    <section id="mission" className="section-padding bg-dark relative overflow-hidden">
+      <motion.div 
+        className="absolute inset-0 opacity-5"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.05 }}
+        transition={{ duration: 1 }}
+      >
+        <div className="h-full w-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neon-yellow/20 via-transparent to-neon-blue/20"></div>
+      </motion.div>
+
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div 
@@ -15,14 +24,37 @@ export default function MissionSection() {
             transition={{ duration: 0.7 }}
             viewport={{ once: true, margin: "-100px" }}
           >
-            <span className="inline-block px-4 py-1 rounded-full bg-neon-purple/10 text-neon-purple text-sm font-medium mb-4">
+            <motion.span 
+              className="inline-block px-6 py-2 rounded-full bg-neon-purple/10 text-neon-purple text-sm font-semibold mb-4 border border-neon-purple/30"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
               Our Mission
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Driving Web3 Innovation Forward</h2>
+            </motion.span>
             
-            <div className="space-y-6 mt-8">
+            <motion.h2 
+              className="text-3xl md:text-4xl font-bold mb-6"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              Driving Web3 Innovation Forward
+            </motion.h2>
+            
+            <motion.div 
+              className="w-32 h-1 bg-gradient-to-r from-neon-blue to-neon-purple"
+              initial={{ width: 0 }}
+              whileInView={{ width: 128 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.4 }}
+            ></motion.div>
+            
+            <div className="space-y-8 mt-8">
               <motion.div 
-                className="flex gap-4"
+                className="flex gap-6"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
@@ -33,12 +65,20 @@ export default function MissionSection() {
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.7 }}
                 >
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center bg-dark-lighter border border-neon-blue/30">
-                    <Target className="w-5 h-5 text-neon-blue" />
+                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center bg-dark-lighter border border-neon-blue/30 shadow-lg shadow-neon-blue/10">
+                    <Target className="w-7 h-7 text-neon-blue" />
                   </div>
                 </motion.div>
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">Vision</h3>
+                  <h3 className="text-xl font-semibold mb-2 flex items-center">
+                    Vision 
+                    <motion.span
+                      animate={{ x: [0, 5, 0] }}
+                      transition={{ duration: 1.5, repeat: Infinity }}
+                    >
+                      <ArrowRight className="ml-2 w-4 h-4 text-neon-blue" />
+                    </motion.span>
+                  </h3>
                   <p className="text-gray-300">
                     To be the leading force in Web3 marketing and strategy, helping blockchain projects achieve mainstream recognition and adoption.
                   </p>
@@ -46,7 +86,7 @@ export default function MissionSection() {
               </motion.div>
               
               <motion.div 
-                className="flex gap-4"
+                className="flex gap-6"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
@@ -54,18 +94,31 @@ export default function MissionSection() {
               >
                 <motion.div 
                   className="flex-shrink-0"
-                  whileHover={{ 
+                  animate={{ 
                     y: [-5, 5, -5], 
-                    rotate: [-10, 10, -10] 
+                    rotate: [-5, 5, -5] 
                   }}
-                  transition={{ duration: 1.2, repeat: Infinity }}
+                  transition={{ duration: 2.5, repeat: Infinity }}
                 >
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center bg-dark-lighter border border-neon-purple/30">
-                    <Rocket className="w-5 h-5 text-neon-purple" />
+                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center bg-dark-lighter border border-neon-purple/30 shadow-lg shadow-neon-purple/10">
+                    <Rocket className="w-7 h-7 text-neon-purple" />
                   </div>
                 </motion.div>
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">Innovation</h3>
+                  <h3 className="text-xl font-semibold mb-2 flex items-center">
+                    Innovation
+                    <motion.div
+                      animate={{ 
+                        opacity: [0, 1, 0],
+                        scale: [0.8, 1.2, 0.8],
+                        rotate: [0, 10, 0]
+                      }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                      className="ml-3"
+                    >
+                      <Sparkles className="w-5 h-5 text-neon-purple" />
+                    </motion.div>
+                  </h3>
                   <p className="text-gray-300">
                     Constantly exploring new technologies and strategies to keep our clients at the cutting edge of the decentralized revolution.
                   </p>
@@ -73,7 +126,7 @@ export default function MissionSection() {
               </motion.div>
               
               <motion.div 
-                className="flex gap-4"
+                className="flex gap-6"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
@@ -84,8 +137,13 @@ export default function MissionSection() {
                   whileHover={{ scale: 1.2 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center bg-dark-lighter border border-neon-cyan/30">
-                    <Users className="w-5 h-5 text-neon-cyan" />
+                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center bg-dark-lighter border border-neon-cyan/30 shadow-lg shadow-neon-cyan/10">
+                    <motion.div
+                      animate={{ rotate: [0, 360] }}
+                      transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                    >
+                      <Users className="w-7 h-7 text-neon-cyan" />
+                    </motion.div>
                   </div>
                 </motion.div>
                 <div>
@@ -106,7 +164,13 @@ export default function MissionSection() {
             viewport={{ once: true, margin: "-100px" }}
           >
             <div className="relative w-full max-w-md">
-              <div className="w-full aspect-square rounded-2xl overflow-hidden p-1 border border-white/10 shadow-lg">
+              <motion.div 
+                className="w-full aspect-square rounded-2xl overflow-hidden p-1 border border-white/10 shadow-lg"
+                animate={{ 
+                  boxShadow: ["0 0 0px rgba(242, 183, 5, 0)", "0 0 30px rgba(242, 183, 5, 0.3)", "0 0 0px rgba(242, 183, 5, 0)"]
+                }}
+                transition={{ duration: 3, repeat: Infinity }}
+              >
                 <div className="w-full h-full rounded-xl bg-gradient-to-br from-dark-lighter to-dark flex items-center justify-center">
                   <motion.div 
                     className="text-center"
@@ -115,32 +179,89 @@ export default function MissionSection() {
                     transition={{ duration: 0.5 }}
                   >
                     <motion.div 
-                      className="inline-flex p-6 rounded-full bg-dark-lighter border border-neon-purple/30 mb-4"
+                      className="inline-flex p-8 rounded-full bg-dark-lighter border border-neon-purple/30 mb-6"
                       animate={{ 
-                        y: [0, -10, 0], 
-                        rotate: [0, 5, 0, -5, 0]
+                        y: [0, -20, 0], 
+                        rotate: [0, 5, 0, -5, 0],
+                        boxShadow: ["0 0 0px rgba(139, 92, 246, 0)", "0 0 30px rgba(139, 92, 246, 0.3)", "0 0 0px rgba(139, 92, 246, 0)"]
                       }}
-                      transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                      transition={{ 
+                        y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+                        rotate: { duration: 6, repeat: Infinity, ease: "easeInOut" },
+                        boxShadow: { duration: 3, repeat: Infinity }
+                      }}
                     >
-                      <Rocket className="w-16 h-16 text-neon-purple" />
+                      <motion.div
+                        animate={{ 
+                          rotate: [0, 360]
+                        }}
+                        transition={{ 
+                          duration: 20, 
+                          repeat: Infinity, 
+                          ease: "linear" 
+                        }}
+                      >
+                        <Rocket className="w-20 h-20 text-neon-purple" />
+                      </motion.div>
                     </motion.div>
-                    <h3 className="text-2xl font-bold neon-text">Revolutionizing</h3>
-                    <p className="text-white mt-2">the Digital Landscape</p>
+                    <motion.h3 
+                      className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-neon-yellow via-neon-purple to-neon-blue"
+                      animate={{ 
+                        backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
+                      }}
+                      transition={{ 
+                        duration: 5, 
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                      style={{ backgroundSize: '200% 200%' }}
+                    >
+                      Revolutionizing
+                    </motion.h3>
+                    <motion.p 
+                      className="text-white mt-2 text-xl"
+                      animate={{ 
+                        opacity: [0.7, 1, 0.7],
+                        y: [0, -5, 0] 
+                      }}
+                      transition={{ duration: 3, repeat: Infinity }}
+                    >
+                      the Digital Landscape
+                    </motion.p>
                   </motion.div>
                 </div>
-              </div>
+              </motion.div>
               
-              {/* Subtle glow effect */}
+              {/* Orbital particles */}
               <motion.div
-                className="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-neon-blue/10 filter blur-xl"
-                animate={{ opacity: [0.5, 0.8, 0.5] }}
-                transition={{ duration: 3, repeat: Infinity }}
-              ></motion.div>
-              <motion.div
-                className="absolute -bottom-10 -left-10 w-32 h-32 rounded-full bg-neon-purple/10 filter blur-xl"
-                animate={{ opacity: [0.3, 0.6, 0.3] }}
-                transition={{ duration: 3.5, repeat: Infinity }}
-              ></motion.div>
+                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] pointer-events-none"
+                animate={{ rotate: [0, 360] }}
+                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+              >
+                <motion.div
+                  className="absolute top-0 left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-neon-yellow/50"
+                  animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                ></motion.div>
+                
+                <motion.div
+                  className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-3 h-3 rounded-full bg-neon-blue/50"
+                  animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
+                  transition={{ duration: 2.5, repeat: Infinity }}
+                ></motion.div>
+                
+                <motion.div
+                  className="absolute left-0 top-1/2 transform -translate-y-1/2 w-5 h-5 rounded-full bg-neon-purple/50"
+                  animate={{ scale: [1, 1.4, 1], opacity: [0.5, 0.8, 0.5] }}
+                  transition={{ duration: 3.5, repeat: Infinity }}
+                ></motion.div>
+                
+                <motion.div
+                  className="absolute right-0 top-1/2 transform -translate-y-1/2 w-4 h-4 rounded-full bg-neon-cyan/50"
+                  animate={{ scale: [1, 1.3, 1], opacity: [0.5, 0.9, 0.5] }}
+                  transition={{ duration: 4, repeat: Infinity }}
+                ></motion.div>
+              </motion.div>
             </div>
           </motion.div>
         </div>

@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Handshake } from 'lucide-react';
 
 export default function PartnersSection() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -32,6 +33,15 @@ export default function PartnersSection() {
       id="partners" 
       className="py-24 bg-dark-lighter relative"
     >
+      <motion.div 
+        className="absolute inset-0 opacity-10"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.1 }}
+        transition={{ duration: 1 }}
+      >
+        <div className="h-full w-full bg-[radial-gradient(circle_at_bottom_right,_var(--tw-gradient-stops))] from-neon-yellow/20 via-transparent to-neon-blue/20"></div>
+      </motion.div>
+
       <div className="container mx-auto px-4 relative z-10">
         <div className="mb-16 text-center">
           <motion.span 
@@ -62,8 +72,24 @@ export default function PartnersSection() {
             transition={{ duration: 0.7, delay: 0.4 }}
           ></motion.div>
           
+          <motion.div className="flex justify-center mt-8">
+            <motion.div
+              animate={{ 
+                rotate: [0, 10, 0, -10, 0],
+                y: [0, -5, 0, -5, 0]
+              }}
+              transition={{ 
+                duration: 5, 
+                repeat: Infinity,
+                repeatType: "loop"
+              }}
+            >
+              <Handshake size={48} className="text-neon-yellow mb-6" />
+            </motion.div>
+          </motion.div>
+          
           <motion.p 
-            className="mt-8 text-xl text-gray-300 max-w-3xl mx-auto"
+            className="mt-4 text-xl text-gray-300 max-w-3xl mx-auto"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -74,7 +100,7 @@ export default function PartnersSection() {
         </div>
 
         <motion.div 
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 lg:gap-10"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 lg:gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
@@ -83,20 +109,28 @@ export default function PartnersSection() {
           {partners.map((partner, index) => (
             <motion.div 
               key={index}
-              className={`bg-dark backdrop-blur-sm rounded-xl p-5 flex items-center justify-center h-28 transition-all duration-300 ${
-                hoveredIndex === index ? 'shadow-lg shadow-neon-yellow/20 border-neon-yellow' : 'border-neon-yellow/20'
-              } border`}
+              className={`backdrop-blur-sm rounded-xl p-5 flex items-center justify-center h-28 transition-all duration-300 ${
+                hoveredIndex === index ? 'border-neon-yellow shadow-lg shadow-neon-yellow/20' : 'border-neon-yellow/20'
+              } border bg-gradient-to-br from-dark/80 to-dark-lighter/80`}
               variants={itemVariants}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
               whileHover={{ 
                 scale: 1.05,
-                boxShadow: '0 0 20px 0 rgba(242, 183, 5, 0.3)'
+                boxShadow: '0 0 30px 0 rgba(242, 183, 5, 0.2)'
               }}
+              animate={hoveredIndex === index ? { 
+                y: -10,
+                transition: { duration: 0.3 }
+              } : {}}
             >
-              <motion.div className="flex justify-center items-center w-full h-full">
+              <motion.div 
+                className="flex justify-center items-center w-full h-full"
+                animate={hoveredIndex === index ? { scale: [1, 1.1, 1] } : {}}
+                transition={{ duration: 0.5, repeat: hoveredIndex === index ? Infinity : 0 }}
+              >
                 <p className={`font-semibold text-center text-lg ${
-                  hoveredIndex === index ? 'text-white' : 'text-neon-yellow'
+                  hoveredIndex === index ? 'text-neon-yellow' : 'text-white'
                 }`}>
                   {partner}
                 </p>
