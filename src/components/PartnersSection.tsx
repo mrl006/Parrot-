@@ -1,18 +1,27 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import PartnersSectionHeader from './partners/PartnersSectionHeader';
 import PartnersList from './partners/PartnersList';
+import ShowMoreButton from './partners/ShowMoreButton';
 import { partnersData } from '../data/partners';
 import { useLanguage } from '../hooks/useLanguage';
 
 export default function PartnersSection() {
   const { t } = useLanguage();
+  const [showAll, setShowAll] = useState(false);
+  
+  // Only show first 6 partners initially
+  const displayedPartners = showAll ? partnersData : partnersData.slice(0, 6);
+  
+  const toggleShowAll = () => {
+    setShowAll(!showAll);
+  };
   
   return (
     <section 
       id="partners" 
-      className="py-12 bg-dark-lighter relative"
+      className="py-20 bg-dark-lighter relative"
     >
       <motion.div 
         className="absolute inset-0 opacity-10"
@@ -25,7 +34,10 @@ export default function PartnersSection() {
 
       <div className="container mx-auto px-4 relative z-10">
         <PartnersSectionHeader />
-        <PartnersList partners={partnersData} />
+        <PartnersList partners={displayedPartners} />
+        {partnersData.length > 6 && (
+          <ShowMoreButton showAll={showAll} toggleShowAll={toggleShowAll} />
+        )}
       </div>
     </section>
   );

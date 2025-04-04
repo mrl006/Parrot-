@@ -43,7 +43,7 @@ const PartnerCard: React.FC<PartnerCardProps> = ({
         transition: { duration: 0.2 } 
       }}
       whileTap={{ scale: 0.95 }}
-      className="bg-dark-lighter rounded-lg p-3 flex flex-col items-center justify-center cursor-pointer border border-transparent hover:border-neon-blue/30 hover:shadow-lg hover:shadow-neon-blue/5"
+      className="bg-dark rounded-lg p-6 flex flex-col items-center justify-center cursor-pointer border border-transparent hover:border-neon-blue/30 hover:shadow-lg hover:shadow-neon-blue/5 text-center"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
@@ -54,7 +54,7 @@ const PartnerCard: React.FC<PartnerCardProps> = ({
         className="w-full h-full flex flex-col items-center"
       >
         <motion.div
-          className="flex justify-center items-center w-12 h-12 mb-2 rounded-full bg-dark p-2"
+          className="flex justify-center items-center w-16 h-16 mb-4 rounded-full bg-dark-lighter p-3"
           animate={{
             scale: isHovered ? 1.1 : 1,
             y: isHovered ? -3 : 0
@@ -63,7 +63,7 @@ const PartnerCard: React.FC<PartnerCardProps> = ({
         >
           {/* Icon with zoom effect on hover */}
           <motion.div
-            className="text-neon-blue"
+            className="text-neon-blue w-10 h-10"
             animate={{
               scale: isHovered ? 1.2 : 1,
               rotate: isHovered ? [0, -5, 5, -5, 0] : 0
@@ -74,10 +74,10 @@ const PartnerCard: React.FC<PartnerCardProps> = ({
           </motion.div>
         </motion.div>
         
-        <h3 className="text-center text-sm font-medium truncate w-full">{partner.name}</h3>
+        <h3 className="text-lg font-semibold mb-1">{partner.name}</h3>
         
         <motion.p 
-          className="text-center text-xs text-gray-400 mt-1 truncate w-full"
+          className="text-sm text-gray-400 mt-1"
           animate={{
             opacity: isHovered ? 1 : 0.7
           }}
