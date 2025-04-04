@@ -2,8 +2,11 @@
 import React from 'react';
 import { ArrowRight, Rocket, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 export default function HeroSection() {
+  const isMobile = useIsMobile();
+  
   return (
     <section 
       id="home" 
@@ -205,7 +208,7 @@ export default function HeroSection() {
       </div>
       
       <motion.div 
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
+        className={`absolute ${isMobile ? 'bottom-24' : 'bottom-10'} left-1/2 transform -translate-x-1/2 flex flex-col items-center`}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.5 }}
