@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Partner } from '../../types/Partner';
 import PartnerCard from './PartnerCard';
@@ -9,34 +9,29 @@ interface PartnersListProps {
 }
 
 const PartnersList: React.FC<PartnersListProps> = ({ partners }) => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  
   const containerVariants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.03
+        staggerChildren: 0.02
       }
     }
   };
 
   return (
     <motion.div 
-      className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6 max-w-6xl mx-auto"
+      className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-5 max-w-6xl mx-auto"
       variants={containerVariants}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-30px" }}
+      viewport={{ once: true, margin: "-20px" }}
     >
       {partners.map((partner, index) => (
         <PartnerCard
           key={index}
           partner={partner}
           index={index}
-          isHovered={hoveredIndex === index}
-          onMouseEnter={() => setHoveredIndex(index)}
-          onMouseLeave={() => setHoveredIndex(null)}
         />
       ))}
     </motion.div>

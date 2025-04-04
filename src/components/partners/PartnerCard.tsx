@@ -7,17 +7,11 @@ import { useLanguage } from '../../hooks/useLanguage';
 interface PartnerCardProps {
   partner: Partner;
   index: number;
-  isHovered: boolean;
-  onMouseEnter: () => void;
-  onMouseLeave: () => void;
 }
 
 const PartnerCard: React.FC<PartnerCardProps> = ({ 
   partner, 
-  index,
-  isHovered,
-  onMouseEnter,
-  onMouseLeave
+  index
 }) => {
   const { language } = useLanguage();
   
@@ -43,47 +37,26 @@ const PartnerCard: React.FC<PartnerCardProps> = ({
         transition: { duration: 0.2 } 
       }}
       whileTap={{ scale: 0.95 }}
-      className="bg-dark rounded-lg p-4 flex flex-col items-center justify-center cursor-pointer border border-transparent hover:border-neon-blue/30 hover:shadow-lg hover:shadow-neon-blue/5 text-center h-32"
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
+      className="bg-dark rounded-lg p-4 flex flex-col items-center justify-center border border-transparent hover:border-neon-blue hover:shadow-lg hover:shadow-neon-blue/10 h-32"
     >
       <a 
         href={partner.url} 
         target="_blank"
         rel="noopener noreferrer" 
-        className="w-full h-full flex flex-col items-center"
+        className="w-full h-full flex flex-col items-center justify-center"
       >
         <motion.div
-          className="flex justify-center items-center w-12 h-12 mb-2 rounded-full bg-dark-lighter p-2"
-          animate={{
-            scale: isHovered ? 1.1 : 1,
-            y: isHovered ? -2 : 0
-          }}
-          transition={{ duration: 0.2 }}
+          className="text-neon-blue w-7 h-7 mb-3"
+          whileHover={{ scale: 1.1 }}
         >
-          {/* Icon with zoom effect on hover */}
-          <motion.div
-            className="text-neon-blue w-8 h-8"
-            animate={{
-              scale: isHovered ? 1.2 : 1,
-              rotate: isHovered ? [0, -5, 5, -5, 0] : 0
-            }}
-            transition={{ duration: 0.3 }}
-          >
-            {partner.icon}
-          </motion.div>
+          {partner.icon}
         </motion.div>
         
-        <h3 className="text-sm font-semibold mb-0.5">{partner.name}</h3>
+        <h3 className="text-white text-center font-semibold text-sm mb-1">{partner.name}</h3>
         
-        <motion.p 
-          className="text-xs text-gray-400 mt-0.5"
-          animate={{
-            opacity: isHovered ? 1 : 0.7
-          }}
-        >
+        <p className="text-gray-400 text-center text-xs">
           {language === 'tr' ? partner.categoryTR || partner.category : partner.category}
-        </motion.p>
+        </p>
       </a>
     </motion.div>
   );
