@@ -27,6 +27,10 @@ const Index = () => {
     preloadImage('/lovable-uploads/30008db4-6520-4312-998e-256d65120c3e.png');
     preloadImage('/lovable-uploads/63732a0e-47b0-4ce2-9aef-9ae3722b07ad.png');
     preloadImage('/lovable-uploads/6bde171d-9ecc-4e99-be1b-b1256f86f19c.png');
+    preloadImage('/lovable-uploads/e0c2ca26-8559-420d-aaff-43742a206063.png');
+    preloadImage('/lovable-uploads/61fcc672-d9d9-46f4-937d-ba02dc86c041.png');
+    preloadImage('/lovable-uploads/7b9b3fe7-38d5-4f98-bd13-25d4fa762acf.png');
+    preloadImage('/lovable-uploads/43fda211-d474-412d-9613-218c14f9e954.png');
   }, []);
 
   return (
