@@ -1,227 +1,475 @@
 
-import React from 'react';
+import React, { useState } from 'react';
+import { MessageSquare, BarChart3, Link, Users, FileText, ChevronRight, Globe, Youtube, Twitter, Image, Video, Zap, MessageCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { useLanguage } from '../hooks/useLanguage';
-import { Rocket, Users, PenTool, Code, Headphones, Megaphone } from 'lucide-react';
+
+interface Service {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+  features: string[];
+}
 
 export default function ServicesSection() {
-  const { t } = useLanguage();
+  const [activeService, setActiveService] = useState<number>(0);
   
-  const services = [
+  const services: Service[] = [
     {
-      id: 'marketing',
-      icon: <Megaphone className="w-6 h-6" />,
-      title: t('marketingService'),
-      description: 'Strategic marketing campaigns tailored for blockchain projects',
-      color: 'from-neon-yellow to-neon-purple',
-      delay: 0
+      icon: <BarChart3 size={24} />,
+      title: "Social Media Growth & Management",
+      description: "Strategic growth and engagement across leading platforms in the Web3 space.",
+      features: [
+        "Twitter (X) community building and engagement",
+        "Telegram group management and moderation",
+        "YouTube channel optimization and content strategy",
+        "Binance Square presence establishment",
+        "Comprehensive social media analytics and reporting"
+      ]
     },
     {
-      id: 'consulting',
-      icon: <Rocket className="w-6 h-6" />,
-      title: t('consultingService'),
-      description: 'Expert guidance on blockchain integration and tokenomics',
-      color: 'from-neon-blue to-neon-cyan',
-      delay: 0.1
+      icon: <MessageSquare size={24} />,
+      title: "AMA & Event Hosting",
+      description: "Professional hosting and management of virtual events to increase project visibility.",
+      features: [
+        "X Space events with industry leaders",
+        "Twitter Audio Live broadcasts and discussions",
+        "Telegram Audio Live sessions with engaged communities",
+        "Binance Live broadcasts and promotional events",
+        "Moderated panel discussions on blockchain topics",
+        "Community Q&A sessions with project teams",
+        "Post-event content distribution and amplification"
+      ]
     },
     {
-      id: 'community',
-      icon: <Users className="w-6 h-6" />,
-      title: t('communityService'),
-      description: 'Building and nurturing engaged crypto communities',
-      color: 'from-neon-purple to-neon-blue',
-      delay: 0.2
+      icon: <Link size={24} />,
+      title: "Corporate Partnerships & Listings",
+      description: "Strategic partnerships and exchange listings to boost project credibility and reach.",
+      features: [
+        "Exchange listing acquisition and management",
+        "Strategic partnership development with key industry players",
+        "Partnership negotiation and relationship management",
+        "Co-marketing opportunities with established projects",
+        "Industry alliance building and management"
+      ]
     },
     {
-      id: 'development',
-      icon: <Code className="w-6 h-6" />,
-      title: t('developmentService'),
-      description: 'Web3 development solutions and smart contract auditing',
-      color: 'from-neon-cyan to-neon-yellow',
-      delay: 0.3
-    }
-  ];
-
-  // AMA Event hosting services with correct logos and black backgrounds
-  const eventServices = [
-    {
-      id: 'binance-live',
-      icon: '/lovable-uploads/a00fcad1-0ec2-4e5f-990a-21d712dee436.png',
-      title: 'Binance Live',
-      description: 'Professional AMA events on Binance platform',
-      color: 'from-[#F0B90B] to-[#F8D12F]',
-      delay: 0.4,
-      iconClass: 'bg-black' // Ensuring all logos have black background
+      icon: <Users size={24} />,
+      title: "Brand Promotion",
+      description: "Comprehensive brand building strategies tailored for Web3 projects.",
+      features: [
+        "Integrated marketing campaigns across platforms",
+        "Creative social media content creation",
+        "Brand identity development and refinement",
+        "Community-focused promotional activities",
+        "Brand awareness metrics and performance tracking"
+      ]
     },
     {
-      id: 'twitter-audio',
-      icon: '/lovable-uploads/9dfc0dbd-c375-443d-9fe6-a78d72d3b770.png',
-      title: 'Twitter Audio Live',
-      description: 'Engaging Twitter Space discussions and AMAs',
-      color: 'from-gray-600 to-gray-800',
-      delay: 0.5,
-      iconClass: 'bg-black' // Black background for X logo
+      icon: <FileText size={24} />,
+      title: "Content Creation",
+      description: "Expert development of technical and marketing content for blockchain projects.",
+      features: [
+        "Whitepaper writing and editing",
+        "Gitbook documentation creation",
+        "Marketing materials development",
+        "Technical article writing for Web3 concepts",
+        "Social media content calendars and creation"
+      ]
     },
     {
-      id: 'telegram-audio',
-      icon: '/lovable-uploads/f766f5d3-c5e9-421c-8717-cbd7f83eeaea.png',
-      title: 'Telegram Audio Live',
-      description: 'Community voice chats and announcements',
-      color: 'from-[#0088cc] to-[#29B6F6]',
-      delay: 0.6,
-      iconClass: 'bg-black' // Black background for Telegram logo
+      icon: <Image size={24} />,
+      title: "Creative Services",
+      description: "Bring your ideas to life with visuals that captivate and engage.",
+      features: [
+        "Graphics Design: Logos, brand identity, web & app designs",
+        "Video Editing: Promotional videos, tutorials, event recaps",
+        "3D Design & Animation: 3D modeling, animations, product visuals",
+        "Web3 & Blockchain Animations: Explainers, tokenomics, NFT assets",
+        "UI/UX design for Web3 applications and platforms"
+      ]
     }
   ];
 
   return (
-    <section id="services" className="py-20 relative overflow-hidden">
+    <section id="services" className="section-padding bg-dark relative overflow-hidden">
       {/* Background decorations */}
-      <div className="absolute inset-0 bg-[url('/circuit-pattern.svg')] bg-repeat opacity-10"></div>
       <motion.div 
-        className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-neon-blue/10 filter blur-3xl"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.1, 0.3, 0.1],
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      <motion.div 
-        className="absolute -bottom-20 -left-20 w-80 h-80 rounded-full bg-neon-purple/10 filter blur-3xl"
-        animate={{
-          scale: [1.2, 1, 1.2],
-          opacity: [0.1, 0.2, 0.1],
-        }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 2
-        }}
-      />
-      
-      <div className="container mx-auto px-6">
-        {/* Section header */}
+        className="absolute inset-0 z-0 opacity-10"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.1 }}
+        transition={{ duration: 1.5 }}
+      >
+        <div className="absolute inset-0 bg-[url('/circuit-pattern.svg')] bg-repeat opacity-20"></div>
         <motion.div 
-          className="text-center mb-20"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="relative">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-neon-purple to-neon-blue">
-              {t('servicesTitle')}
-            </h2>
-            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-              What We Offer
-            </p>
-            <div className="w-24 h-1 bg-gradient-to-r from-neon-blue to-neon-purple mx-auto mt-6"></div>
-          </div>
-        </motion.div>
+          className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-neon-blue/5 filter blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.2, 0.4, 0.2],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div 
+          className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-neon-yellow/5 filter blur-3xl"
+          animate={{
+            scale: [1.2, 1, 1.2],
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1
+          }}
+        />
+      </motion.div>
 
-        {/* Services grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-16">
-          {services.map((service) => (
-            <ServiceCard 
-              key={service.id}
-              icon={service.icon}
-              title={service.title}
-              description={service.description}
-              color={service.color}
-              delay={service.delay}
-            />
-          ))}
-        </div>
-
-        {/* AMA & Event Hosting section */}
-        <motion.div
+      <div className="container mx-auto px-4 relative z-10">
+        <motion.div 
+          className="mb-16 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-12"
         >
-          <h3 className="text-2xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-neon-yellow to-neon-purple">
-            {t('amaEventHosting')}
-          </h3>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {eventServices.map((service) => (
-              <EventServiceCard 
-                key={service.id}
-                icon={service.icon}
-                iconClass={service.iconClass}
-                title={service.title}
-                description={service.description}
-                color={service.color}
-                delay={service.delay}
-              />
-            ))}
-          </div>
+          <span className="inline-block px-4 py-1 rounded-full bg-neon-purple/10 text-neon-purple text-sm font-medium mb-4">Our Services</span>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-neon-yellow via-neon-blue to-neon-purple">What We Offer</h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-neon-blue to-neon-purple mx-auto"></div>
         </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+          {/* Service Tabs */}
+          <motion.div 
+            className="lg:col-span-2"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="space-y-2">
+              {services.map((service, index) => (
+                <motion.button
+                  key={index}
+                  className={`w-full text-left p-4 rounded-lg transition-all flex items-center gap-3 ${
+                    activeService === index 
+                      ? 'border-l-4 border-neon-purple bg-dark-lighter/50 shadow-lg shadow-neon-purple/10' 
+                      : 'hover:bg-dark-lighter/30'
+                  }`}
+                  onClick={() => setActiveService(index)}
+                  whileHover={{ x: 5 }}
+                  whileTap={{ scale: 0.98 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.4 }}
+                >
+                  <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
+                    activeService === index 
+                      ? 'bg-gradient-to-br from-neon-yellow to-neon-purple text-white' 
+                      : 'bg-dark-lighter text-gray-300'
+                  }`}>
+                    {service.icon}
+                  </div>
+                  <div className="flex flex-col">
+                    <span className={`font-medium ${activeService === index ? 'text-white' : 'text-gray-300'}`}>
+                      {service.title}
+                    </span>
+                    
+                    {/* Special voice animation for AMA */}
+                    {index === 1 && (
+                      <div className="voice-wave inline-flex mt-1">
+                        <div className="bar h-2"></div>
+                        <div className="bar h-1"></div>
+                        <div className="bar h-3"></div>
+                        <div className="bar h-2"></div>
+                      </div>
+                    )}
+                  </div>
+                </motion.button>
+              ))}
+            </div>
+          </motion.div>
+          
+          {/* Service Details */}
+          <motion.div 
+            className="lg:col-span-3 rounded-xl p-8 bg-dark-lighter/50 backdrop-blur-sm border border-white/10 shadow-xl"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            key={activeService} // Important for animation to trigger on tab change
+            animate={{ opacity: [0, 1], y: [20, 0] }}
+          >
+            <div className="mb-6">
+              <h3 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-neon-yellow to-neon-blue">{services[activeService].title}</h3>
+              <p className="text-gray-300">{services[activeService].description}</p>
+            </div>
+            
+            <div className="space-y-3">
+              {services[activeService].features.map((feature, index) => (
+                <motion.div 
+                  key={index} 
+                  className="flex items-start gap-3"
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.3 }}
+                >
+                  <div className="text-neon-purple mt-1">
+                    <ChevronRight size={16} />
+                  </div>
+                  <p className="text-gray-300">{feature}</p>
+                </motion.div>
+              ))}
+            </div>
+            
+            {/* Special elements for AMA & Event Hosting */}
+            {activeService === 1 && (
+              <motion.div 
+                className="mt-8 pt-6 border-t border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+              >
+                <div className="flex flex-col items-center space-y-3 p-4 rounded-lg bg-dark-lighter/70 border border-neon-purple/20">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
+                    <motion.div
+                      animate={{ 
+                        scale: [1, 1.2, 1],
+                        rotate: [0, 5, -5, 0]
+                      }}
+                      transition={{ 
+                        duration: 4,
+                        repeat: Infinity
+                      }}
+                    >
+                      <Globe size={24} className="text-white" />
+                    </motion.div>
+                  </div>
+                  <span className="text-white font-medium text-sm">Binance Live</span>
+                  <motion.div
+                    className="flex space-x-1"
+                    animate={{ opacity: [0.7, 1, 0.7] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    {[...Array(5)].map((_, i) => (
+                      <div key={i} className="w-1.5 h-1.5 rounded-full bg-blue-400"></div>
+                    ))}
+                  </motion.div>
+                </div>
+
+                <div className="flex flex-col items-center space-y-3 p-4 rounded-lg bg-dark-lighter/70 border border-neon-blue/20">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center">
+                    <motion.div
+                      animate={{ 
+                        scale: [1, 1.2, 1],
+                        rotate: [0, -5, 5, 0]
+                      }}
+                      transition={{ 
+                        duration: 4,
+                        repeat: Infinity,
+                        delay: 0.5
+                      }}
+                    >
+                      <Twitter size={24} className="text-white" />
+                    </motion.div>
+                  </div>
+                  <span className="text-white font-medium text-sm">Twitter Audio Live</span>
+                  <div className="voice-wave inline-flex">
+                    <div className="bar h-2"></div>
+                    <div className="bar h-3"></div>
+                    <div className="bar h-1"></div>
+                    <div className="bar h-4"></div>
+                    <div className="bar h-2"></div>
+                  </div>
+                </div>
+
+                {/* Telegram Audio Live - NEW */}
+                <div className="flex flex-col items-center space-y-3 p-4 rounded-lg bg-dark-lighter/70 border border-[#0088cc]/20">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#0088cc] to-[#29B6F6] flex items-center justify-center">
+                    <motion.div
+                      animate={{ 
+                        scale: [1, 1.2, 1],
+                        rotate: [0, 5, -5, 0]
+                      }}
+                      transition={{ 
+                        duration: 4,
+                        repeat: Infinity,
+                        delay: 1
+                      }}
+                    >
+                      <MessageCircle size={24} className="text-white" />
+                    </motion.div>
+                  </div>
+                  <span className="text-white font-medium text-sm">Telegram Audio Live</span>
+                  <div className="voice-wave inline-flex">
+                    <div className="bar h-3"></div>
+                    <div className="bar h-1"></div>
+                    <div className="bar h-4"></div>
+                    <div className="bar h-2"></div>
+                    <div className="bar h-3"></div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+            
+            {/* Special elements for Creative Services */}
+            {activeService === 5 && (
+              <motion.div 
+                className="mt-8 pt-6 border-t border-white/10 grid grid-cols-1 sm:grid-cols-2 gap-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+              >
+                <div className="flex flex-col items-center space-y-3 p-4 rounded-lg bg-dark-lighter/70 border border-neon-purple/20">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-400 to-pink-600 flex items-center justify-center">
+                    <motion.div
+                      animate={{ 
+                        scale: [1, 1.2, 1],
+                        rotate: [0, 5, -5, 0]
+                      }}
+                      transition={{ 
+                        duration: 4,
+                        repeat: Infinity
+                      }}
+                    >
+                      <Image size={24} className="text-white" />
+                    </motion.div>
+                  </div>
+                  <span className="text-white font-medium text-sm">Graphics Design</span>
+                  <motion.div
+                    className="h-3 w-24 bg-gray-700 rounded-full overflow-hidden"
+                    initial={{ width: 0 }}
+                    animate={{ width: "100%" }}
+                    transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+                  >
+                    <div className="h-full bg-gradient-to-r from-purple-400 to-pink-600 rounded-full"></div>
+                  </motion.div>
+                </div>
+
+                <div className="flex flex-col items-center space-y-3 p-4 rounded-lg bg-dark-lighter/70 border border-neon-blue/20">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-teal-400 flex items-center justify-center">
+                    <motion.div
+                      animate={{ 
+                        scale: [1, 1.2, 1],
+                        rotate: [0, -5, 5, 0]
+                      }}
+                      transition={{ 
+                        duration: 4,
+                        repeat: Infinity,
+                        delay: 0.5
+                      }}
+                    >
+                      <Video size={24} className="text-white" />
+                    </motion.div>
+                  </div>
+                  <span className="text-white font-medium text-sm">Video Production</span>
+                  <div className="flex space-x-1">
+                    {[...Array(5)].map((_, i) => (
+                      <motion.div 
+                        key={i} 
+                        className="w-1.5 h-4 bg-blue-400 rounded"
+                        animate={{ 
+                          height: [4, 16, 8, 12, 4],
+                        }}
+                        transition={{ 
+                          duration: 1.5, 
+                          repeat: Infinity, 
+                          delay: i * 0.1,
+                          ease: "easeInOut"
+                        }}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex flex-col items-center space-y-3 p-4 rounded-lg bg-dark-lighter/70 border border-green-400/20">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-teal-500 flex items-center justify-center">
+                    <motion.div
+                      animate={{ 
+                        rotateY: [0, 360],
+                      }}
+                      transition={{ 
+                        duration: 6,
+                        repeat: Infinity,
+                        ease: "linear"
+                      }}
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
+                        <path d="M18 8s2 1 2 5v1c0 4-2 5-2 5M18 8s-2 1-2 5v1c0 4 2 5 2 5M18 8V5a2 2 0 0 0-4 0v3M18 8H6M6 8s-2 1-2 5v1c0 4 2 5 2 5M6 8s2 1 2 5v1c0 4-2 5-2 5M6 8V5a2 2 0 0 1 4 0v3" />
+                      </svg>
+                    </motion.div>
+                  </div>
+                  <span className="text-white font-medium text-sm">3D Animation</span>
+                  <motion.div 
+                    className="w-6 h-6 bg-green-500/30 rounded-full"
+                    animate={{
+                      scale: [1, 1.5, 1],
+                      opacity: [0.3, 0.7, 0.3],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
+                </div>
+
+                <div className="flex flex-col items-center space-y-3 p-4 rounded-lg bg-dark-lighter/70 border border-yellow-400/20">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-400 to-orange-600 flex items-center justify-center">
+                    <motion.div
+                      animate={{ 
+                        scale: [1, 1.2, 1],
+                        rotate: [0, 15, -15, 0]
+                      }}
+                      transition={{ 
+                        duration: 3,
+                        repeat: Infinity
+                      }}
+                    >
+                      <Zap size={24} className="text-white" />
+                    </motion.div>
+                  </div>
+                  <span className="text-white font-medium text-sm">Web3 Animations</span>
+                  <div className="flex space-x-1">
+                    {[...Array(3)].map((_, i) => (
+                      <motion.div 
+                        key={i}
+                        className="w-2 h-2 bg-yellow-400 rounded-full"
+                        animate={{
+                          y: [0, -6, 0],
+                          opacity: [0.5, 1, 0.5]
+                        }}
+                        transition={{
+                          duration: 1,
+                          repeat: Infinity,
+                          delay: i * 0.3
+                        }}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+            
+            <div className="mt-8">
+              <motion.a 
+                href="#contact" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="inline-block px-6 py-3 bg-gradient-to-r from-neon-blue to-neon-purple rounded-full text-white font-medium shadow-lg shadow-neon-purple/20"
+                whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(139, 92, 246, 0.4)" }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Get Started
+              </motion.a>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
 }
-
-const ServiceCard = ({ 
-  icon, 
-  title, 
-  description, 
-  color,
-  delay
-}: { 
-  icon: React.ReactNode; 
-  title: string;
-  description: string;
-  color: string;
-  delay: number;
-}) => (
-  <motion.div 
-    className="p-6 rounded-xl border border-white/10 bg-dark/70 backdrop-blur-lg hover:bg-dark-lighter/50 transition-all group"
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.5, delay }}
-  >
-    <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-      {icon}
-    </div>
-    <h3 className="text-xl font-semibold mb-2 text-white">{title}</h3>
-    <p className="text-gray-400">{description}</p>
-  </motion.div>
-);
-
-const EventServiceCard = ({ 
-  icon, 
-  iconClass,
-  title, 
-  description, 
-  color,
-  delay
-}: { 
-  icon: string; 
-  iconClass: string;
-  title: string;
-  description: string;
-  color: string;
-  delay: number;
-}) => (
-  <motion.div 
-    className="p-6 rounded-xl border border-white/10 bg-dark/70 backdrop-blur-lg hover:bg-dark-lighter/50 transition-all group"
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.5, delay }}
-  >
-    <div className={`w-12 h-12 rounded-full ${iconClass} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-      <img src={icon} alt={title} className="w-8 h-8" />
-    </div>
-    <h3 className="text-xl font-semibold mb-2 text-white">{title}</h3>
-    <p className="text-gray-400">{description}</p>
-  </motion.div>
-);
