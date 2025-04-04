@@ -10,7 +10,7 @@ import PartnersSection from '../components/PartnersSection';
 import ExperienceSection from '../components/ExperienceSection';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
-import AMAEventHostingSection from '../components/AMAEventHostingSection';
+import AMAEventHostingSection from '../components/ama';
 
 const Index = () => {
   useEffect(() => {
