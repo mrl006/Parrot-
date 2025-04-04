@@ -1,15 +1,10 @@
 
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Award, CheckCircle, Calendar, Medal, TrendingUp, Trophy } from 'lucide-react';
+import { Award, CheckCircle, Calendar, Medal } from 'lucide-react';
 import { useLanguage } from '@/hooks/useLanguage';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+import JourneyHeader from './experience/JourneyHeader';
+import JourneyTimeline from './experience/JourneyTimeline';
 
 interface Achievement {
   title: string;
@@ -18,12 +13,6 @@ interface Achievement {
   value: string;
   label: string;
   color: string;
-}
-
-interface Milestone {
-  year: string;
-  title: string;
-  description: string;
 }
 
 export default function ExperienceSection() {
@@ -61,29 +50,6 @@ export default function ExperienceSection() {
     }
   ];
   
-  const milestones: Milestone[] = [
-    {
-      year: "2023",
-      title: "Binance Launchpad Partnership",
-      description: "Represented multiple Binance Launchpad projects, delivering comprehensive marketing and community management."
-    },
-    {
-      year: "2022",
-      title: "Record-Breaking X Space Event",
-      description: "Hosted an X Space event that attracted over 100,000 viewers, discussing the future of Web3 technology."
-    },
-    {
-      year: "2021",
-      title: "Chainlink Collaboration",
-      description: "Partnered with Chainlink to promote oracle technology and its applications in the DeFi ecosystem."
-    },
-    {
-      year: "2020",
-      title: "Agency Foundation",
-      description: "ParrotBamboo was established with a mission to revolutionize Web3 marketing and community building."
-    }
-  ];
-
   // For the animated achievement numbers
   const AnimatedValue = ({ value }: { value: string }) => {
     // Extract the numeric part if possible
@@ -133,7 +99,7 @@ export default function ExperienceSection() {
               transition={{ duration: 3, repeat: Infinity }}
               className="mr-2"
             >
-              <Trophy size={24} className="text-neon-yellow filter drop-shadow-[0_0_8px_rgba(242,183,5,0.7)]" />
+              <Medal size={24} className="text-neon-yellow filter drop-shadow-[0_0_8px_rgba(242,183,5,0.7)]" />
             </motion.div>
             <span className="inline-block px-6 py-2 rounded-full bg-neon-purple/10 text-neon-purple text-sm font-semibold border border-neon-purple/30">{t('ourExperience')}</span>
           </motion.div>
@@ -207,105 +173,9 @@ export default function ExperienceSection() {
           ))}
         </motion.div>
 
-        {/* Journey Title */}
-        <motion.div 
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-        >
-          <div className="flex justify-center mb-4">
-            <motion.div
-              animate={{ 
-                scale: [1, 1.15, 1],
-                opacity: [0.8, 1, 0.8]
-              }}
-              transition={{ duration: 3, repeat: Infinity }}
-              className="inline-block"
-            >
-              <TrendingUp size={32} className="text-neon-yellow filter drop-shadow-[0_0_8px_rgba(242,183,5,0.7)]" />
-            </motion.div>
-          </div>
-          <h3 className="text-3xl font-bold">{t('ourJourney')}</h3>
-        </motion.div>
-        
-        {/* Horizontal Timeline with Carousel */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="relative max-w-6xl mx-auto mb-16"
-        >
-          {/* Horizontal timeline line */}
-          <div className="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-neon-purple via-neon-blue to-neon-yellow opacity-30 transform -translate-y-1/2 rounded-full"></div>
-          
-          <Carousel
-            opts={{
-              align: "center",
-              loop: true,
-            }}
-            className="w-full"
-          >
-            <CarouselContent>
-              {milestones.map((milestone, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pt-16 pb-16">
-                  <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="relative flex flex-col items-center"
-                  >
-                    {/* Year badge on top */}
-                    <motion.div
-                      whileHover={{ scale: 1.1 }}
-                      className="absolute top-0 transform -translate-y-1/2 z-10"
-                    >
-                      <motion.span 
-                        className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-neon-purple/20 to-neon-blue/20 text-neon-purple text-sm font-bold border border-neon-purple/30"
-                        animate={{ 
-                          boxShadow: ["0 0 0px rgba(139, 92, 246, 0)", "0 0 8px rgba(139, 92, 246, 0.3)", "0 0 0px rgba(139, 92, 246, 0)"],
-                        }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                      >
-                        {milestone.year}
-                      </motion.span>
-                    </motion.div>
-                    
-                    {/* Timeline node */}
-                    <motion.div
-                      className="absolute top-0 w-6 h-6 rounded-full bg-dark-lighter border-4 border-neon-purple z-20"
-                      animate={{ 
-                        scale: [1, 1.2, 1],
-                        boxShadow: ["0 0 0px rgba(139, 92, 246, 0.3)", "0 0 15px rgba(139, 92, 246, 0.7)", "0 0 0px rgba(139, 92, 246, 0.3)"]
-                      }}
-                      transition={{ duration: 3, repeat: Infinity }}
-                    ></motion.div>
-                    
-                    {/* Content card */}
-                    <div className="w-full mt-8">
-                      <motion.div 
-                        className="rounded-xl p-6 backdrop-blur-sm bg-dark/80 border border-white/10 shadow-lg h-full"
-                        whileHover={{ 
-                          y: -5,
-                          boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
-                        }}
-                      >
-                        <h4 className="text-xl font-semibold mb-3 text-white">{milestone.title}</h4>
-                        <p className="text-gray-300">{milestone.description}</p>
-                      </motion.div>
-                    </div>
-                  </motion.div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            
-            <CarouselPrevious className="absolute -left-5 top-1/2 transform -translate-y-1/2 bg-dark text-white border-neon-purple hover:bg-dark-lighter hover:text-neon-purple z-10" />
-            <CarouselNext className="absolute -right-5 top-1/2 transform -translate-y-1/2 bg-dark text-white border-neon-purple hover:bg-dark-lighter hover:text-neon-purple z-10" />
-          </Carousel>
-        </motion.div>
+        {/* Journey Section with new components */}
+        <JourneyHeader />
+        <JourneyTimeline />
       </div>
     </section>
   );
