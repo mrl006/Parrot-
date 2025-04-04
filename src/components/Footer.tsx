@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Youtube, Instagram, MessageSquare } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -11,7 +10,8 @@ export default function Footer() {
     announcement: "https://t.me/parrotbambooann",
     instagram: "https://instagram.com/parrotbamboocrypto?igshid=ZDdkNTZiNTM=",
     binanceLive: "https://www.binance.com/en/live/u/24755389",
-    binanceSquare: "https://www.binance.com/en/feed/profile/86893873"
+    binanceSquare: "https://www.binance.com/en/feed/profile/86893873",
+    twitter: "https://twitter.com/ParrotBamboo"
   };
 
   // Animation variants
