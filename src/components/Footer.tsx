@@ -82,11 +82,11 @@ export default function Footer() {
         }}
       ></motion.div>
       
-      {/* Blockchain animation elements - subtle zoom instead of rotation */}
+      {/* Blockchain animation elements - changed from rotation to zoom */}
       <motion.div 
         className="absolute top-20 right-20 opacity-20"
         animate={{
-          scale: [1, 1.08, 1],
+          scale: [1, 1.2, 1],
           opacity: [0.2, 0.3, 0.2],
         }}
         transition={{
@@ -97,9 +97,9 @@ export default function Footer() {
       >
         <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M30 0L40 10L30 20L20 10L30 0Z" fill="#F2B705" fillOpacity="0.8" />
-          <path d="M10 20L20 30L10 40L0 30L10 20Z" fill="#0083CA" fillOpacity="0.8" />
+          <path d="M10 20L20 30L10 40L0 30L10 20Z" fill="#F2B705" fillOpacity="0.8" />
           <path d="M50 20L60 30L50 40L40 30L50 20Z" fill="#F2B705" fillOpacity="0.8" />
-          <path d="M30 40L40 50L30 60L20 50L30 40Z" fill="#0083CA" fillOpacity="0.8" />
+          <path d="M30 40L40 50L30 60L20 50L30 40Z" fill="#F2B705" fillOpacity="0.8" />
         </svg>
       </motion.div>
     
@@ -352,29 +352,64 @@ export default function Footer() {
           </motion.div>
         </div>
         
-        {/* Creative geometric decoration */}
-        <div className="relative py-8">
-          <div className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon-yellow to-transparent"></div>
-          <div className="flex justify-center">
-            <motion.div 
-              className="w-16 h-16 relative"
+        {/* Removed blue line and box, replaced with a more creative geometric decoration */}
+        <motion.div 
+          className="py-8 flex justify-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          <motion.div
+            className="w-24 h-24 relative"
+            animate={{
+              scale: [1, 1.1, 1],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          >
+            <motion.div
+              className="absolute inset-0 rounded-full bg-neon-yellow/5"
               animate={{
-                rotate: 45,
-                scale: [1, 1.05, 1]
+                scale: [0.6, 1, 0.6],
+                opacity: [0.2, 0.4, 0.2]
               }}
               transition={{
-                duration: 10,
+                duration: 6,
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
-            >
-              <div className="absolute inset-0 border-2 border-neon-yellow/30 rounded-md"></div>
-              <div className="absolute inset-2 border-2 border-neon-blue/30 rounded-md" style={{transform: "rotate(15deg)"}}></div>
-              <div className="absolute inset-4 border-2 border-neon-yellow/30 rounded-md" style={{transform: "rotate(30deg)"}}></div>
-            </motion.div>
-          </div>
-          <div className="absolute left-0 right-0 bottom-0 h-px bg-gradient-to-r from-transparent via-neon-blue to-transparent"></div>
-        </div>
+            />
+            <motion.div
+              className="absolute inset-4 rounded-full bg-neon-blue/5"
+              animate={{
+                scale: [1, 0.7, 1],
+                opacity: [0.3, 0.5, 0.3]
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0.5
+              }}
+            />
+            <motion.div
+              className="absolute inset-8 rounded-full bg-neon-yellow/10"
+              animate={{
+                scale: [0.8, 1.2, 0.8],
+                opacity: [0.4, 0.2, 0.4]
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1
+              }}
+            />
+          </motion.div>
+        </motion.div>
         
         <motion.div 
           className="pt-8 text-center"
