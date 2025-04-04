@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Globe, Lightbulb, Users, LineChart, Sparkles } from 'lucide-react';
+import { Globe, Lightbulb, Users, LineChart } from 'lucide-react';
 import MissionFeatureItem from './MissionFeatureItem';
 
 const containerVariants = {
@@ -26,7 +26,7 @@ const itemVariants = {
 const FeaturesList: React.FC = () => {
   return (
     <motion.div 
-      className="space-y-8"
+      className="space-y-5"
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
