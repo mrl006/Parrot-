@@ -11,8 +11,8 @@ export default function PartnersSection() {
   const { t } = useLanguage();
   const [showAll, setShowAll] = useState(false);
   
-  // Only show first 6 partners initially
-  const displayedPartners = showAll ? partnersData : partnersData.slice(0, 6);
+  // Show first 18 partners initially instead of just 6
+  const displayedPartners = showAll ? partnersData : partnersData.slice(0, 18);
   
   const toggleShowAll = () => {
     setShowAll(!showAll);
@@ -35,7 +35,7 @@ export default function PartnersSection() {
       <div className="container mx-auto px-4 relative z-10">
         <PartnersSectionHeader />
         <PartnersList partners={displayedPartners} />
-        {partnersData.length > 6 && (
+        {partnersData.length > 18 && (
           <ShowMoreButton showAll={showAll} toggleShowAll={toggleShowAll} />
         )}
       </div>
