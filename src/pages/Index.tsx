@@ -35,11 +35,11 @@ const Index = () => {
       <HeroSection />
       <AboutSection />
       <MissionSection />
-      <TeamSection />
       <ServicesSection />
       <AMAEventHostingSection />
       <PartnersSection />
       <ExperienceSection />
+      <TeamSection />
       <ContactSection />
       <Footer />
     </div>
