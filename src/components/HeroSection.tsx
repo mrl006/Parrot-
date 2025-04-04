@@ -1,7 +1,9 @@
+
 import React from 'react';
 import { ArrowRight, Rocket, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useIsMobile } from '@/hooks/use-mobile';
+import CryptoSnow from './hero/CryptoSnow';
 
 export default function HeroSection() {
   const isMobile = useIsMobile();
@@ -65,6 +67,9 @@ export default function HeroSection() {
         {/* Digital circuit patterns */}
         <div className="absolute inset-0 bg-[url('/circuit-pattern.svg')] bg-repeat opacity-10"></div>
       </motion.div>
+
+      {/* Crypto Logo Snow Effect */}
+      <CryptoSnow />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">

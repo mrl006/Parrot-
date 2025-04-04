@@ -20,6 +20,7 @@ const Index = () => {
       img.src = src;
     };
 
+    // Preload existing images
     preloadImage('/circuit-pattern.svg');
     preloadImage('/lovable-uploads/a00fcad1-0ec2-4e5f-990a-21d712dee436.png'); // Binance logo
     preloadImage('/lovable-uploads/9dfc0dbd-c375-443d-9fe6-a78d72d3b770.png'); // X logo
@@ -34,7 +35,13 @@ const Index = () => {
     preloadImage('/lovable-uploads/61fcc672-d9d9-46f4-937d-ba02dc86c041.png');
     preloadImage('/lovable-uploads/7b9b3fe7-38d5-4f98-bd13-25d4fa762acf.png');
     preloadImage('/lovable-uploads/43fda211-d474-412d-9613-218c14f9e954.png');
-    preloadImage('/lovable-uploads/a2f262a6-70d5-4673-9aa6-0aa47a11a1e5.png'); // New reference image
+    preloadImage('/lovable-uploads/a2f262a6-70d5-4673-9aa6-0aa47a11a1e5.png'); // Reference image
+
+    // Preload new cryptocurrency logos
+    preloadImage('/lovable-uploads/7e7d7050-cffa-4228-a49c-54d8d9fc206e.png'); // Binance coin
+    preloadImage('/lovable-uploads/2b0f9a3c-1884-4850-a27d-980f8334625b.png'); // Solana
+    preloadImage('/lovable-uploads/7120bbe4-a36d-43f7-b7ce-13972d047ef5.png'); // Ethereum 
+    preloadImage('/lovable-uploads/566698e8-c8ae-4125-8001-8f84d8771da0.png'); // Bitcoin
   }, []);
 
   return (
