@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Handshake, ExternalLink } from 'lucide-react';
+import { Handshake, ExternalLink, ChevronDown, ChevronUp } from 'lucide-react';
 import { toast } from "../hooks/use-toast";
 
 interface Partner {
@@ -12,6 +12,7 @@ interface Partner {
 
 export default function PartnersSection() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [showAllPartners, setShowAllPartners] = useState(false);
   
   const partners: Partner[] = [
     {
@@ -151,6 +152,11 @@ export default function PartnersSection() {
     }
   ];
 
+  // Calculate how many partners to show initially - 2 rows (12 partners)
+  const partnersPerRow = 6;
+  const initialPartnersCount = partnersPerRow * 2;
+  const displayedPartners = showAllPartners ? partners : partners.slice(0, initialPartnersCount);
+
   const handlePartnerClick = (website: string) => {
     window.open(website, '_blank');
     toast({
@@ -172,6 +178,26 @@ export default function PartnersSection() {
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0 }
+  };
+
+  const toggleShowAll = () => {
+    setShowAllPartners(!showAllPartners);
+    
+    // Scroll to the newly revealed partners if showing more
+    if (!showAllPartners) {
+      setTimeout(() => {
+        const element = document.getElementById('partners-show-more');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    } else {
+      // Scroll back to the partners section if collapsing
+      const element = document.getElementById('partners');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
   };
 
   return (
@@ -252,7 +278,7 @@ export default function PartnersSection() {
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
         >
-          {partners.map((partner, index) => (
+          {displayedPartners.map((partner, index) => (
             <motion.div 
               key={index}
               className={`backdrop-blur-sm rounded-xl p-5 flex flex-col items-center justify-center h-32 transition-all duration-300 cursor-pointer ${
@@ -317,6 +343,41 @@ export default function PartnersSection() {
             </motion.div>
           ))}
         </motion.div>
+        
+        {/* Show More/Less Button */}
+        <div id="partners-show-more" className="flex justify-center mt-12">
+          <motion.button
+            onClick={toggleShowAll}
+            className="group flex items-center gap-2 px-8 py-3 rounded-full bg-dark border border-neon-yellow/30 hover:border-neon-yellow/70 text-white font-medium transition-all duration-300 hover:shadow-[0_0_20px_rgba(242,183,5,0.3)]"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <span>
+              {showAllPartners ? 'Show Less Partners' : 'Show More Partners'}
+            </span>
+            {showAllPartners ? (
+              <motion.div
+                initial={{ y: 0 }}
+                animate={{ y: [0, -3, 0] }}
+                transition={{ duration: 1, repeat: Infinity }}
+              >
+                <ChevronUp size={18} className="text-neon-yellow group-hover:text-neon-blue transition-colors" />
+              </motion.div>
+            ) : (
+              <motion.div
+                initial={{ y: 0 }}
+                animate={{ y: [0, 3, 0] }}
+                transition={{ duration: 1, repeat: Infinity }}
+              >
+                <ChevronDown size={18} className="text-neon-yellow group-hover:text-neon-blue transition-colors" />
+              </motion.div>
+            )}
+          </motion.button>
+        </div>
       </div>
     </section>
   );

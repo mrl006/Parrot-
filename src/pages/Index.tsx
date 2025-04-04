@@ -21,6 +21,9 @@ const Index = () => {
 
     preloadImage('/circuit-pattern.svg');
     preloadImage('/lovable-uploads/a46cbb0c-b340-45e7-aa9e-7ecdcb5dbb14.png');
+    preloadImage('/lovable-uploads/c69265d4-43a2-479c-8a0a-3478f05b59d0.png');
+    preloadImage('/lovable-uploads/4d42739c-5c3a-45e9-8373-d429a64d6aa7.png');
+    preloadImage('/lovable-uploads/30008db4-6520-4312-998e-256d65120c3e.png');
   }, []);
 
   return (
