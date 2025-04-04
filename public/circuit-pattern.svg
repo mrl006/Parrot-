@@ -1,24 +1,24 @@
 
 <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
-  <g fill="none" stroke="rgba(139, 92, 246, 0.3)" stroke-width="0.5">
+  <g fill="none" stroke-width="0.5">
     <!-- Horizontal lines -->
-    <line x1="0" y1="25" x2="100" y2="25" />
-    <line x1="0" y1="75" x2="100" y2="75" />
+    <line x1="0" y1="25" x2="100" y2="25" stroke="rgba(242, 183, 5, 0.3)" />
+    <line x1="0" y1="75" x2="100" y2="75" stroke="rgba(0, 131, 202, 0.3)" />
     
     <!-- Vertical lines -->
-    <line x1="25" y1="0" x2="25" y2="100" />
-    <line x1="75" y1="0" x2="75" y2="100" />
+    <line x1="25" y1="0" x2="25" y2="100" stroke="rgba(242, 183, 5, 0.3)" />
+    <line x1="75" y1="0" x2="75" y2="100" stroke="rgba(0, 131, 202, 0.3)" />
     
     <!-- Connection points -->
-    <circle cx="25" cy="25" r="2" fill="rgba(139, 92, 246, 0.3)" />
-    <circle cx="75" cy="25" r="2" fill="rgba(139, 92, 246, 0.3)" />
-    <circle cx="25" cy="75" r="2" fill="rgba(139, 92, 246, 0.3)" />
-    <circle cx="75" cy="75" r="2" fill="rgba(139, 92, 246, 0.3)" />
+    <circle cx="25" cy="25" r="2" fill="rgba(242, 183, 5, 0.3)" />
+    <circle cx="75" cy="25" r="2" fill="rgba(0, 131, 202, 0.3)" />
+    <circle cx="25" cy="75" r="2" fill="rgba(0, 131, 202, 0.3)" />
+    <circle cx="75" cy="75" r="2" fill="rgba(242, 183, 5, 0.3)" />
     
     <!-- Connection lines -->
-    <path d="M25 25 L50 25 L50 50" />
-    <path d="M75 25 L75 50 L50 50" />
-    <path d="M25 75 L25 50 L40 50" />
-    <path d="M75 75 L60 75 L60 60" />
+    <path d="M25 25 L50 25 L50 50" stroke="rgba(242, 183, 5, 0.3)" />
+    <path d="M75 25 L75 50 L50 50" stroke="rgba(0, 131, 202, 0.3)" />
+    <path d="M25 75 L25 50 L40 50" stroke="rgba(0, 131, 202, 0.3)" />
+    <path d="M75 75 L60 75 L60 60" stroke="rgba(242, 183, 5, 0.3)" />
   </g>
 </svg>

@@ -63,10 +63,11 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Custom colors
+				// Updated custom colors for ParrotBamboo brand
 				neon: {
+					yellow: "#F2B705", // Brand yellow
+					blue: "#0083CA",   // Brand blue
 					purple: "#8B5CF6",
-					blue: "#6366F1",
 					cyan: "#22D3EE"
 				},
 				dark: {
@@ -108,6 +109,20 @@ export default {
 					'0%': { backgroundPosition: '0% 50%' },
 					'50%': { backgroundPosition: '100% 50%' },
 					'100%': { backgroundPosition: '0% 50%' }
+				},
+				'spin-slow': {
+					'0%': { transform: 'rotate(0deg)' },
+					'100%': { transform: 'rotate(360deg)' }
+				},
+				'pulse-glow': {
+					'0%, 100%': { opacity: '0.6', transform: 'scale(1)' },
+					'50%': { opacity: '1', transform: 'scale(1.05)' }
+				},
+				'blockchain-float': {
+					'0%, 100%': { transform: 'translate(0, 0) rotate(0deg)' },
+					'25%': { transform: 'translate(5px, -5px) rotate(2deg)' },
+					'50%': { transform: 'translate(0, -10px) rotate(0deg)' },
+					'75%': { transform: 'translate(-5px, -5px) rotate(-2deg)' }
 				}
 			},
 			animation: {
@@ -117,7 +132,10 @@ export default {
 				'fade-in-right': 'fade-in-right 0.5s ease-out',
 				'float': 'float 6s ease-in-out infinite',
 				'glow': 'glow 3s ease-in-out infinite',
-				'gradient-move': 'gradient-move 6s ease infinite'
+				'gradient-move': 'gradient-move 6s ease infinite',
+				'spin-slow': 'spin-slow 15s linear infinite',
+				'pulse-glow': 'pulse-glow 4s ease-in-out infinite',
+				'blockchain-float': 'blockchain-float 8s ease-in-out infinite'
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

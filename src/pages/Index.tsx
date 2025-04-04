@@ -6,6 +6,7 @@ import AboutSection from '../components/AboutSection';
 import MissionSection from '../components/MissionSection';
 import TeamSection from '../components/TeamSection';
 import ServicesSection from '../components/ServicesSection';
+import PartnersSection from '../components/PartnersSection';
 import ExperienceSection from '../components/ExperienceSection';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
@@ -19,6 +20,7 @@ const Index = () => {
     };
 
     preloadImage('/circuit-pattern.svg');
+    preloadImage('/lovable-uploads/a46cbb0c-b340-45e7-aa9e-7ecdcb5dbb14.png');
   }, []);
 
   return (
@@ -29,6 +31,7 @@ const Index = () => {
       <MissionSection />
       <TeamSection />
       <ServicesSection />
+      <PartnersSection />
       <ExperienceSection />
       <ContactSection />
       <Footer />

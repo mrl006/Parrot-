@@ -16,10 +16,10 @@
     --popover: 222 47% 11%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 252 94% 67%;
+    --primary: 42 93% 49%;  /* Updated to brand yellow */
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 217 100% 67%;
+    --secondary: 204 100% 40%;  /* Updated to brand blue */
     --secondary-foreground: 210 40% 98%;
 
     --muted: 217 32.6% 17.5%;
@@ -55,11 +55,11 @@
   }
 
   .glow-border {
-    @apply border border-neon-purple/30 shadow-[0_0_15px_rgba(139,92,246,0.3)];
+    @apply border border-neon-yellow/30 shadow-[0_0_15px_rgba(242,183,5,0.3)];
   }
 
   .neon-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-neon-blue to-neon-purple;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-neon-yellow to-neon-blue;
   }
 
   .hover-scale {
@@ -71,17 +71,29 @@
   }
   
   .circuit-bg {
-    background-image: radial-gradient(rgba(139, 92, 246, 0.1) 2px, transparent 2px);
+    background-image: radial-gradient(rgba(242, 183, 5, 0.1) 2px, transparent 2px);
     background-size: 30px 30px;
     background-position: 0 0;
   }
 
   .circuit-line {
-    @apply relative before:absolute before:content-[''] before:h-full before:w-[1px] before:bg-gradient-to-b before:from-transparent before:via-neon-purple/30 before:to-transparent before:left-1/2 before:-translate-x-1/2;
+    @apply relative before:absolute before:content-[''] before:h-full before:w-[1px] before:bg-gradient-to-b before:from-transparent before:via-neon-yellow/30 before:to-transparent before:left-1/2 before:-translate-x-1/2;
   }
 
   .timeline-circle {
-    @apply w-6 h-6 rounded-full bg-dark border-2 border-neon-purple z-10 absolute left-1/2 -translate-x-1/2;
+    @apply w-6 h-6 rounded-full bg-dark border-2 border-neon-yellow z-10 absolute left-1/2 -translate-x-1/2;
+  }
+
+  .blockchain-animation {
+    @apply relative animate-blockchain-float;
+  }
+  
+  .partner-logo {
+    @apply grayscale hover:grayscale-0 transition-all duration-300 hover:scale-105;
+  }
+  
+  .web3-particle {
+    @apply absolute w-4 h-4 rounded-full bg-neon-yellow/20 animate-float;
   }
 }
 

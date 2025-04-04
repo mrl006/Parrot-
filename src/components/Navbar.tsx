@@ -9,6 +9,7 @@ const navItems = [
   { label: 'Mission', href: '#mission' },
   { label: 'Team', href: '#team' },
   { label: 'Services', href: '#services' },
+  { label: 'Partners', href: '#partners' },
   { label: 'Experience', href: '#experience' },
   { label: 'Contact', href: '#contact' },
 ];
@@ -48,6 +49,7 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <a href="#home" className="flex items-center">
+          <img src="/lovable-uploads/a46cbb0c-b340-45e7-aa9e-7ecdcb5dbb14.png" alt="ParrotBamboo Logo" className="h-12 mr-2" />
           <span className="text-xl font-bold neon-text">ParrotBamboo</span>
         </a>
 
@@ -61,7 +63,7 @@ export default function Navbar() {
                   e.preventDefault();
                   handleNavClick(item.href);
                 }}
-                className="text-gray-300 hover:text-white transition-colors relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-neon-purple after:left-0 after:-bottom-1 after:transition-all hover:after:w-full"
+                className="text-gray-300 hover:text-white transition-colors relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-neon-yellow after:left-0 after:-bottom-1 after:transition-all hover:after:w-full"
               >
                 {item.label}
               </a>
