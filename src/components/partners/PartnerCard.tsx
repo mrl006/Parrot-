@@ -45,14 +45,7 @@ const PartnerCard: React.FC<PartnerCardProps> = ({
         rel="noopener noreferrer" 
         className="w-full h-full flex flex-col items-center justify-center"
       >
-        <motion.div
-          className="text-neon-blue w-7 h-7 mb-3"
-          whileHover={{ scale: 1.1 }}
-        >
-          {partner.icon}
-        </motion.div>
-        
-        <h3 className="text-white text-center font-semibold text-sm mb-1">{partner.name}</h3>
+        <h3 className="text-white text-center font-semibold text-md mb-1">{partner.name}</h3>
         
         <p className="text-gray-400 text-center text-xs">
           {language === 'tr' ? partner.categoryTR || partner.category : partner.category}
