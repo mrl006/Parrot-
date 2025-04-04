@@ -1,6 +1,10 @@
 
+import { ReactNode } from 'react';
+
 export interface Partner {
   name: string;
-  website: string;
-  logoUrl?: string; // Made optional since we're not showing logos
+  category: string;
+  categoryTR?: string;
+  icon: ReactNode;
+  url: string;
 }

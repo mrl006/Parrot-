@@ -4,12 +4,15 @@ import { motion } from 'framer-motion';
 import PartnersSectionHeader from './partners/PartnersSectionHeader';
 import PartnersList from './partners/PartnersList';
 import { partnersData } from '../data/partners';
+import { useLanguage } from '../hooks/useLanguage';
 
 export default function PartnersSection() {
+  const { t } = useLanguage();
+  
   return (
     <section 
       id="partners" 
-      className="py-12 bg-dark-lighter relative" // Reduced padding from py-24 to py-12
+      className="py-12 bg-dark-lighter relative"
     >
       <motion.div 
         className="absolute inset-0 opacity-10"

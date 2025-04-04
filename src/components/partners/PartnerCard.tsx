@@ -1,9 +1,8 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
 import { Partner } from '../../types/Partner';
-import { toast } from "../../hooks/use-toast";
+import { useLanguage } from '../../hooks/useLanguage';
 
 interface PartnerCardProps {
   partner: Partner;
@@ -15,57 +14,77 @@ interface PartnerCardProps {
 
 const PartnerCard: React.FC<PartnerCardProps> = ({ 
   partner, 
-  index, 
-  isHovered, 
-  onMouseEnter, 
-  onMouseLeave 
+  index,
+  isHovered,
+  onMouseEnter,
+  onMouseLeave
 }) => {
-  const handleClick = () => {
-    window.open(partner.website, '_blank');
-    toast({
-      title: "Opening partner website",
-      description: `Visiting ${partner.name}'s official website`,
-    });
+  const { language } = useLanguage();
+  
+  const cardVariants = {
+    hidden: { 
+      opacity: 0,
+      y: 20
+    },
+    show: { 
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.3
+      }
+    }
   };
 
   return (
-    <motion.div 
-      className={`backdrop-blur-sm rounded-xl p-3 flex flex-col items-center justify-center h-20 transition-all duration-300 cursor-pointer ${
-        isHovered ? 'border-neon-yellow shadow-md shadow-neon-yellow/20' : 'border-neon-yellow/20'
-      } border bg-gradient-to-br from-dark/80 to-dark-lighter/80`}
-      variants={{
-        hidden: { opacity: 0, y: 20 },
-        show: { opacity: 1, y: 0 }
+    <motion.div
+      variants={cardVariants}
+      whileHover={{ 
+        scale: 1.05,
+        transition: { duration: 0.2 } 
       }}
+      whileTap={{ scale: 0.95 }}
+      className="bg-dark-lighter rounded-lg p-3 flex flex-col items-center justify-center cursor-pointer border border-transparent hover:border-neon-blue/30 hover:shadow-lg hover:shadow-neon-blue/5"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      onClick={handleClick}
-      whileHover={{ 
-        scale: 1.03,
-        boxShadow: '0 0 20px 0 rgba(242, 183, 5, 0.2)'
-      }}
     >
-      <motion.div 
-        className="flex flex-col justify-center items-center w-full h-full gap-1"
+      <a 
+        href={partner.url} 
+        target="_blank"
+        rel="noopener noreferrer" 
+        className="w-full h-full flex flex-col items-center"
       >
-        <h3 className={`text-base font-bold text-center ${
-          isHovered ? 'text-neon-yellow' : 'text-white'
-        }`}>
-          {partner.name}
-        </h3>
-        
-        {isHovered && (
-          <motion.div 
-            className="flex items-center gap-1 text-xs text-neon-blue"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+        <motion.div
+          className="flex justify-center items-center w-12 h-12 mb-2 rounded-full bg-dark p-2"
+          animate={{
+            scale: isHovered ? 1.1 : 1,
+            y: isHovered ? -3 : 0
+          }}
+          transition={{ duration: 0.2 }}
+        >
+          {/* Icon with zoom effect on hover */}
+          <motion.div
+            className="text-neon-blue"
+            animate={{
+              scale: isHovered ? 1.2 : 1,
+              rotate: isHovered ? [0, -5, 5, -5, 0] : 0
+            }}
             transition={{ duration: 0.3 }}
           >
-            <span>Visit</span>
-            <ExternalLink size={12} />
+            {partner.icon}
           </motion.div>
-        )}
-      </motion.div>
+        </motion.div>
+        
+        <h3 className="text-center text-sm font-medium truncate w-full">{partner.name}</h3>
+        
+        <motion.p 
+          className="text-center text-xs text-gray-400 mt-1 truncate w-full"
+          animate={{
+            opacity: isHovered ? 1 : 0.7
+          }}
+        >
+          {language === 'tr' ? partner.categoryTR || partner.category : partner.category}
+        </motion.p>
+      </a>
     </motion.div>
   );
 };

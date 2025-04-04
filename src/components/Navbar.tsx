@@ -1,24 +1,30 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Languages } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../hooks/useLanguage';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
+// Simplified menu items - max 5 as requested
 const navItems = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Mission', href: '#mission' },
-  { label: 'Team', href: '#team' },
-  { label: 'Services', href: '#services' },
-  { label: 'Partners', href: '#partners' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'home', href: '#home' },
+  { label: 'about', href: '#about' },
+  { label: 'services', href: '#services' },
+  { label: 'partners', href: '#partners' },
+  { label: 'contact', href: '#contact' },
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeItem, setActiveItem] = useState('#home');
+  const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -81,41 +87,100 @@ export default function Navbar() {
         </motion.a>
 
         {/* Desktop Navigation */}
-        <ul className="hidden md:flex space-x-8">
-          {navItems.map((item) => (
-            <li key={item.label}>
-              <a
-                href={item.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick(item.href);
-                }}
-                className={`text-gray-300 hover:text-white transition-colors relative ${
-                  activeItem === item.href ? 'text-white' : ''
-                }`}
+        <div className="hidden md:flex items-center space-x-8">
+          <ul className="flex space-x-8">
+            {navItems.map((item) => (
+              <li key={item.label}>
+                <a
+                  href={item.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick(item.href);
+                  }}
+                  className={`text-gray-300 hover:text-white transition-colors relative ${
+                    activeItem === item.href ? 'text-white' : ''
+                  }`}
+                >
+                  {t(item.label)}
+                  {activeItem === item.href && (
+                    <motion.span 
+                      className="absolute left-0 -bottom-1 w-full h-0.5 bg-neon-yellow"
+                      layoutId="activeNavIndicator"
+                      transition={{ type: "spring", duration: 0.5 }}
+                    />
+                  )}
+                </a>
+              </li>
+            ))}
+          </ul>
+          
+          {/* Language selector */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <motion.button 
+                className="flex items-center text-white p-2 rounded-full hover:bg-dark-lighter"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                {item.label}
-                {activeItem === item.href && (
-                  <motion.span 
-                    className="absolute left-0 -bottom-1 w-full h-0.5 bg-neon-yellow"
-                    layoutId="activeNavIndicator"
-                    transition={{ type: "spring", duration: 0.5 }}
-                  />
-                )}
-              </a>
-            </li>
-          ))}
-        </ul>
+                <Languages className="h-5 w-5 mr-1" />
+                <span className="text-sm font-medium">{language === 'en' ? 'EN' : 'TR'}</span>
+              </motion.button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem 
+                className={language === 'en' ? 'bg-accent/20' : ''}
+                onClick={() => setLanguage('en')}
+              >
+                English
+              </DropdownMenuItem>
+              <DropdownMenuItem 
+                className={language === 'tr' ? 'bg-accent/20' : ''}
+                onClick={() => setLanguage('tr')}
+              >
+                Türkçe
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
 
         {/* Mobile Menu Button */}
-        <motion.button 
-          className="md:hidden text-white"
-          onClick={() => setIsOpen(!isOpen)}
-          whileTap={{ scale: 0.9 }}
-          whileHover={{ scale: 1.1 }}
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </motion.button>
+        <div className="flex items-center space-x-4 md:hidden">
+          {/* Language selector for mobile */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <motion.button 
+                className="flex items-center text-white"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Languages className="h-5 w-5" />
+              </motion.button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem 
+                className={language === 'en' ? 'bg-accent/20' : ''}
+                onClick={() => setLanguage('en')}
+              >
+                English
+              </DropdownMenuItem>
+              <DropdownMenuItem 
+                className={language === 'tr' ? 'bg-accent/20' : ''}
+                onClick={() => setLanguage('tr')}
+              >
+                Türkçe
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+          
+          <motion.button 
+            className="text-white"
+            onClick={() => setIsOpen(!isOpen)}
+            whileTap={{ scale: 0.9 }}
+            whileHover={{ scale: 1.1 }}
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </motion.button>
+        </div>
       </div>
 
       {/* Mobile Navigation */}
@@ -159,7 +224,7 @@ export default function Navbar() {
                     activeItem === item.href ? 'text-white' : ''
                   }`}
                 >
-                  {item.label}
+                  {t(item.label)}
                 </a>
               </motion.li>
             ))}
