@@ -23,7 +23,7 @@ const PartnersSectionHeader = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        <span className="bg-clip-text text-transparent bg-gradient-to-r from-neon-yellow to-neon-blue">Trusted by Industry Leaders</span>
+        <span className="bg-clip-text text-transparent bg-gradient-to-r from-neon-yellow to-neon-blue">Elite Blockchain Partnerships</span>
       </motion.h2>
       
       <motion.div 
@@ -35,19 +35,7 @@ const PartnersSectionHeader = () => {
       ></motion.div>
       
       <motion.div className="flex justify-center mt-8">
-        <motion.div
-          animate={{ 
-            scale: [1, 1.1, 1],
-            opacity: [0.8, 1, 0.8],
-          }}
-          transition={{ 
-            duration: 5, 
-            repeat: Infinity,
-            repeatType: "loop"
-          }}
-        >
-          <Handshake size={48} className="text-neon-yellow mb-6" />
-        </motion.div>
+        <Handshake size={48} className="text-neon-yellow mb-6" />
       </motion.div>
       
       <motion.p 
@@ -57,7 +45,7 @@ const PartnersSectionHeader = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.6 }}
       >
-        We collaborate with leading projects and platforms across the blockchain ecosystem to deliver exceptional results
+        We collaborate with leading blockchain projects and platforms across the ecosystem to drive innovation and deliver exceptional value
       </motion.p>
     </div>
   );

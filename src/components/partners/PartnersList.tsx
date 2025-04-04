@@ -23,11 +23,11 @@ const PartnersList: React.FC<PartnersListProps> = ({ partners }) => {
 
   return (
     <motion.div 
-      className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 lg:gap-8"
+      className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
       variants={containerVariants}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: true, margin: "-50px" }}
     >
       {partners.map((partner, index) => (
         <PartnerCard

@@ -24,7 +24,7 @@ const PartnerCard: React.FC<PartnerCardProps> = ({
     window.open(partner.website, '_blank');
     toast({
       title: "Opening partner website",
-      description: "Redirecting to partner's official website",
+      description: `Visiting ${partner.name}'s official website`,
     });
   };
 
@@ -44,51 +44,25 @@ const PartnerCard: React.FC<PartnerCardProps> = ({
         scale: 1.05,
         boxShadow: '0 0 30px 0 rgba(242, 183, 5, 0.2)'
       }}
-      animate={isHovered ? { 
-        y: -10,
-        transition: { duration: 0.3 }
-      } : {}}
     >
       <motion.div 
         className="flex flex-col justify-center items-center w-full h-full gap-2"
-        animate={isHovered ? { scale: [1, 1.05, 1] } : {}}
-        transition={{ duration: 0.5, repeat: isHovered ? Infinity : 0 }}
       >
-        <div className="h-12 flex items-center justify-center">
-          <img 
-            src={partner.logoUrl} 
-            alt={`${partner.name} logo`}
-            className="max-h-12 max-w-full object-contain"
-            onError={(e) => {
-              // Fallback to text if image fails to load
-              const target = e.target as HTMLImageElement;
-              target.style.display = 'none';
-              const parentDiv = target.parentElement;
-              if (parentDiv) {
-                const textElement = document.createElement('p');
-                textElement.className = `font-semibold text-center text-lg ${
-                  isHovered ? 'text-neon-yellow' : 'text-white'
-                }`;
-                textElement.textContent = partner.name;
-                parentDiv.appendChild(textElement);
-              }
-            }}
-          />
-        </div>
-        <p className={`font-semibold text-center text-sm mt-2 ${
+        <h3 className={`text-xl font-bold text-center ${
           isHovered ? 'text-neon-yellow' : 'text-white'
         }`}>
           {partner.name}
-        </p>
+        </h3>
+        
         {isHovered && (
           <motion.div 
-            className="flex items-center gap-1 text-xs text-neon-blue"
+            className="flex items-center gap-1 text-sm text-neon-blue"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
           >
-            <span>Visit</span>
-            <ExternalLink size={12} />
+            <span>Visit Website</span>
+            <ExternalLink size={16} />
           </motion.div>
         )}
       </motion.div>

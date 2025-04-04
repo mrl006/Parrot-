@@ -1,39 +1,11 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import PartnersSectionHeader from './partners/PartnersSectionHeader';
 import PartnersList from './partners/PartnersList';
-import ShowMoreButton from './partners/ShowMoreButton';
 import { partnersData } from '../data/partners';
 
 export default function PartnersSection() {
-  const [showAllPartners, setShowAllPartners] = useState(false);
-  
-  // Calculate how many partners to show initially - 2 rows (12 partners)
-  const partnersPerRow = 6;
-  const initialPartnersCount = partnersPerRow * 2;
-  const displayedPartners = showAllPartners ? partnersData : partnersData.slice(0, initialPartnersCount);
-
-  const toggleShowAll = () => {
-    setShowAllPartners(!showAllPartners);
-    
-    // Scroll to the newly revealed partners if showing more
-    if (!showAllPartners) {
-      setTimeout(() => {
-        const element = document.getElementById('partners-show-more');
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }, 100);
-    } else {
-      // Scroll back to the partners section if collapsing
-      const element = document.getElementById('partners');
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
-  };
-
   return (
     <section 
       id="partners" 
@@ -50,8 +22,7 @@ export default function PartnersSection() {
 
       <div className="container mx-auto px-4 relative z-10">
         <PartnersSectionHeader />
-        <PartnersList partners={displayedPartners} />
-        <ShowMoreButton showAll={showAllPartners} toggleShowAll={toggleShowAll} />
+        <PartnersList partners={partnersData} />
       </div>
     </section>
   );
