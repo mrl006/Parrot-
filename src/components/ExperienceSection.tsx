@@ -84,16 +84,23 @@ export default function ExperienceSection() {
     show: { opacity: 1, y: 0 }
   };
 
-  // For the animated counter
-  const Counter = ({ from = 0, to, duration = 1.5 }: { from?: number, to: number, duration?: number }) => {
+  // For the animated achievement numbers
+  const AnimatedValue = ({ value }: { value: string }) => {
+    // Extract the numeric part if possible
+    const numericValue = parseInt(value.replace(/\D/g, ''));
+    
+    if (isNaN(numericValue)) {
+      return <span className="text-4xl font-bold">{value}</span>;
+    }
+    
     return (
       <motion.span
-        initial={{ count: from }}
-        animate={{ count: to }}
-        transition={{ duration }}
-        className="text-4xl font-bold"
+        className="text-5xl font-extrabold"
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        {Math.round(to)}
+        {value}
       </motion.span>
     );
   };
@@ -175,11 +182,6 @@ export default function ExperienceSection() {
                   animate={{
                     boxShadow: ["0 0 0 rgba(255, 255, 255, 0.1)", "0 0 20px rgba(255, 255, 255, 0.2)", "0 0 0 rgba(255, 255, 255, 0.1)"]
                   }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    repeatType: "reverse"
-                  }}
                 >
                   {achievement.icon}
                 </motion.div>
@@ -191,9 +193,7 @@ export default function ExperienceSection() {
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 0.3 * index, duration: 0.5 }}
               >
-                <h3 className={`text-5xl font-extrabold mb-1 bg-clip-text text-transparent bg-gradient-to-r ${achievement.color}`}>
-                  {achievement.value}
-                </h3>
+                <AnimatedValue value={achievement.value} />
                 <p className="text-sm text-gray-400">{achievement.label}</p>
               </motion.div>
               
